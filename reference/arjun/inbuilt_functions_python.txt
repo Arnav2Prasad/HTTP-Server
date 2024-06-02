@@ -1,0 +1,15 @@
+# this file contains some of the inbuilt python libraries that we might need
+# I am adding the names here as I encounter them
+
+# 1. urlparse
+# with these routines, you can get large and complex URLs
+# and turn them into their component parts, 
+# with RFC-compliant parsing already implemented for you
+# this contains functions that can parse URLs and identify their components
+
+from urlparse import urlparse, urldefrag, parse_qs, parse_qsl
+
+#2. urllib2
+# this is for study purposes, not directly useful in the project
+# should check out its docs tho, I haven't gone through them yet
+import urllib2
