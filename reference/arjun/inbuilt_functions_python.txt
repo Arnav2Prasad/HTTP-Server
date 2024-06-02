@@ -1,0 +1,6 @@
+# this file contains some of the inbuilt python libraries that we might need
+# I am adding the names here as I encounter them
+
+# 1. urlparse
+# this contains functions that can parse URLs and identify their components
+from urlparse import urlparse, urldefrag, parse_qs, parse_qsl
