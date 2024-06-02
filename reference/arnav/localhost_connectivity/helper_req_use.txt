@@ -1,0 +1,8 @@
+
+How to use?
+APPROACH : 
+	1. python3 <filename>.py
+	2. firefox command like this : http://127.0.0.1:1060
+
+Frefox will give error
+The main objective of writing this code is to get to know how and in which format we are getting request to the server and print the request in the terminal fo analysis.

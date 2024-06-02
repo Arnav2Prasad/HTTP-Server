@@ -1,0 +1,8 @@
+
+How to use main.txt?
+APPROACH : 
+
+	1. python3 main.py
+	2. On firefox http://127.0.0.1:1060 , excecute this.
+
+Do ensure port number present in the code,it may not be 1060, in that case change the firefox command to be typed in.
