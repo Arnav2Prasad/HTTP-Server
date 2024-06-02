@@ -14,7 +14,7 @@ def add(k, j, mat1, mat2, mat3):
 # main function that does the matrix addition
 def Main():
     # order of the square matrix
-    matorder = 100;
+    matorder = 100
 
     # define 2D arrays for each matrix
     mat1 = [[0]*matorder]*matorder
