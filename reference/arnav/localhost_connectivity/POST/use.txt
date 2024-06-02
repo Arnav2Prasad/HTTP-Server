@@ -1,5 +1,5 @@
 
-OBJECTIVE : was to get hands on with POST request to the server
+OBJECTIVE :  To get hands on with POST request to the server
 
 APPROACH : 
 	1. Create form.html (for post request)
