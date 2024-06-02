@@ -1,0 +1,12 @@
+
+OBJECTIVE : was to get hands on with POST request to the server
+
+APPROACH : 
+	1. Create form.html (for post request)
+	2. python3 server.py
+	3. on firefox : type --> file://<pwd>
+
+	for example : file:///home/arnav/git_try1/Computer-Networks/reference/arnav/localhost_connectivity/POST/form.html
+
+
+We can view and analyze the "request" server recieved and so send the "response"!
