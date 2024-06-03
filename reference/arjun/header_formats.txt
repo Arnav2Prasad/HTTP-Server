@@ -1,0 +1,70 @@
+1. Accept
+Accept= "Accept" ":" #( media-range [ accept-params ] )
+media-range = ( "*/*" | ( type "/" "*" ) | ( type "/" subtype )) *( ";" parameter )
+accept-params = ";" "q" "=" qvalue *( accept-extension )
+accept-extension = ";" token [ "=" ( token | quoted-string ) ]
+
+2. Accept-Charset 
+Accept-Charset = "Accept-Charset" ":" 1#( ( charset | "*" )[ ";" "q" "=" qvalue ] )
+
+3. Accept-Encoding
+Accept-Encoding = "Accept-Encoding" ":" 1#( codings [ ";" "q" "=" qvalue ] )
+codings = ( content-coding | "*" )
+
+4. Accept-Language
+Accept-Language = "Accept-Language" ":" 1#( language-range [ ";" "q" "=" qvalue ] )
+language-range = ( ( 1*8ALPHA *( "-" 1*8ALPHA ) ) | "*" )
+
+5. Acceptable-Ranges
+Accept-Ranges = "Accept-Ranges" ":" acceptable-ranges
+acceptable-ranges = 1#range-unit | "none"
+
+6. Age
+Age = "Age" ":" age-value
+age-value = delta-seconds
+
+7. Allow
+Allow = "Allow" ":" #Method
+
+* 8. Authorization
+Authorization = "Authorization" ":" credentials
+
+9. Cache-Control
+Cache-Control = "Cache-Control" ":" 1#cache-directive
+
+cache-directive = cache-request-directive | cache-response-directive
+
+cache-request-directive 
+= "no-cache"
+| "no-store"
+| "max-age" "=" delta-seconds
+| "max-stale" [ "=" delta-seconds ]
+| "min-fresh" "=" delta-seconds
+| "no-transform"
+| "only-if-cached"
+| cache-extension
+
+cache-response-directive
+= "public"
+| "private" [ "=" <"> 1#field-name <"> ] ; Section 14.9.1
+| "no-cache" [ "=" <"> 1#field-name <"> ]; Section 14.9.1
+| "no-store"
+| "no-transform"
+| "must-revalidate"
+| "proxy-revalidate"
+| "max-age" "=" delta-seconds
+| "s-maxage" "=" delta-seconds
+| cache-extension
+
+10. Connection
+Connection = "Connection" ":" 1#(connection-token)
+connection-token = token
+
+11. Content-Encoding
+Content-Encoding = "Content-Encoding" ":" 1#content-coding
+
+12. Content-Language
+Content-Language = "Content-Language" ":" 1#language-tag
+
+13. Content Length
+Content-Length = "Content-Length" ":" 1*DIGIT
