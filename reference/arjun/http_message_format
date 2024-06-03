@@ -41,3 +41,64 @@ Method
 | extension-method
 
 Request-URI = "*" | absoluteURI | abs_path | authority
+
+request-header 
+= Accept
+| Accept-Charset
+| Accept-Encoding
+| Accept-Language
+| Authorization
+| Expect
+| From
+| Host
+| If-Match
+| If-Modified-Since
+| If-None-Match
+| If-Range
+| If-Unmodified-Since
+| Max-Forwards
+| Proxy-Authorization
+| Range
+| Referer
+| TE
+| User-Agent
+
+
+Response
+= Status-Line
+*(( general-header
+| response-header
+| entity-header ) CRLF)
+CRLF
+
+Status-Line = HTTP-Version SP Status-Code SP Reason-Phrase CRLF [ message-body ]
+
+extension-code = 3DIGIT
+Reason-Phrase = *<TEXT, excluding CR, LF>
+
+response-header 
+= Accept-Ranges
+| Age
+| ETag
+| Location
+| Proxy-Authenticate
+| Retry-After
+| Server
+| Vary
+| WWW-Authenticate
+
+entity-header
+= Allow
+| Content-Encoding
+| Content-Language
+| Content-Length
+| Content-Location
+| Content-MD5
+| Content-Range
+| Content-Type
+| Expires
+| Last-Modified
+| extension-header
+
+extension-header = message-header
+entity-body = *OCTET
