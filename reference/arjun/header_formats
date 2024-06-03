@@ -1,5 +1,5 @@
 # contains the formats for various headers in HTTP messages
-# source : rfc2616 http://datatracker.ietf.org/doc/html/rfc-2616
+# source : rfc2616 <http://datatracker.ietf.org/doc/html/rfc2616>
 
 1. Accept
 Accept= "Accept" ":" #( media-range [ accept-params ] )
