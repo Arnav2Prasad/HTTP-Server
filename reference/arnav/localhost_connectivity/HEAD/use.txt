@@ -1,0 +1,38 @@
+
+In a HEAD request, the server should respond with headers similar to those in a GET request but without a message body.
+
+How to Test
+
+    	Start the Server:
+        	Run the server code on your local machine. 
+		The server will listen for connections on localhost at port 1080.
+
+
+    	Send a HEAD Request:
+        	Use a tool like curl or Postman to send a HEAD request to the server.
+        	Example using curl:
+			curl -I http://localhost:1080/your-endpoint
+
+	Server Response:
+		The server will send back an HTTP response without a body, including only the headers.
+
+    			HTTP/1.1 200 OK
+    			Content-Type: text/html; charset=utf-8
+    			Content-Length: 0
+
+	
+	SUMMARY
+
+    		The server listens for incoming connections on localhost at port 1080.
+    		When a connection is received, it processes the HTTP request, generates an appropriate response, 
+		and sends it back to the client.
+    		The server handles POST, PUT, DELETE, and HEAD requests, generating different 
+		responses based on the request method.
+    	
+		For HEAD requests, the server sends back only the headers and no body, as required by the HTTP specification.
+    		
+		The server runs indefinitely, handling one connection at a time.
+
+
+		This setup allows the server to handle HEAD requests appropriately, responding with the 
+		respective headers but no body content.
