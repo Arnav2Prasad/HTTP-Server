@@ -1,0 +1,3 @@
+
+COMMAND : curl -X PUT http://localhost:1070/your-endpoint -d "test data"
+

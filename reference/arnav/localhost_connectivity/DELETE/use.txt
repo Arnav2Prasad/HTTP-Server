@@ -1,0 +1,6 @@
+
+COMMAND :  curl -X DELETE http://localhost:1080/your-endpoint -d "test data"
+
+OUTPUT : 
+
+<html><body><h1>Received DELETE Request</h1><p>Request Body: test data</p></body></html>%
