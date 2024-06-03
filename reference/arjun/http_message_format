@@ -1,0 +1,43 @@
+
+
+HTTP-message = Request | Response
+
+generic-message = start-line *(message-header CRLF) CRLF [ message-body ] 
+
+start-line = Request-Line | Status-Line
+
+  
+message-header = field-name ":" [ field-value ]
+field-name = token
+field-value = *( field-content | LWS )
+field-content = <the OCTETs making up the field-value and consisting of either *TEXT or combinations of token, separators, and quoted-string>
+  
+message-body = entity-body | <entity-body encoded as per Transfer-Encoding>
+
+  
+general-header
+= Cache-Control
+| Connection
+| Date
+| Pragma
+| Trailer
+| Transfer-Encoding
+| Upgrade
+| Via
+| Warning
+
+  
+Request-Line = Method SP Request-URI SP HTTP-Version CRLF
+  
+Method 
+= "OPTIONS"
+| "GET"
+| "HEAD"
+| "POST"
+| "PUT"
+| "DELETE"
+| "TRACE"
+| "CONNECT"
+| extension-method
+
+Request-URI = "*" | absoluteURI | abs_path | authority
