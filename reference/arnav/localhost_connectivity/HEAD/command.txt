@@ -1,0 +1,31 @@
+
+COMMAND :  curl -I http://localhost:1080/your-endpoint
+
+OUTPUT : (in curl command terminal)
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+
+(in server.py terminal)
+Server is running on port 1080...
+Connection from ('127.0.0.1', 35586)
+Request:
+HEAD /your-endpoint HTTP/1.1
+Host: localhost:1080
+User-Agent: curl/7.81.0
+Accept: */*
+
+
+Body:
+
+Connection from ('127.0.0.1', 38662)
+Request:
+HEAD /your-endpoint HTTP/1.1
+Host: localhost:1080
+User-Agent: curl/7.81.0
+Accept: */*
+
+
+Body:
+
+
