@@ -1,8 +1,4 @@
 #!/usr/bin/python
-# this is NOT how the project code is to be written
-# for study purpose only
-# this code takes actions based on the request lines
-# this is just to test the format, other stuff
 
 import sys
 import string as str
@@ -26,9 +22,25 @@ serverSocket.listen(1)
 
 # this function decodes the request line of HTTP message, and takes actions
 def decode_req_line(req_line_str):
+    
     # tokenise the line
     tokens = req_line_str.split(sep=' ')
     print("tokens are : ", tokens)
+
+    # check for correct version number
+    version = tokens[2]
+    print("version is : ", version)
+    status_code = 200
+
+    print("version[0:4]", version[0:4])
+    if version[0:4].lower() != 'http':
+        status_code = 400
+    else:
+        if version[4] != '/' or version[5:8] != '1.1':
+            status_code = 400
+    print(status_code);
+
+    
 
     # GET method
     # for now, just the requested file is returned without
@@ -60,4 +72,3 @@ while True:
     tokens = sentence.splitlines()
     print("tokens found : ", tokens)
     decode_req_line(tokens[0])
-
