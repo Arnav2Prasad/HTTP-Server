@@ -1,0 +1,25 @@
+
+How to Test?
+
+    	Start the Server:
+        	Run the server code on your local machine. 
+		The server will listen for connections on localhost at port 1080(respective port).
+
+
+    	Send a PUT Request:
+        	Use a tool like curl or Postman to send a PUT request to the server.
+        
+		Example using curl:
+		curl -X PUT http://localhost:1070/your-endpoint -d "test data"
+
+
+	Server Response:
+		The server will print the request details and send back an HTML response 
+		indicating it received a PUT request along with the request body.
+    		
+		The response might look like this in your browser or tool:
+
+        		<html><body><h1>Received PUT Request</h1><p>Request Body: test data</p></body></html>
+
+
+This setup allows the server to handle both POST and PUT requests appropriately, responding with the respective HTML content.
