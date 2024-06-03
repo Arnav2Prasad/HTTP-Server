@@ -1,4 +1,8 @@
 #!/usr/bin/python
+# this is NOT how the project code is to be written
+# for study purpose only
+# this code takes actions based on the request lines
+# this is just to test the format, other stuff
 
 import sys
 import string as str
