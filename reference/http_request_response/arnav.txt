@@ -1,0 +1,1644 @@
+
+Frame 121: 510 bytes on wire (4080 bits), 510 bytes captured (4080 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2001:1458:d00:35::100:222
+Transmission Control Protocol, Src Port: 51096, Dst Port: 80, Seq: 1, Ack: 1, Len: 424
+    Source Port: 51096
+    Destination Port: 80
+    [Stream index: 14]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 424]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 1909807023
+    [Next Sequence Number: 425    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 3612965838
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 507
+    [Calculated window size: 64896]
+    [Window size scaling factor: 128]
+    Checksum: 0x7b15 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 721209845, TSecr 1404679047
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 721209845
+            Timestamp echo reply: 1404679047
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (424 bytes)
+Hypertext Transfer Protocol
+    GET /hypertext/WWW/Technical.html HTTP/1.1\r\n
+    Host: info.cern.ch\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://info.cern.ch/hypertext/WWW/TheProject.html\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://info.cern.ch/hypertext/WWW/Technical.html]
+    [HTTP request 1/1]
+
+
+-------------------------------------------------------------------
+
+Frame 1360: 153 bytes on wire (1224 bits), 153 bytes captured (1224 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 4, Src: 192.168.31.158, Dst: 185.125.190.96
+Transmission Control Protocol, Src Port: 52148, Dst Port: 80, Seq: 1, Ack: 1, Len: 87
+    Source Port: 52148
+    Destination Port: 80
+    [Stream index: 35]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 87]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 921267839
+    [Next Sequence Number: 88    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 2192891171
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 502
+    [Calculated window size: 64256]
+    [Window size scaling factor: 128]
+    Checksum: 0x58a2 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2423717990, TSecr 3591478620
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2423717990
+            Timestamp echo reply: 3591478620
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (87 bytes)
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+    Host: connectivity-check.ubuntu.com\r\n
+    Accept: */*\r\n
+    Connection: close\r\n
+    \r\n
+    [Full request URI: http://connectivity-check.ubuntu.com/]
+    [HTTP request 1/1]
+
+
+
+-------------------------------------------------------------------------------------------
+
+Frame 1530: 275 bytes on wire (2200 bits), 275 bytes captured (2200 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 2620:2d:4000:1::22, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 40738, Seq: 1, Ack: 88, Len: 189
+    Source Port: 80
+    Destination Port: 40738
+    [Stream index: 41]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 189]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 3624849630
+    [Next Sequence Number: 190    (relative sequence number)]
+    Acknowledgment Number: 88    (relative ack number)
+    Acknowledgment number (raw): 4084904261
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 502
+    [Calculated window size: 64256]
+    [Window size scaling factor: 128]
+    Checksum: 0x494c [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2465909033, TSecr 2990859542
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2465909033
+            Timestamp echo reply: 2990859542
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (189 bytes)
+Hypertext Transfer Protocol
+    HTTP/1.1 204 No Content\r\n
+    server: nginx/1.14.0 (Ubuntu)\r\n
+    date: Wed, 05 Jun 2024 18:56:33 GMT\r\n
+    x-cache-status: from content-cache-gs2/1\r\n
+    x-networkmanager-status: online\r\n
+    connection: close\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.410352471 seconds]
+    [Request in frame: 1528]
+    [Request URI: http://connectivity-check.ubuntu.com/]
+
+
+
+---------------------------------------------------------------------------
+
+Frame 3870: 153 bytes on wire (1224 bits), 153 bytes captured (1224 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 4, Src: 192.168.31.158, Dst: 185.125.190.48
+Transmission Control Protocol, Src Port: 57632, Dst Port: 80, Seq: 1, Ack: 1, Len: 87
+    Source Port: 57632
+    Destination Port: 80
+    [Stream index: 68]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 87]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 2644620822
+    [Next Sequence Number: 88    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 3734678243
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 502
+    [Calculated window size: 64256]
+    [Window size scaling factor: 128]
+    Checksum: 0x5872 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2354706958, TSecr 1729533754
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2354706958
+            Timestamp echo reply: 1729533754
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (87 bytes)
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+    Host: connectivity-check.ubuntu.com\r\n
+    Accept: */*\r\n
+    Connection: close\r\n
+    \r\n
+    [Full request URI: http://connectivity-check.ubuntu.com/]
+    [HTTP request 1/1]
+
+
+
+-----------------------------------------------------------------------------
+
+Frame 3604: 173 bytes on wire (1384 bits), 173 bytes captured (1384 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2620:2d:4002:1::198
+Transmission Control Protocol, Src Port: 54084, Dst Port: 80, Seq: 1, Ack: 1, Len: 87
+    Source Port: 54084
+    Destination Port: 80
+    [Stream index: 67]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 87]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 1940697603
+    [Next Sequence Number: 88    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 1324185681
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 507
+    [Calculated window size: 64896]
+    [Window size scaling factor: 128]
+    Checksum: 0x9cfc [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 3418778995, TSecr 3578396813
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 3418778995
+            Timestamp echo reply: 3578396813
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (87 bytes)
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+    Host: connectivity-check.ubuntu.com\r\n
+    Accept: */*\r\n
+    Connection: close\r\n
+    \r\n
+    [Full request URI: http://connectivity-check.ubuntu.com/]
+    [HTTP request 1/1]
+
+
+------------------------------------------------------------------------------------------
+
+Frame 6840: 451 bytes on wire (3608 bits), 451 bytes captured (3608 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 45796, Dst Port: 80, Seq: 692, Ack: 98524, Len: 365
+    Source Port: 45796
+    Destination Port: 80
+    [Stream index: 104]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 365]
+    Sequence Number: 692    (relative sequence number)
+    Sequence Number (raw): 2272342597
+    [Next Sequence Number: 1057    (relative sequence number)]
+    Acknowledgment Number: 98524    (relative ack number)
+    Acknowledgment number (raw): 2506314868
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 1486
+    [Calculated window size: 190208]
+    [Window size scaling factor: 128]
+    Checksum: 0xc003 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2055159405, TSecr 2301952872
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2055159405
+            Timestamp echo reply: 2301952872
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (365 bytes)
+Hypertext Transfer Protocol
+    GET /content/img/college_42b626c32aa4436806a3282d3c6469b5.jpg HTTP/1.1\r\n
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: image/avif,image/webp,*/*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/SignUp?ReturnUrl=%2f\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/content/img/college_42b626c32aa4436806a3282d3c6469b5.jpg]
+    [HTTP request 3/3]
+    [Prev request in frame: 6675]
+    [Response in frame: 6920]
+
+
+------------------------------------------------------------------------------------------
+Frame 6829: 18463 bytes on wire (147704 bits), 18463 bytes captured (147704 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 64:ff9b::d2d4:b704, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 45784, Seq: 160164, Ack: 1431, Len: 18377
+    Source Port: 80
+    Destination Port: 45784
+    [Stream index: 103]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 18377]
+    Sequence Number: 160164    (relative sequence number)
+    Sequence Number (raw): 1606990187
+    [Next Sequence Number: 178541    (relative sequence number)]
+    Acknowledgment Number: 1431    (relative ack number)
+    Acknowledgment number (raw): 3995884926
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 254
+    [Calculated window size: 65024]
+    [Window size scaling factor: 256]
+    Checksum: 0x0660 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2301952871, TSecr 2055159295
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2301952871
+            Timestamp echo reply: 2055159295
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (18377 bytes)
+    TCP segment data (18377 bytes)
+[3 Reassembled TCP Segments (93377 bytes): #6784(35000), #6806(40000), #6829(18377)]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+    Content-Type: application/javascript\r\n
+    Last-Modified: Mon, 30 Dec 2019 07:22:53 GMT\r\n
+    Accept-Ranges: bytes\r\n
+    ETag: "f1842f3e1bed51:0"\r\n
+    Server: Microsoft-IIS/8.0\r\n
+    X-Powered-By: ASP.NET\r\n
+    Date: Wed, 05 Jun 2024 19:08:55 GMT\r\n
+    Content-Length: 93116\r\n
+    \r\n
+    [HTTP response 4/4]
+    [Time since request: 0.290635878 seconds]
+    [Prev request in frame: 6663]
+    [Prev response in frame: 6735]
+    [Request in frame: 6741]
+    [Request URI: http://portal.coep.org.in/Scripts/jq/jquery-1.8.2.min.js]
+    File Data: 93116 bytes
+Media Type
+
+
+---------------------------------------------------------------------
+
+Frame 6831: 5580 bytes on wire (44640 bits), 5580 bytes captured (44640 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 64:ff9b::d2d4:b704, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 45796, Seq: 93030, Ack: 692, Len: 5494
+    Source Port: 80
+    Destination Port: 45796
+    [Stream index: 104]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 5494]
+    Sequence Number: 93030    (relative sequence number)
+    Sequence Number (raw): 2506309374
+    [Next Sequence Number: 98524    (relative sequence number)]
+    Acknowledgment Number: 692    (relative ack number)
+    Acknowledgment number (raw): 2272342597
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 257
+    [Calculated window size: 65792]
+    [Window size scaling factor: 256]
+    Checksum: 0xd40c [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2301952872, TSecr 2055159298
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2301952872
+            Timestamp echo reply: 2055159298
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (5494 bytes)
+    TCP segment data (5494 bytes)
+[24 Reassembled TCP Segments (96744 bytes): #6697(6250), #6713(11250), #6764(1250), #6765(1250), #6766(1250), #6767(1250), #6768(1250), #6769(1250), #6770(1250), #6771(1250), #6772(1250), #6773(1250), #6774(1250), #6775(1250), #6776(1250), ]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+    Content-Type: text/css\r\n
+    Last-Modified: Mon, 10 Dec 2018 06:08:32 GMT\r\n
+    Accept-Ranges: bytes\r\n
+    ETag: "df4fefc64e90d41:0"\r\n
+    Server: Microsoft-IIS/8.0\r\n
+    X-Powered-By: ASP.NET\r\n
+    Date: Wed, 05 Jun 2024 19:08:55 GMT\r\n
+    Content-Length: 96496\r\n
+    \r\n
+    [HTTP response 2/3]
+    [Time since request: 0.519218250 seconds]
+    [Prev request in frame: 6654]
+    [Prev response in frame: 6672]
+    [Request in frame: 6675]
+    [Next request in frame: 6840]
+    [Next response in frame: 6920]
+    [Request URI: http://portal.coep.org.in/content/img/college_42b626c32aa4436806a3282d3c6469b5.jpg]
+    File Data: 96496 bytes
+Line-based text data: text/css (1 lines)
+
+
+--------------------------------------------------------------------------------
+
+Frame 6844: 4366 bytes on wire (34928 bits), 4366 bytes captured (34928 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 64:ff9b::d2d4:b704, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 45770, Seq: 186662, Ack: 683, Len: 4280
+    Source Port: 80
+    Destination Port: 45770
+    [Stream index: 102]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 4280]
+    Sequence Number: 186662    (relative sequence number)
+    Sequence Number (raw): 1497019675
+    [Next Sequence Number: 190942    (relative sequence number)]
+    Acknowledgment Number: 683    (relative ack number)
+    Acknowledgment number (raw): 138887296
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 257
+    [Calculated window size: 65792]
+    [Window size scaling factor: 256]
+    Checksum: 0xcf4e [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2301952880, TSecr 2055159380
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2301952880
+            Timestamp echo reply: 2055159380
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (4280 bytes)
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+    Content-Type: image/png\r\n
+    Last-Modified: Fri, 25 Nov 2022 08:47:23 GMT\r\n
+    Accept-Ranges: bytes\r\n
+    ETag: "a87e6f89aa0d91:0"\r\n
+    Server: Microsoft-IIS/8.0\r\n
+    X-Powered-By: ASP.NET\r\n
+    Date: Wed, 05 Jun 2024 19:08:55 GMT\r\n
+    Content-Length: 4033\r\n
+    \r\n
+    [HTTP response 2/2]
+    [Time since request: 0.073638268 seconds]
+    [Prev request in frame: 6635]
+    [Prev response in frame: 6801]
+    [Request in frame: 6835]
+    [Request URI: http://portal.coep.org.in/Images/coep_logoBlack.png]
+    File Data: 4033 bytes
+Portable Network Graphics
+
+
+------------------------------------------------------------------
+
+Frame 6905: 1487 bytes on wire (11896 bits), 1487 bytes captured (11896 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 64:ff9b::d2d4:b704, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 45808, Seq: 572565, Ack: 998, Len: 1401
+    Source Port: 80
+    Destination Port: 45808
+    [Stream index: 106]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 1401]
+    Sequence Number: 572565    (relative sequence number)
+    Sequence Number (raw): 1393975747
+    [Next Sequence Number: 573966    (relative sequence number)]
+    Acknowledgment Number: 998    (relative ack number)
+    Acknowledgment number (raw): 1825344149
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 256
+    [Calculated window size: 65536]
+    [Window size scaling factor: 256]
+    Checksum: 0xc40f [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2301952913, TSecr 2055159712
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2301952913
+            Timestamp echo reply: 2055159712
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (1401 bytes)
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+    Content-Type: image/x-icon\r\n
+    Last-Modified: Mon, 30 Dec 2019 07:21:43 GMT\r\n
+    Accept-Ranges: bytes\r\n
+    ETag: "44f980c9e1bed51:0"\r\n
+    Server: Microsoft-IIS/8.0\r\n
+    X-Powered-By: ASP.NET\r\n
+    Date: Wed, 05 Jun 2024 19:08:56 GMT\r\n
+    Content-Length: 1150\r\n
+    \r\n
+    [HTTP response 3/3]
+    [Time since request: 0.056502550 seconds]
+    [Prev request in frame: 6760]
+    [Prev response in frame: 6887]
+    [Request in frame: 6899]
+    [Request URI: http://portal.coep.org.in/favicon.ico]
+    File Data: 1150 bytes
+Media Type
+
+
+
+------------------------------------------------------------------------
+
+
+Frame 6675: 423 bytes on wire (3384 bits), 423 bytes captured (3384 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 45796, Dst Port: 80, Seq: 355, Ack: 1780, Len: 337
+    Source Port: 45796
+    Destination Port: 80
+    [Stream index: 104]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 337]
+    Sequence Number: 355    (relative sequence number)
+    Sequence Number (raw): 2272342260
+    [Next Sequence Number: 692    (relative sequence number)]
+    Acknowledgment Number: 1780    (relative ack number)
+    Acknowledgment number (raw): 2506218124
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 501
+    [Calculated window size: 64128]
+    [Window size scaling factor: 128]
+    Checksum: 0xbfe7 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2055158861, TSecr 2301952821
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2055158861
+            Timestamp echo reply: 2301952821
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (337 bytes)
+Hypertext Transfer Protocol
+    GET /Content/boot3/css/bootstrap.min.css HTTP/1.1\r\n
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/css,*/*;q=0.1\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/SignUp?ReturnUrl=%2f\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/Content/boot3/css/bootstrap.min.css]
+    [HTTP request 2/3]
+    [Prev request in frame: 6654]
+    [Response in frame: 6831]
+    [Next request in frame: 6840]
+
+
+-------------------------------------------------------------------------------------
+
+
+Frame 6635: 434 bytes on wire (3472 bits), 434 bytes captured (3472 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 45770, Dst Port: 80, Seq: 1, Ack: 1, Len: 348
+    Source Port: 45770
+    Destination Port: 80
+    [Stream index: 102]
+    [Conversation completeness: Complete, WITH_DATA (31)]
+    [TCP Segment Len: 348]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 138886614
+    [Next Sequence Number: 349    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 1496833014
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 507
+    [Calculated window size: 64896]
+    [Window size scaling factor: 128]
+    Checksum: 0xbff2 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2055158724, TSecr 2301952777
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2055158724
+            Timestamp echo reply: 2301952777
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (348 bytes)
+Hypertext Transfer Protocol
+    GET /bundles/jquery?v=DRJXE9lDfkES8XJYKn25ESP0EIWJKlLzicmULd1PeGo1 HTTP/1.1\r\n
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/SignUp?ReturnUrl=%2f\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/bundles/jquery?v=DRJXE9lDfkES8XJYKn25ESP0EIWJKlLzicmULd1PeGo1]
+    [HTTP request 1/2]
+    [Response in frame: 6801]
+    [Next request in frame: 6835]
+
+
+--------------------------------------------------------------------------------------
+Frame 8369: 760 bytes on wire (6080 bits), 760 bytes captured (6080 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 47944, Dst Port: 80, Seq: 3447, Ack: 139018, Len: 674
+    Source Port: 47944
+    Destination Port: 80
+    [Stream index: 116]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 674]
+    Sequence Number: 3447    (relative sequence number)
+    Sequence Number (raw): 3246171153
+    [Next Sequence Number: 4121    (relative sequence number)]
+    Acknowledgment Number: 139018    (relative ack number)
+    Acknowledgment number (raw): 1886981202
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 1853
+    [Calculated window size: 237184]
+    [Window size scaling factor: 128]
+    Checksum: 0xc138 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2055358842, TSecr 2301972103
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2055358842
+            Timestamp echo reply: 2301972103
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (674 bytes)
+Hypertext Transfer Protocol
+    GET /Report/ProvisionalGradeResultForStudent HTTP/1.1\r\n
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/Report/ProvisionalGradeResultForStudent]
+    [HTTP request 7/8]
+    [Prev request in frame: 8310]
+    [Next request in frame: 8640]
+
+
+
+---------------------------------------------------------------------------------------
+Frame 8839: 754 bytes on wire (6032 bits), 754 bytes captured (6032 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 47986, Dst Port: 80, Seq: 3573, Ack: 121257, Len: 668
+    Source Port: 47986
+    Destination Port: 80
+    [Stream index: 119]
+    [Conversation completeness: Complete, WITH_DATA (63)]
+    [TCP Segment Len: 668]
+    Sequence Number: 3573    (relative sequence number)
+    Sequence Number (raw): 3152150193
+    [Next Sequence Number: 4241    (relative sequence number)]
+    Acknowledgment Number: 121257    (relative ack number)
+    Acknowledgment number (raw): 1238690993
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 1224
+    [Calculated window size: 156672]
+    [Window size scaling factor: 128]
+    Checksum: 0xc132 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2055391514, TSecr 2301976059
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2055391514
+            Timestamp echo reply: 2301976059
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (668 bytes)
+Hypertext Transfer Protocol
+    POST /StudentMaster/ServerGrid?filterId=undefined HTTP/1.1\r\n
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    X-Requested-With: XMLHttpRequest\r\n
+    Origin: http://portal.coep.org.in\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/StudentMaster\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+    Content-Length: 0\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/StudentMaster/ServerGrid?filterId=undefined]
+    [HTTP request 7/7]
+    [Prev request in frame: 8775]
+    [Response in frame: 8861]
+
+
+----------------------------------------------------------------------------------------
+
+Frame 8876: 1775 bytes on wire (14200 bits), 1775 bytes captured (14200 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 64:ff9b::d2d4:b704, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 47972, Seq: 198193, Ack: 5409, Len: 1689
+    Source Port: 80
+    Destination Port: 47972
+    [Stream index: 118]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 1689]
+    Sequence Number: 198193    (relative sequence number)
+    Sequence Number (raw): 602047148
+    [Next Sequence Number: 199882    (relative sequence number)]
+    Acknowledgment Number: 5409    (relative ack number)
+    Acknowledgment number (raw): 1593135942
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 258
+    [Calculated window size: 66048]
+    [Window size scaling factor: 256]
+    Checksum: 0xc52f [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2301976489, TSecr 2055395492
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2301976489
+            Timestamp echo reply: 2055395492
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (1689 bytes)
+    TCP segment data (1689 bytes)
+[3 Reassembled TCP Segments (6689 bytes): #8873(3750), #8875(1250), #8876(1689)]
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 200
+        [Status Code Description: OK]
+        Response Phrase: OK
+    Cache-Control: no-cache\r\n
+    Pragma: no-cache\r\n
+    Content-Type: application/json; charset=utf-8\r\n
+    Expires: -1\r\n
+    Server: Microsoft-IIS/8.0\r\n
+    X-AspNet-Version: 4.0.30319\r\n
+    X-Powered-By: ASP.NET\r\n
+    Date: Wed, 05 Jun 2024 19:12:52 GMT\r\n
+    Content-Length: 6429\r\n
+        [Content length: 6429]
+    \r\n
+    [HTTP response 9/9]
+    [Time since request: 0.063231354 seconds]
+    [Prev request in frame: 8838]
+    [Prev response in frame: 8845]
+    [Request in frame: 8870]
+    [Request URI: http://portal.coep.org.in/api/FormHelper/]
+    File Data: 6429 bytes
+JavaScript Object Notation: application/json
+
+
+
+------------------------------------------------------------------------------------------
+
+Frame 8775: 676 bytes on wire (5408 bits), 676 bytes captured (5408 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 47986, Dst Port: 80, Seq: 2983, Ack: 119852, Len: 590
+    Source Port: 47986
+    Destination Port: 80
+    [Stream index: 119]
+    [Conversation completeness: Complete, WITH_DATA (63)]
+    [TCP Segment Len: 590]
+    Sequence Number: 2983    (relative sequence number)
+    Sequence Number (raw): 3152149603
+    [Next Sequence Number: 3573    (relative sequence number)]
+    Acknowledgment Number: 119852    (relative ack number)
+    Acknowledgment number (raw): 1238689588
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 1185
+    [Calculated window size: 151680]
+    [Window size scaling factor: 128]
+    Checksum: 0xc0e4 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 2055391196, TSecr 2301975143
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 2055391196
+            Timestamp echo reply: 2301975143
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (590 bytes)
+Hypertext Transfer Protocol
+    GET /Content/Notification/alert-bangtidy.css HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /Content/Notification/alert-bangtidy.css HTTP/1.1\r\n]
+            [GET /Content/Notification/alert-bangtidy.css HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /Content/Notification/alert-bangtidy.css
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/css,*/*;q=0.1\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/StudentMaster\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+        Cookie pair: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F
+        Cookie pair: ASP.NET_SessionId=ws32akwesy14nmqay3vk1xum
+    \r\n
+    [Full request URI: http://portal.coep.org.in/Content/Notification/alert-bangtidy.css]
+    [HTTP request 6/7]
+    [Prev request in frame: 8199]
+    [Next request in frame: 8839]
+
+
+
+---------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+
+Frame 42750: 636 bytes on wire (5088 bits), 636 bytes captured (5088 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::c01c:9344
+Transmission Control Protocol, Src Port: 52540, Dst Port: 80, Seq: 1, Ack: 1, Len: 550
+    Source Port: 52540
+    Destination Port: 80
+    [Stream index: 519]
+    [Conversation completeness: Incomplete, DATA (15)]
+    [TCP Segment Len: 550]
+    Sequence Number: 1    (relative sequence number)
+    Sequence Number (raw): 2420922650
+    [Next Sequence Number: 551    (relative sequence number)]
+    Acknowledgment Number: 1    (relative ack number)
+    Acknowledgment number (raw): 1260812375
+    1000 .... = Header Length: 32 bytes (8)
+    Flags: 0x018 (PSH, ACK)
+    Window: 64800
+    [Calculated window size: 64800]
+    [Window size scaling factor: -2 (no window scaling used)]
+    Checksum: 0x8a44 [unverified]
+    [Checksum Status: Unverified]
+    Urgent Pointer: 0
+    Options: (12 bytes), No-Operation (NOP), No-Operation (NOP), Timestamps
+        TCP Option - No-Operation (NOP)
+        TCP Option - No-Operation (NOP)
+        TCP Option - Timestamps: TSval 723613614, TSecr 3923125977
+            Kind: Time Stamp Option (8)
+            Length: 10
+            Timestamp value: 723613614
+            Timestamp echo reply: 3923125977
+    [Timestamps]
+    [SEQ/ACK analysis]
+    TCP payload (550 bytes)
+Hypertext Transfer Protocol
+Frame 42750: 636 bytes on wire (5088 bits), 636 bytes captured (5088 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::c01c:9344
+Transmission Control Protocol, Src Port: 52540, Dst Port: 80, Seq: 1, Ack: 1, Len: 550
+Hypertext Transfer Protocol
+     [truncated]POST /webevents/visitWebPage?_mchNc=1717615073884&_mchCn=&_mchId=131-AQO-225&_mchTk=_mch-washington.edu-1717615073884-39502&_mchHo=www.washington.edu&_mchPo=&_mchRu=%2F&_mchPc=http%3A&_mchVr=163&_mchEcid=&_mchHa=&_mchRe=&_mchQ
+        [ [truncated]Expert Info (Chat/Sequence): POST /webevents/visitWebPage?_mchNc=1717615073884&_mchCn=&_mchId=131-AQO-225&_mchTk=_mch-washington.edu-1717615073884-39502&_mchHo=www.washington.edu&_mchPo=&_mchRu=%2F&_mchPc=http%3A&_mchVr=163&_m]
+            [POST /webevents/visitWebPage?_mchNc=1717615073884&_mchCn=&_mchId=131-AQO-225&_mchTk=_mch-washington.edu-1717615073884-39502&_mchHo=www.washington.edu&_mchPo=&_mchRu=%2F&_mchPc=http%3A&_mchVr=163&_mchEcid=&_mchHa=&_mchRe=&_mchQp= HTTP/1.1\r]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: POST
+        Request URI: /webevents/visitWebPage?_mchNc=1717615073884&_mchCn=&_mchId=131-AQO-225&_mchTk=_mch-washington.edu-1717615073884-39502&_mchHo=www.washington.edu&_mchPo=&_mchRu=%2F&_mchPc=http%3A&_mchVr=163&_mchEcid=&_mchHa=&_mchRe=&_mchQp=
+        Request Version: HTTP/1.1
+    Host: 131-aqo-225.mktoresp.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Origin: http://www.washington.edu\r\n
+    Connection: keep-alive\r\n
+    Referer: http://www.washington.edu/\r\n
+    Content-Length: 0\r\n
+        [Content length: 0]
+    \r\n
+    [Full request URI [truncated]: http://131-aqo-225.mktoresp.com/webevents/visitWebPage?_mchNc=1717615073884&_mchCn=&_mchId=131-AQO-225&_mchTk=_mch-washington.edu-1717615073884-39502&_mchHo=www.washington.edu&_mchPo=&_mchRu=%2F&_mchPc=http%3]
+    [HTTP request 1/1]
+    [Response in frame: 42772]
+
+----------------------------------------------------------------------------------------
+
+Frame 43376: 684 bytes on wire (5472 bits), 684 bytes captured (5472 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 2404:6800:4002:820::2008, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 52614, Seq: 591, Ack: 645, Len: 598
+Hypertext Transfer Protocol
+    HTTP/1.1 302 Found\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 302 Found\r\n]
+            [HTTP/1.1 302 Found\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 302
+        [Status Code Description: Found]
+        Response Phrase: Found
+    Location: https://www.googletagmanager.com/gtag/destination?id=AW-11078980387&l=dataLayer&cx=c\r\n
+    Cross-Origin-Resource-Policy: cross-origin\r\n
+    Date: Wed, 05 Jun 2024 19:18:27 GMT\r\n
+    Content-Type: text/html; charset=UTF-8\r\n
+    Server: Google Tag Manager\r\n
+    Content-Length: 289\r\n
+        [Content length: 289]
+    X-XSS-Protection: 0\r\n
+    \r\n
+    [HTTP response 2/2]
+    [Time since request: 0.134296683 seconds]
+    [Prev request in frame: 38695]
+    [Prev response in frame: 38709]
+    [Request in frame: 43370]
+    [Request URI: http://www.googletagmanager.com/gtag/destination?id=AW-11078980387&l=dataLayer&cx=c]
+    File Data: 289 bytes
+Line-based text data: text/html (6 lines)
+
+
+-----------------------------------------------------------------------------------------------
+Frame 46158: 503 bytes on wire (4024 bits), 503 bytes captured (4024 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2606:4700:9ae2:c460:7c6:c45:1edc:25e4
+Transmission Control Protocol, Src Port: 51374, Dst Port: 80, Seq: 1, Ack: 1, Len: 417
+Hypertext Transfer Protocol
+    POST / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): POST / HTTP/1.1\r\n]
+            [POST / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: POST
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: ocsp.usertrust.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Content-Type: application/ocsp-request\r\n
+    Content-Length: 83\r\n
+        [Content length: 83]
+    Connection: keep-alive\r\n
+    Pragma: no-cache\r\n
+    Cache-Control: no-cache\r\n
+    \r\n
+    [Full request URI: http://ocsp.usertrust.com/]
+    [HTTP request 1/1]
+    [Response in frame: 46162]
+    File Data: 83 bytes
+Online Certificate Status Protocol
+
+
+-------------------------------------------------------------------------------------------------
+Frame 41933: 366 bytes on wire (2928 bits), 366 bytes captured (2928 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::6841:4afb
+Transmission Control Protocol, Src Port: 53394, Dst Port: 80, Seq: 1, Ack: 1, Len: 280
+Hypertext Transfer Protocol
+    GET /munchkin.js HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /munchkin.js HTTP/1.1\r\n]
+            [GET /munchkin.js HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /munchkin.js
+        Request Version: HTTP/1.1
+    Host: munchkin.marketo.net\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://www.washington.edu/\r\n
+    \r\n
+    [Full request URI: http://munchkin.marketo.net/munchkin.js]
+    [HTTP request 1/2]
+    [Response in frame: 41939]
+    [Next request in frame: 42700]
+
+
+-----------------------------------------------------------------------------------
+
+Frame 51516: 173 bytes on wire (1384 bits), 173 bytes captured (1384 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2001:67c:1562::24
+Transmission Control Protocol, Src Port: 59114, Dst Port: 80, Seq: 1, Ack: 1, Len: 87
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: connectivity-check.ubuntu.com\r\n
+    Accept: */*\r\n
+    Connection: close\r\n
+    \r\n
+    [Full request URI: http://connectivity-check.ubuntu.com/]
+    [HTTP request 1/1]
+    [Response in frame: 51521]
+
+
+------------------------------------------------------------------------------------
+Frame 53610: 435 bytes on wire (3480 bits), 435 bytes captured (3480 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 64:ff9b::9765:15b, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 54818, Seq: 1, Ack: 340, Len: 349
+Hypertext Transfer Protocol
+    HTTP/1.1 308 www.thehill.com/\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 308 www.thehill.com/\r\n]
+            [HTTP/1.1 308 www.thehill.com/\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 308
+        [Status Code Description: Permanent Redirect]
+        Response Phrase: www.thehill.com/
+    Connection: close\r\n
+    Content-Length: 0\r\n
+        [Content length: 0]
+    Server: Varnish\r\n
+    Retry-After: 0\r\n
+    Location: https://www.thehill.com/\r\n
+    Accept-Ranges: bytes\r\n
+    Date: Wed, 05 Jun 2024 19:22:21 GMT\r\n
+    Via: 1.1 varnish\r\n
+    X-Served-By: cache-bom4742-BOM\r\n
+    X-Cache: HIT\r\n
+    X-Cache-Hits: 0\r\n
+    X-Timer: S1717615341.486278,VS0,VE0\r\n
+    state: HIT-SYNTH\r\n
+    x-vcl: v=106\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.110437630 seconds]
+    [Request in frame: 53604]
+    [Request URI: http://www.thehill.com/]
+
+
+----------------------------------------------------------------------------
+
+Frame 69531: 429 bytes on wire (3432 bits), 429 bytes captured (3432 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 6, Src: 2a04:fa87:fffe::c000:4902, Dst: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8
+Transmission Control Protocol, Src Port: 80, Dst Port: 36450, Seq: 1, Ack: 341, Len: 355
+Hypertext Transfer Protocol
+    HTTP/1.1 301 Moved Permanently\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 301 Moved Permanently\r\n]
+            [HTTP/1.1 301 Moved Permanently\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 301
+        [Status Code Description: Moved Permanently]
+        Response Phrase: Moved Permanently
+    Server: nginx\r\n
+    Date: Wed, 05 Jun 2024 19:23:24 GMT\r\n
+    Content-Type: text/html\r\n
+    Content-Length: 162\r\n
+        [Content length: 162]
+    Connection: keep-alive\r\n
+    Location: https://www.gravatar.com/\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.121171480 seconds]
+    [Request in frame: 69513]
+    [Request URI: http://www.gravatar.com/]
+    File Data: 162 bytes
+Line-based text data: text/html (7 lines)
+
+
+
+-----------------------------------------------------------------------------
+Frame 75473: 422 bytes on wire (3376 bits), 422 bytes captured (3376 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::6c9f:f21
+Transmission Control Protocol, Src Port: 54390, Dst Port: 80, Seq: 1, Ack: 1, Len: 336
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: www.time.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://www.time.com/]
+    [HTTP request 1/1]
+    [Response in frame: 75476]
+
+
+------------------------------------------------------------------
+Frame 86488: 406 bytes on wire (3248 bits), 406 bytes captured (3248 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 4, Src: 192.168.31.158, Dst: 151.101.61.188
+Transmission Control Protocol, Src Port: 42524, Dst Port: 80, Seq: 1, Ack: 1, Len: 340
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: www.cbslocal.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://www.cbslocal.com/]
+    [HTTP request 1/1]
+    [Response in frame: 86491]
+
+
+-------------------------------------------------------------------------------------
+Frame 86491: 466 bytes on wire (3728 bits), 466 bytes captured (3728 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 4, Src: 151.101.61.188, Dst: 192.168.31.158
+Transmission Control Protocol, Src Port: 80, Dst Port: 42524, Seq: 1, Ack: 341, Len: 400
+Hypertext Transfer Protocol
+    HTTP/1.1 301 Moved Permanently\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 301 Moved Permanently\r\n]
+            [HTTP/1.1 301 Moved Permanently\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 301
+        [Status Code Description: Moved Permanently]
+        Response Phrase: Moved Permanently
+    Connection: keep-alive\r\n
+    Content-Length: 166\r\n
+        [Content length: 166]
+    Content-Type: text/html\r\n
+    Location: https://www.cbsnews.com/cbslocal/\r\n
+    Accept-Ranges: bytes\r\n
+    Age: 0\r\n
+    Date: Wed, 05 Jun 2024 19:25:04 GMT\r\n
+    Via: 1.1 varnish\r\n
+    \r\n
+    [HTTP response 1/1]
+    [Time since request: 0.376444507 seconds]
+    [Request in frame: 86488]
+    [Request URI: http://www.cbslocal.com/]
+    File Data: 166 bytes
+Line-based text data: text/html (7 lines)
+
+
+--------------------------------------------------------------------------
+
+Frame 102961: 153 bytes on wire (1224 bits), 153 bytes captured (1224 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 4, Src: 192.168.31.158, Dst: 91.189.91.49
+Transmission Control Protocol, Src Port: 60958, Dst Port: 80, Seq: 1, Ack: 1, Len: 87
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: connectivity-check.ubuntu.com\r\n
+    Accept: */*\r\n
+    Connection: close\r\n
+    \r\n
+    [Full request URI: http://connectivity-check.ubuntu.com/]
+    [HTTP request 1/1]
+    [Response in frame: 103006]
+
+
+------------------------------------------------------------------------
+
+Frame 103590: 432 bytes on wire (3456 bits), 432 bytes captured (3456 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2405:200:1630:dad::20a3
+Transmission Control Protocol, Src Port: 44534, Dst Port: 80, Seq: 1, Ack: 1, Len: 346
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: www.starwoodhotels.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://www.starwoodhotels.com/]
+    [HTTP request 1/1]
+    [Response in frame: 103612]
+
+
+-----------------------------------------------------------------------------------------
+Frame 116529: 486 bytes on wire (3888 bits), 486 bytes captured (3888 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2600:1f13:37c:1400:ba21:7165:5fc7:736e
+Transmission Control Protocol, Src Port: 39364, Dst Port: 80, Seq: 400, Ack: 546, Len: 400
+Hypertext Transfer Protocol
+    GET /online/ HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /online/ HTTP/1.1\r\n]
+            [GET /online/ HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /online/
+        Request Version: HTTP/1.1
+    Host: grandmajesticinnereclipse.neverssl.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Referer: http://neverssl.com/\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://grandmajesticinnereclipse.neverssl.com/online/]
+    [HTTP request 2/3]
+    [Prev request in frame: 116500]
+    [Response in frame: 116563]
+    [Next request in frame: 116566]
+
+
+--------------------------------------------------------------------------
+
+
+Frame 115522: 422 bytes on wire (3376 bits), 422 bytes captured (3376 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2600:1f13:37c:1400:ba21:7165:5fc7:736e
+Transmission Control Protocol, Src Port: 39358, Dst Port: 80, Seq: 1, Ack: 1, Len: 336
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: neverssl.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://neverssl.com/]
+    [HTTP request 1/1]
+    [Response in frame: 115544]
+
+
+
+----------------------------------------------------------------------------------
+Frame 120130: 371 bytes on wire (2968 bits), 371 bytes captured (2968 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::689a:5969
+Transmission Control Protocol, Src Port: 40572, Dst Port: 80, Seq: 1, Ack: 1, Len: 285
+Hypertext Transfer Protocol
+    GET /style.css HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /style.css HTTP/1.1\r\n]
+            [GET /style.css HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /style.css
+        Request Version: HTTP/1.1
+    Host: http.badssl.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/css,*/*;q=0.1\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://http.badssl.com/\r\n
+    \r\n
+    [Full request URI: http://http.badssl.com/style.css]
+    [HTTP request 1/1]
+    [Response in frame: 120139]
+
+
+--------------------------------------------------------------
+Frame 120147: 385 bytes on wire (3080 bits), 385 bytes captured (3080 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 4, Src: 192.168.31.158, Dst: 104.154.89.105
+Transmission Control Protocol, Src Port: 39284, Dst Port: 80, Seq: 1, Ack: 1, Len: 319
+Hypertext Transfer Protocol
+    GET /icons/icon-red.png HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /icons/icon-red.png HTTP/1.1\r\n]
+            [GET /icons/icon-red.png HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /icons/icon-red.png
+        Request Version: HTTP/1.1
+    Host: http-password.badssl.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: image/avif,image/webp,*/*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://http-password.badssl.com/\r\n
+    \r\n
+    [Full request URI: http://http-password.badssl.com/icons/icon-red.png]
+    [HTTP request 1/1]
+    [Response in frame: 120173]
+
+
+-------------------------------------------------------------------
+
+
+Frame 120847: 776 bytes on wire (6208 bits), 776 bytes captured (6208 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a), Dst: IntelCor_d1:30:03 (50:84:92:d1:30:03)
+Internet Protocol Version 4, Src: 104.154.89.105, Dst: 192.168.31.158
+Transmission Control Protocol, Src Port: 80, Dst Port: 39264, Seq: 5708, Ack: 671, Len: 710
+Hypertext Transfer Protocol
+    HTTP/1.1 200 OK\r\n
+        [Expert Info (Chat/Sequence): HTTP/1.1 200 OK\r\n]
+            [HTTP/1.1 200 OK\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Response Version: HTTP/1.1
+        Status Code: 200
+        [Status Code Description: OK]
+        Response Phrase: OK
+    Server: nginx/1.10.3 (Ubuntu)\r\n
+    Date: Wed, 05 Jun 2024 19:30:35 GMT\r\n
+    Content-Type: text/html\r\n
+    Last-Modified: Fri, 17 May 2024 17:59:55 GMT\r\n
+    Transfer-Encoding: chunked\r\n
+    Connection: keep-alive\r\n
+    ETag: W/"66479b1b-2c9"\r\n
+    Cache-Control: no-store\r\n
+    Content-Encoding: gzip\r\n
+    \r\n
+    [HTTP response 2/3]
+    [Time since request: 0.324124902 seconds]
+    [Prev request in frame: 120003]
+    [Request in frame: 120839]
+    [Next request in frame: 120849]
+    [Next response in frame: 120853]
+    [Request URI: http://http-textarea.badssl.com/style.css]
+    HTTP chunked response
+    Content-encoded entity body (gzip): 415 bytes -> 713 bytes
+    File Data: 713 bytes
+Line-based text data: text/html (32 lines)
+
+
+--------------------------------------------------------------------------
+
+Frame 121415: 421 bytes on wire (3368 bits), 421 bytes captured (3368 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 2606:2800:21f:cb07:6820:80da:af6b:8b2c
+Transmission Control Protocol, Src Port: 34724, Dst Port: 80, Seq: 1, Ack: 1, Len: 335
+Hypertext Transfer Protocol
+    GET / HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET / HTTP/1.1\r\n]
+            [GET / HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /
+        Request Version: HTTP/1.1
+    Host: example.com\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://example.com/]
+    [HTTP request 1/1]
+    [Response in frame: 121421]
+
+
+--------------------------------------------------------------
+Frame 122671: 649 bytes on wire (5192 bits), 649 bytes captured (5192 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 38210, Dst Port: 80, Seq: 573, Ack: 12491, Len: 563
+Hypertext Transfer Protocol
+    GET /Content/wizard/wizard.js HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /Content/wizard/wizard.js HTTP/1.1\r\n]
+            [GET /Content/wizard/wizard.js HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /Content/wizard/wizard.js
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/FeedBackResponse\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+        Cookie pair: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F
+        Cookie pair: ASP.NET_SessionId=ws32akwesy14nmqay3vk1xum
+    \r\n
+    [Full request URI: http://portal.coep.org.in/Content/wizard/wizard.js]
+    [HTTP request 2/2]
+    [Prev request in frame: 122632]
+    [Response in frame: 122680]
+
+-------------------------------------------------------------------
+
+Frame 122906: 1227 bytes on wire (9816 bits), 1227 bytes captured (9816 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 38206, Dst Port: 80, Seq: 2546, Ack: 226246, Len: 1141
+Hypertext Transfer Protocol
+    POST /ReportViewer.aspx HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): POST /ReportViewer.aspx HTTP/1.1\r\n]
+            [POST /ReportViewer.aspx HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: POST
+        Request URI: /ReportViewer.aspx
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Content-Type: application/x-www-form-urlencoded\r\n
+    Content-Length: 344\r\n
+        [Content length: 344]
+    Origin: http://portal.coep.org.in\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/Report/ProvisionalGradeResultForStudent\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+        Cookie pair: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F
+        Cookie pair: ASP.NET_SessionId=ws32akwesy14nmqay3vk1xum
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/ReportViewer.aspx]
+    [HTTP request 5/6]
+    [Prev request in frame: 122876]
+    [Response in frame: 122908]
+    [Next request in frame: 122910]
+    File Data: 344 bytes
+HTML Form URL Encoded: application/x-www-form-urlencoded
+
+
+---------------------------------------------------------------
+Frame 122686: 676 bytes on wire (5408 bits), 676 bytes captured (5408 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 38206, Dst Port: 80, Seq: 652, Ack: 182662, Len: 590
+Hypertext Transfer Protocol
+    GET /api/FormHelper/93 HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /api/FormHelper/93 HTTP/1.1\r\n]
+            [GET /api/FormHelper/93 HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /api/FormHelper/93
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    X-Requested-With: XMLHttpRequest\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/FeedBackResponse\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+        Cookie pair: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F
+        Cookie pair: ASP.NET_SessionId=ws32akwesy14nmqay3vk1xum
+    \r\n
+    [Full request URI: http://portal.coep.org.in/api/FormHelper/93]
+    [HTTP request 2/6]
+    [Prev request in frame: 122601]
+    [Response in frame: 122692]
+    [Next request in frame: 122857]
+
+
+--------------------------------------------------------------------------
+Frame 123529: 748 bytes on wire (5984 bits), 748 bytes captured (5984 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 57388, Dst Port: 80, Seq: 606, Ack: 9803, Len: 662
+Hypertext Transfer Protocol
+    GET /StudentData HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /StudentData HTTP/1.1\r\n]
+            [GET /StudentData HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /StudentData
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/FeedBackResponse\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+        Cookie pair: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F
+        Cookie pair: ASP.NET_SessionId=ws32akwesy14nmqay3vk1xum
+    Upgrade-Insecure-Requests: 1\r\n
+    \r\n
+    [Full request URI: http://portal.coep.org.in/StudentData]
+    [HTTP request 2/2]
+    [Prev request in frame: 123402]
+
+
+---------------------------------------------------
+Frame 123578: 672 bytes on wire (5376 bits), 672 bytes captured (5376 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 57388, Dst Port: 80, Seq: 1268, Ack: 214906, Len: 586
+Hypertext Transfer Protocol
+    GET /api/FormHelper/148 HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): GET /api/FormHelper/148 HTTP/1.1\r\n]
+            [GET /api/FormHelper/148 HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: GET
+        Request URI: /api/FormHelper/148
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    X-Requested-With: XMLHttpRequest\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/StudentData\r\n
+     [truncated]Cookie: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F; ASP.NET_Sessio
+        Cookie pair: .ASPXAUTH=4245E0A529CAADD11F2A5F9D24B42BF61A18635027919B35BFD0409A4CFD3337732019D416A1982EE55F2EBC2DC9A1E1001741DFB627BBA54C5E05B2EED2560CE15391A09F2C77A05AFAE73600D61B1A82BBE95380319301A5213649F97A8C6F
+        Cookie pair: ASP.NET_SessionId=ws32akwesy14nmqay3vk1xum
+    \r\n
+    [Full request URI: http://portal.coep.org.in/api/FormHelper/148]
+    [HTTP request 3/3]
+    [Prev request in frame: 123529]
+    [Response in frame: 123579]
+
+
+--------------------------------------------------------------------
+Frame 123766: 608 bytes on wire (4864 bits), 608 bytes captured (4864 bits) on interface wlp0s20f3, id 0
+Ethernet II, Src: IntelCor_d1:30:03 (50:84:92:d1:30:03), Dst: fc:b0:de:a2:a3:7a (fc:b0:de:a2:a3:7a)
+Internet Protocol Version 6, Src: 2409:40c2:4018:3d5f:f92d:cdf7:6176:29b8, Dst: 64:ff9b::d2d4:b704
+Transmission Control Protocol, Src Port: 40314, Dst Port: 80, Seq: 1, Ack: 1, Len: 522
+Hypertext Transfer Protocol
+    POST /signup/SigninRegister HTTP/1.1\r\n
+        [Expert Info (Chat/Sequence): POST /signup/SigninRegister HTTP/1.1\r\n]
+            [POST /signup/SigninRegister HTTP/1.1\r\n]
+            [Severity level: Chat]
+            [Group: Sequence]
+        Request Method: POST
+        Request URI: /signup/SigninRegister
+        Request Version: HTTP/1.1
+    Host: portal.coep.org.in\r\n
+    User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0\r\n
+    Accept: */*\r\n
+    Accept-Language: en-US,en;q=0.5\r\n
+    Accept-Encoding: gzip, deflate\r\n
+    Content-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n
+    X-Requested-With: XMLHttpRequest\r\n
+    Content-Length: 46\r\n
+        [Content length: 46]
+    Origin: http://portal.coep.org.in\r\n
+    Connection: keep-alive\r\n
+    Referer: http://portal.coep.org.in/SignUp\r\n
+    Cookie: ASP.NET_SessionId=\r\n
+        Cookie pair: ASP.NET_SessionId=
+    \r\n
+    [Full request URI: http://portal.coep.org.in/signup/SigninRegister]
+    [HTTP request 1/1]
+    File Data: 46 bytes
+HTML Form URL Encoded: application/x-www-form-urlencoded
+
+
+------------------------------------------------------------------
+
+
+
+
+
