@@ -1,1 +1,146 @@
+# so now I first opened the http://info.cern.ch page
 
+GET / HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+If-Modified-Since: Wed, 05 Feb 2014 16:00:31 GMT
+If-None-Match: "286-4f1aadb3105c0"
+Priority: u=1
+
+
+HTTP/1.1 304 Not Modified
+Date: Wed, 05 Jun 2024 18:01:11 GMT
+Server: Apache
+Connection: close
+ETag: "286-4f1aadb3105c0"
+
+# clicked on "Browse the first website, using the line-mode browser simulator"
+
+GET /www/hypertext/WWW/TheProject.html HTTP/1.1
+Host: line-mode.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://info.cern.ch/
+Cookie: _pk_ref.192.3ffa=%5B%22%22%2C%22%22%2C1717609723%2C%22http%3A%2F%2Finfo.cern.ch%2F%22%5D; _pk_id.192.3ffa=6a54ee830f080a17.1717609723.; _pk_ses.192.3ffa=1
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+HTTP/1.1 302 Found
+content-length: 0
+location: https://line-mode.cern.ch/www/hypertext/WWW/TheProject.html
+cache-control: no-cache
+
+# clicked on "learn about the birth of the web"
+
+GET /topics/birth-web HTTP/1.1
+Host: home.web.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://info.cern.ch/
+Cookie: _pk_ref.22.74d8=%5B%22%22%2C%22%22%2C1717609735%2C%22http%3A%2F%2Finfo.cern.ch%2F%22%5D; _pk_id.22.74d8=6a35d50100db8642.1717609735.; _pk_ses.22.74d8=1
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+HTTP/1.1 302 Found
+content-length: 0
+location: https://home.web.cern.ch/topics/birth-web
+cache-control: no-cache
+
+# unrelated to these req - responses, I saw this re - response pair many times
+# thought of noting it down over here
+# they may be the packets which are sent for closing the unused connections
+# this indicates default use of persistent http
+GET / HTTP/1.1
+Host: connectivity-check.ubuntu.com
+Accept: */*
+Connection: close
+
+HTTP/1.1 204 No Content
+server: nginx/1.18.0 (Ubuntu)
+date: Wed, 05 Jun 2024 18:13:55 GMT
+x-cache-status: from content-cache/1
+x-networkmanager-status: online
+connection: close
+
+# clicked on "Browse the first website"
+# clicked on "W3 Servers"
+
+GET /hypertext/DataSources/WWW/Servers.html HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://info.cern.ch/hypertext/WWW/TheProject.html
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+# clicked on "what's out there"
+
+GET /hypertext/DataSources/WWW/Servers.html HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://info.cern.ch/hypertext/WWW/TheProject.html
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+HTTP/1.1 200 OK
+Date: Wed, 05 Jun 2024 18:28:20 GMT
+Server: Apache
+Last-Modified: Wed, 26 Aug 1992 00:40:53 GMT
+ETag: "298-28a18ef5b2f40"
+Accept-Ranges: bytes
+Content-Length: 664
+Connection: close
+Content-Type: text/html
+
+# clicked on "By Subject"
+
+GET /hypertext/DataSources/bySubject/Overview.html HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://info.cern.ch/hypertext/DataSources/Top.html
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+# clicked on "By type" -> "World-Wide-Web" -> "test servers"
+GET /hypertext/DataSources/WWW/UnstableServers.html HTTP/1.1
+Host: info.cern.ch
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:126.0) Gecko/20100101 Firefox/126.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Referer: http://info.cern.ch/hypertext/DataSources/WWW/Servers.html
+Upgrade-Insecure-Requests: 1
+Priority: u=1
+
+HTTP/1.1 200 OK
+Date: Wed, 05 Jun 2024 18:34:25 GMT
+Server: Apache
+Last-Modified: Tue, 24 Nov 1992 13:09:07 GMT
+ETag: "398-29135e0f702c0"
+Accept-Ranges: bytes
+Content-Length: 920
+Connection: close
+Content-Type: text/html
