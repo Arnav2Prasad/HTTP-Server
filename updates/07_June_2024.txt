@@ -1,0 +1,24 @@
+1. Tried to send basic GET requests to mis, info.cern.ch servers via python
+2. Identified some headers from wireshark packets (referer, accecpt-encoding, connection, host)
+3. Viewed apache2 logs, file path /var/log/apache/access.log
+   thought of hosting the info.cern.ch website on apache3 server to see the logs by ourselves
+4. used $wget -r info.cern.ch to fetch multiple web pages from info.cern.ch, moved this to /var/www/html/
+5. hosted the website via apache, on 127.0.0.1
+
+6. typed various requests (using python) of GET and sent them to the hosted website
+
+host header should not contain any path, should only contain host name
+for example, 
+            127.0.0.1/info.cern.ch  ---> Invalid
+            127.0.0.1               ---> Valid
+            info.cern.ch            ---> Valid
+connection header :
+    request sent had connection: keep-alive, but the response from the server had connection: close
+    hence we were not able to send multiple requests through the same connection (same code)
+    # have to check how to configure apache so that server accepts the keep-alive message, OR check if apache does this for specific req only
+
+trying to see effects of referer on access.log of apache
+
+accept-encodign header :
+        python's .decode() method in python gave error for the gzip, deflate of Accept-encoding header
+        It worked when we gave it compress, deflate
