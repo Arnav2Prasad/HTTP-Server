@@ -3,6 +3,7 @@ Host
 Accecpt-Encoding
 Accept
 Accept-Language
+Transfer-Encoding
 User-Agent
 Connection
 Date
@@ -14,12 +15,30 @@ Content-Type
 Content-Length
 Set-Cookie
 Upgrade-Insecure-Requests
-X-Cache-Status
-X-Networkmanager-Status
+State
+Cross-Origin-Resource-Policy
 Referer
 Etag
 Last-Modified
 Accept-Ranges
+Origin
+Cache-Control
+Pragma
+Via
+Retry-After
+Age
+
+
+# X-* headers --> dont know exactly what to do with them
+X-Cache-Status
+X-Networkmanager-Status
 X-Powererd-By
+X-Requested-With
+X-AspNet-Version
+X-XSS-Protection
+X-Cache-Hits
+X-Timer
+X-VCL
+
 
 
