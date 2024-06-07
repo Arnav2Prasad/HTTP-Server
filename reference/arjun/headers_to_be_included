@@ -1,0 +1,25 @@
+# sort these based on their type (general, request, response, entity)
+Host
+Accecpt-Encoding
+Accept
+Accept-Language
+User-Agent
+Connection
+Date
+Server
+Server-Timing
+Expires
+Location
+Content-Type
+Content-Length
+Set-Cookie
+Upgrade-Insecure-Requests
+X-Cache-Status
+X-Networkmanager-Status
+Referer
+Etag
+Last-Modified
+Accept-Ranges
+X-Powererd-By
+
+
