@@ -1,0 +1,20 @@
+Make an efficient multithreaded server
+Memory footprint
+
+Multiprocessor pe run hote hue cpu, OS library features should be used for hardware multithreading
+
+Security aspects
+Scalablity
+10 cr connections ar a time --- should be able to handle 
+
+
+For streaming http is also used
+.conf files 
+One server handles multiple files, domains
+
+Focus on HTTP protocol and multithreading 
+
+Apache2 vs nginx --- case study
+Why is nginx better ?
+
+Build Parsers, Page generator
