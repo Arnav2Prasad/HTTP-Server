@@ -1,0 +1,39 @@
+The server script randomly decides whether to drop packets it receives from clients. 
+This is simulated to mimic real-world network conditions where packets may be lost due to network congestion, packet 
+filtering, or other factors.
+
+
+The client script waits for a response from the server and adjusts its timeout period 
+dynamically based on the server's response time. If no response is received within a certain timeout period, 
+the client increases the waiting time exponentially, allowing it to wait longer for subsequent responses.
+
+
+----------------------------------------------------------------
+
+After the server pretends to drop the packet from the client with address `127.0.0.1` and port `45506`, the server 
+continues its operation by listening for incoming packets from other clients.
+
+If the packet is not actually dropped (because it was randomly decided not to drop it), the server proceeds 
+to print the address of the client and the message it sent, just as it does in the subsequent lines:
+
+```plaintext
+The client at ('127.0.0.1', 45506) says: b'This is another message'
+```
+
+Following this, the server will keep listening for more incoming packets, 
+processing them in a similar manner: pretending to drop some and processing others. 
+The loop in the server script continues indefinitely, allowing it to handle multiple clients concurrently.
+
+Similarly, the client continues its operation by waiting for a response from the server. If the 
+response is received within the specified timeout period, the client prints the server's response and proceeds accordingly. 
+If the response is not received within the timeout period, the client may increase the waiting time exponentially and retry, 
+as demonstrated in the example output.
+
+Overall, both the client and server scripts continue to execute their respective logic, interacting with 
+each other over the network. The server handles incoming packets, potentially 
+dropping some of them, while the client waits for responses from the server, adjusting 
+its behavior based on the server's responsiveness. This interaction continues until either 
+the client or server is stopped or encounters an error.
+
+
+
