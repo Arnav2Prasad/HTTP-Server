@@ -16,3 +16,50 @@ after sending another message, the local port number changes to `58261`.
 So, the changing port number after sending a message is a normal behavior in UDP when the socket is not 
 explicitly bound to a specific port. It's part of how UDP communication works, and the operating system 
 handles the assignment of local ports.
+
+
+----------------------------------------------------------
+
+The output you provided is the result of running the UDP client and server scripts. 
+Let's break down the sequence of events and what each part of the output means:
+
+### Running the Client Script:
+
+```plaintext
+➜  book python3 udp_local.py client
+Address before sending: ('0.0.0.0', 0)
+Address after sending ('0.0.0.0', 49359)
+```
+
+1. `python3 udp_local.py client`: This command runs the UDP client script.
+
+2. `Address before sending: ('0.0.0.0', 0)`: Before sending any data, the client's UDP socket (`s`) is bound to 
+the address `0.0.0.0` with an arbitrary port number `0`.
+
+3. `Address after sending ('0.0.0.0', 49359)`: After sending the message (`'This is my message'`), the local port 
+number of the client's UDP socket changes to `49359`. This change in port number is due to the operating system 
+assigning an available port for the client's socket to send the message from.
+
+### Running the Server Script:
+
+```plaintext
+➜  book python3 udp_local.py server
+Listening at ('127.0.0.1', 1060)
+The client at ('127.0.0.1', 49359) says b'This is my message'
+```
+
+1. `python3 udp_local.py server`: This command runs the UDP server script.
+
+2. `Listening at ('127.0.0.1', 1060)`: The server starts listening for incoming UDP messages 
+on the address `127.0.0.1` (localhost) and port `1060`.
+
+3. `The client at ('127.0.0.1', 49359) says b'This is my message'`: The server receives a message from a client 
+with the address `127.0.0.1` and port `49359`. The message received is `'This is my message'`.
+
+### Explanation:
+
+- The client script sends a message (`'This is my message'`) to the server at the address `127.0.0.1` and port `1060`.
+- The server script receives the message from the client and prints out the client's address (`('127.0.0.1', 49359)`) and 
+the message itself (`b'This is my message'`).
+
+Overall, this output demonstrates successful communication between the UDP client and server scripts running on the same machine (`localhost`). The changing port number on the client side is a normal behavior in UDP, as explained earlier, due to the dynamic assignment of ports by the operating system.
