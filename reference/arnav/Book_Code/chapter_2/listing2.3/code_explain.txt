@@ -1,0 +1,78 @@
+Code Explanation:
+
+1. Imports and Socket Initialization:
+
+   ```python
+   import IN, socket, sys
+   s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+   ```
+   - This section imports necessary modules (`IN`, `socket`, `sys`) and initializes a UDP socket (`SOCK_DGRAM`) using 
+the IPv4 address family (`AF_INET`).
+
+2. **Constants**:
+   ```python
+   MAX = 65535
+   PORT = 1060
+   ```
+   - These lines define constants:
+     - `MAX`: Maximum size of the buffer for receiving data.
+     - `PORT`: Port number on which the server will listen for incoming data.
+
+3. **Argument Validation**:
+   ```python
+   if len(sys.argv) != 2:
+       print >>sys.stderr, 'usage: big_sender.py host'
+       sys.exit(2)
+   hostname = sys.argv[1]
+   ```
+   - This block ensures that the script is run with exactly one command-line argument (excluding the script name), 
+which should be the hostname of the server to send the big UDP packet to.
+
+4. **Socket Connection and Options**:
+
+   ```python
+   s.connect((hostname, PORT))
+   s.setsockopt(socket.IPPROTO_IP, IN.IP_MTU_DISCOVER, IN.IP_PMTUDISC_DO)
+   ```
+   - This part establishes a connection to the specified hostname and port. Additionally, it sets a socket option 
+to enable Path MTU Discovery (PMTUD), which allows determining the maximum transmission unit (MTU) of the network path.
+
+  
+5. **Sending the Big Packet**:
+   ```python
+   try:
+       s.send('#' * 65000)
+   except socket.error:
+       print 'The message did not make it'
+   ```
+   - Here, an attempt is made to send a big UDP packet (65,000 bytes) filled with the character `'#'`. If an error occurs 
+during sending (e.g., packet fragmentation), it prints a message indicating that the message did not make it.
+
+  
+
+6. **MTU Discovery and Output**:
+   ```python
+   else:
+       print 'The big message was sent! Your network supports really big packets!'
+   ```
+   - If the big packet is successfully sent without errors, it prints a message indicating that the 
+network supports really big packets.
+
+  
+
+### Explanation:
+
+- The code aims to test the maximum packet size supported by the network path between the sender and the server.
+- It sends a large UDP packet to the specified server and checks whether the packet is successfully transmitted.
+- If the packet transmission fails, it indicates that the network does not support such large packets, and it prints the maximum MTU value of the network path.
+- The Path MTU Discovery (PMTUD) mechanism is utilized to determine the maximum MTU of the network path.
+- The script handles potential errors during packet transmission and reports the results accordingly.
+
+Overall, the code provides a means to test the MTU of the network path and assess whether large UDP packets 
+can be transmitted successfully.
+
+
+
+
+
+  
