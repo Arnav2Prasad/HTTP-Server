@@ -1,0 +1,112 @@
+Certainly! Here are more examples of using `socket.getservbyname` to find the port numbers associated with common network services:
+
+1. **HTTP (HyperText Transfer Protocol)**
+   - Service Name: `'http'`
+   - Standard Port: `80`
+
+   ```python
+   import socket
+   port = socket.getservbyname('http')
+   print(port)  # Output: 80
+   ```
+
+2. **HTTPS (HyperText Transfer Protocol Secure)**
+   - Service Name: `'https'`
+   - Standard Port: `443`
+
+   ```python
+   import socket
+   port = socket.getservbyname('https')
+   print(port)  # Output: 443
+   ```
+
+3. **FTP (File Transfer Protocol)**
+   - Service Name: `'ftp'`
+   - Standard Port: `21`
+
+   ```python
+   import socket
+   port = socket.getservbyname('ftp')
+   print(port)  # Output: 21
+   ```
+
+4. **SMTP (Simple Mail Transfer Protocol)**
+   - Service Name: `'smtp'`
+   - Standard Port: `25`
+
+   ```python
+   import socket
+   port = socket.getservbyname('smtp')
+   print(port)  # Output: 25
+   ```
+
+5. **POP3 (Post Office Protocol version 3)**
+   - Service Name: `'pop3'`
+   - Standard Port: `110`
+
+   ```python
+   import socket
+   port = socket.getservbyname('pop3')
+   print(port)  # Output: 110
+   ```
+
+6. **IMAP (Internet Message Access Protocol)**
+   - Service Name: `'imap'`
+   - Standard Port: `143`
+
+   ```python
+   import socket
+   port = socket.getservbyname('imap')
+   print(port)  # Output: 143
+   ```
+
+7. **Telnet**
+   - Service Name: `'telnet'`
+   - Standard Port: `23`
+
+   ```python
+   import socket
+   port = socket.getservbyname('telnet')
+   print(port)  # Output: 23
+   ```
+
+8. **SSH (Secure Shell)**
+   - Service Name: `'ssh'`
+   - Standard Port: `22`
+
+   ```python
+   import socket
+   port = socket.getservbyname('ssh')
+   print(port)  # Output: 22
+   ```
+
+9. **DNS (Domain Name System)**
+   - Service Name: `'domain'`
+   - Standard Port: `53`
+   - This is the example you provided initially.
+
+   ```python
+   import socket
+   port = socket.getservbyname('domain')
+   print(port)  # Output: 53
+   ```
+
+10. **NNTP (Network News Transfer Protocol)**
+    - Service Name: `'nntp'`
+    - Standard Port: `119`
+
+    ```python
+    import socket
+    port = socket.getservbyname('nntp')
+    print(port)  # Output: 119
+    ```
+
+### Usage Explanation
+These examples demonstrate how to use the `socket.getservbyname` function to retrieve the port numbers associated with various network services. 
+This can be particularly useful in network programming for establishing connections to these services on the appropriate ports.
+
+
+
+
+
+
