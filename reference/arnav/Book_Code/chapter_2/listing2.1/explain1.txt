@@ -1,0 +1,122 @@
+### Explanation
+
+The provided script demonstrates a basic UDP client and server communication using the loopback interface (`127.0.0.1`), 
+meaning both the server and client are running on the same machine. 
+
+Here is a detailed explanation of the script and the processes involved:
+
+#### Step-by-Step Breakdown
+
+1. **Importing Libraries**:
+    - `socket`: For creating the UDP socket and handling network communication.
+    - `sys`: For command-line argument handling.
+
+    ```python
+    import socket, sys
+    ```
+
+2. **Socket Creation**:
+    - `socket.socket(socket.AF_INET, socket.SOCK_DGRAM)`: Creates a UDP socket. 
+        - `AF_INET`: Specifies the address family for IPv4.
+        - `SOCK_DGRAM`: Specifies that the socket will use the datagram protocol (UDP).
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
+
+3. **Defining Constants**:
+    - `MAX`: The maximum size of the buffer for receiving data (65535 bytes).
+    - `PORT`: The port number on which the server will listen for incoming data (1060).
+
+    ```python
+    MAX = 65535
+    PORT = 1060
+    ```
+
+4. **Checking Command-Line Arguments**:
+    - `sys.argv[1:]` checks for additional arguments passed to the script (either 'server' or 'client').
+
+    ```python
+    if sys.argv[1:] == ['server']:
+    ```
+
+#### Server Code
+
+5. **Binding the Server**:
+    - `s.bind(('127.0.0.1', PORT))`: Binds the socket to the localhost (`127.0.0.1`) and the specified port (`1060`).
+
+    ```python
+    s.bind(('127.0.0.1', PORT))
+    print('Listening at', s.getsockname())
+    ```
+
+6. **Listening for Incoming Data**:
+    - Enters an infinite loop to keep listening for data.
+    - `s.recvfrom(MAX)`: Receives data from a client. 
+This call will block until data is received. It returns the data and the address of the client.
+
+    - `s.sendto('Your data was %d bytes' % len(data), address)`: Sends a response back to the client 
+indicating the number of bytes received.
+
+
+    ```python
+    while True:
+        data, address = s.recvfrom(MAX)
+        print('The client at', address, 'says', repr(data))
+        s.sendto('Your data was %d bytes' % len(data), address)
+    ```
+
+#### Client Code
+
+7. **Sending Data from Client**:
+    - `print('Address before sending:', s.getsockname())`: Prints the client's address before sending data.
+    - `s.sendto('This is my message', ('127.0.0.1', PORT))`: Sends a message to the server at the specified address (`127.0.0.1:1060`).
+    - `print('Address after sending', s.getsockname())`: Prints the client's address after sending data.
+    - `s.recvfrom(MAX)`: Receives a response from the server.
+    - `print('The server', address, 'says', repr(data))`: Prints the server's response.
+
+    ```python
+    print('Address before sending:', s.getsockname())
+    s.sendto('This is my message', ('127.0.0.1', PORT))
+    print('Address after sending', s.getsockname())
+    data, address = s.recvfrom(MAX)  # overly promiscuous - see text!
+    print('The server', address, 'says', repr(data))
+    ```
+
+8. **Error Handling for Incorrect Usage**:
+    - If the script is not run with either 'server' or 'client' as an argument, it prints the correct usage to standard error.
+
+    ```python
+    else:
+        print('usage: udp_local.py server|client', file=sys.stderr)
+    ```
+
+### Running the Script
+
+1. **Start the Server**:
+    ```sh
+    python udp_local.py server
+    ```
+
+    Output:
+    ```
+    Listening at ('127.0.0.1', 1060)
+    ```
+
+2. **Start the Client**:
+    ```sh
+    python udp_local.py client
+    ```
+
+    Expected Client Output:
+    ```
+    Address before sending: ('0.0.0.0', 0)
+    Address after sending ('127.0.0.1', 1060)
+    The server ('127.0.0.1', 1060) says 'Your data was 18 bytes'
+    ```
+
+    Expected Server Output (from the point of view of the server running earlier):
+    ```
+    The client at ('127.0.0.1', <dynamic_client_port>) says b'This is my message'
+    ```
+
+In this example, `<dynamic_client_port>` will be a dynamically assigned port number used by the client.
