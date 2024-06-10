@@ -1,0 +1,18 @@
+The output you're seeing indicates that the port number of the socket (`s`) changes after sending a message. 
+This behavior is expected because, in UDP, when you send a message using `sendto`, the operating system might assign a 
+different local port for the socket if it's not explicitly bound to a specific port.
+
+Let's break down the output:
+
+- `Address before sending: ('0.0.0.0', 0)`: Before sending any data, the socket `s` is bound to the address `0.0.0.0` 
+with an arbitrary port number `0`.
+  
+- `Address after sending ('0.0.0.0', 49359)`: After sending the message, the local port number changes to `49359`. 
+This change in port number is likely due to the operating system assigning an available port for the socket to send the message from.
+
+- `Address after sending ('0.0.0.0', 58261)`: Similarly, in the next execution of the script,
+after sending another message, the local port number changes to `58261`.
+
+So, the changing port number after sending a message is a normal behavior in UDP when the socket is not 
+explicitly bound to a specific port. It's part of how UDP communication works, and the operating system 
+handles the assignment of local ports.
