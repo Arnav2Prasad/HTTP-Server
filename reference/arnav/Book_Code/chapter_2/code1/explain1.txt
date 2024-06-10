@@ -1,0 +1,38 @@
+The `socket.getservbyname('domain')` function in Python is used to look up the port number associated with a given service name. Here's a detailed explanation:
+
+1. **Function**: `socket.getservbyname(service_name)`
+   - This function takes the name of a network service as a string argument and returns the corresponding port number for that service.
+
+2. **Service Name**: `'domain'`
+   - In this context, `'domain'` refers to the DNS (Domain Name System) service.
+
+3. **Port Number**: `53`
+   - The function returns `53`, which is the standard port number used by DNS services for both TCP and UDP protocols.
+
+### Explanation of DNS and Port 53
+- **DNS (Domain Name System)**:
+  - DNS is a system that translates human-readable domain names (like www.example.com) into IP addresses that computers use to identify each other on the network.
+  - This translation service is crucial for the functioning of the internet as it allows users to access websites using easy-to-remember names instead of numeric IP addresses.
+
+- **Port 53**:
+  - Port numbers are used to identify specific processes or services on a computer. In the case of DNS, port 53 is the standard port designated for DNS queries.
+  - Both TCP and UDP protocols use port 53 for DNS. UDP is typically used for simple queries due to its lower overhead, while TCP is used for tasks requiring reliability and larger data transfers.
+
+### Example Usage in Networking
+When you run `socket.getservbyname('domain')` in Python:
+- The function looks up the port number associated with the DNS service.
+- It finds that the standard port for DNS is 53 and returns this value.
+
+This is useful in network programming when you need to connect to or provide a DNS service and need to know which port to use.
+
+### Code Explanation
+```python
+import socket
+port = socket.getservbyname('domain')
+print(port)
+```
+Output:
+```
+53
+```
+- The code imports the `socket` module, uses `getservbyname` to find the port number for the DNS service, and prints `53`.
