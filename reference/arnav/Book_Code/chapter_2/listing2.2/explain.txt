@@ -1,0 +1,75 @@
+The provided script (`udp_remote.py`) demonstrates a UDP client and server setup where they can communicate over a network. 
+Lets break down the functionality of both the client and server parts:
+
+
+    Server Part:
+1. **Socket Initialization**:
+   - `s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)`: Creates a UDP socket.
+
+2. **Constants**:
+   - `MAX = 65535`: Maximum size of the buffer for receiving data.
+   - `PORT = 1060`: Port number on which the server will listen for incoming data.
+
+3. **Server Logic**:
+   - Checks if the script is run with the argument `'server'`.
+   - If yes, binds the socket to the specified interface (if provided) or to any available interface (`''` means any local interface).
+   - Prints the address where it is listening.
+   - Enters a loop to continuously receive data.
+   - Simulates dropping packets randomly with a 50% chance.
+   - If a packet is not dropped, it sends a response to the client.
+
+
+### Client Part:
+
+1. **Socket Initialization**:
+   - `s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)`: Creates a UDP socket.
+
+2. **Constants**:
+   - `MAX = 65535`: Maximum size of the buffer for receiving data.
+   - `PORT = 1060`: Port number of the server.
+
+3. **Client Logic**:
+   - Checks if the script is run with the argument `'client'`.
+   - If yes, connects the socket to the specified hostname and port.
+   - Prints the clients socket name.
+   - Sends a message to the server and waits for a response.
+   - Adjusts the delay for waiting for a response dynamically.
+   - Raises an error if the server does not respond within a certain time.
+
+   
+
+### Explanation of `'0.0.0.0'` Address:
+
+- In the server part, `interface = sys.argv[2] if len(sys.argv) > 2 else ''` allows specifying the interface the server should 
+bind to. If not provided, it defaults to `''`, which means any local interface.
+- Binding to `'0.0.0.0'` means the server is accepting connections on any available network interface on the machine.
+- When the server starts, it prints `'Listening at ('0.0.0.0', 1060)'`, indicating that it is 
+listening on all available interfaces on port `1060`.
+
+
+
+### Usage:
+
+- To run the server: `python udp_remote.py server [ <interface> ]`
+- To run the client: `python udp_remote.py client <host>`
+
+
+
+### Example Output:
+
+```plaintext
+$ python udp_remote.py server
+Listening at ('0.0.0.0', 1060)
+
+$ python udp_remote.py client localhost
+Client socket name is ('0.0.0.0', <local_port>)
+Waiting up to 0.1 seconds for a reply
+The server says 'Your data was 20 bytes'
+
+$ python udp_remote.py client localhost
+Client socket name is ('0.0.0.0', <local_port>)
+Waiting up to 0.2 seconds for a reply
+The server says 'Your data was 20 bytes'
+```
+
+In the output, `<local_port>` represents the dynamically assigned local port number.
