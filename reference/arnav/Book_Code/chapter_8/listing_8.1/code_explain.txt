@@ -1,0 +1,122 @@
+This script demonstrates how to use Memcached to cache expensive computations, 
+  specifically the computation of square numbers. The use of caching here is to avoid recalculating the square of the same number 
+multiple times, thus saving time and computational resources. 
+  
+#Code Breakdown
+
+// imports
+
+import memcache, random, time, timeit
+
+- memcache: This module provides the client interface to interact with Memcached.
+- random: This module is used to generate random numbers.
+- time: This module provides various time-related functions, including sleep.
+- timeit: This module provides a simple way to measure the execution time of small code snippets.
+
+#Initializing Memcached Client
+
+
+mc = memcache.Client(['127.0.0.1:11211'])
+
+- Initializes a Memcached client object `mc` that connects to a Memcached server running on `localhost` at port `11211`.
+
+#Function to Compute Square
+
+def compute_square(n):
+    value = mc.get('sq:%d' % n)
+    if value is None:
+        time.sleep(0.001) # pretend that computing a square is expensive
+        value = n * n
+        mc.set('sq:%d' % n, value)
+    return value
+
+
+- Function Definition: Defines a function `compute_square` that takes an integer `n` as input.
+- Retrieve from Cache: 
+
+  value = mc.get('sq:%d' % n)
+
+  - Attempts to retrieve the square of `n` from the cache. 
+  The key used for the cache entry is `'sq:%d' % n`, which formats the key as a string like `'sq:5'` for `n=5`.
+  
+- Check Cache Result:
+
+  if value is None:
+
+  - Checks if the value was not found in the cache (i.e., `value` is `None`).
+- Simulate Expensive Computation:
+  ```python
+  time.sleep(0.001) # pretend that computing a square is expensive
+  value = n * n
+  
+  - Simulates an expensive computation by sleeping for 1 millisecond and then calculates the square of `n`.
+  
+- Store in Cache:
+
+  mc.set('sq:%d' % n, value)
+
+  - Stores the computed square in the cache with the same key `'sq:%d' % n`.
+  
+- Return Result:
+
+  return value
+
+  - Returns the computed (or cached) square of `n`.
+
+#Function to Make a Request
+
+
+def make_request():
+    compute_square(random.randint(0, 5000))
+
+- Function Definition: Defines a function `make_request` that makes a single request to compute the square of a random integer 
+    between 0 and 5000.
+  
+- Generate Random Number:
+
+  random.randint(0, 5000)
+
+  - Generates a random integer between 0 and 5000.
+  
+- Compute Square:
+
+  compute_square(random.randint(0, 5000))
+
+  - Calls `compute_square` with the randomly generated integer.
+
+#Measuring Performance
+
+
+print 'Ten successive runs:',
+for i in range(1, 11):
+    print '%.2fs' % timeit.timeit(make_request, number=2000),
+print
+
+  
+- Loop for Ten Runs:
+
+  for i in range(1, 11):
+
+  - Loops 10 times to perform the measurement.
+  
+- Measure Execution Time:
+
+  print '%.2fs' % timeit.timeit(make_request, number=2000),
+
+  - Uses `timeit.timeit` to measure the time it takes to call `make_request` 2000 times.
+
+  - `timeit.timeit` returns the total time taken, formatted to two decimal places, followed by a space.
+
+
+  - Prints a newline after all the timing results.
+
+#Summary
+
+This script sets up a basic caching mechanism using Memcached to avoid repeated expensive calculations. 
+  It demonstrates:
+1. How to connect to a Memcached server.
+2. How to check the cache before performing a computation.
+3. How to store computed results in the cache for future use.
+4. How to measure the performance of the caching mechanism using the `timeit` module.
+
+  
