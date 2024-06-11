@@ -1,0 +1,68 @@
+Sure, lets break down the code:
+
+1. Importing Libraries: The script begins by importing the `hashlib` module, which provides interfaces to various hash functions.
+
+2. Defining Sharding Functions:
+   - `alpha_shard`: This function assigns data to servers based on the first letter of the word. 
+    It categorizes words starting with 'a' to 'f' to `server0`, 'g' to 'm' to `server1`, 'n' to 'r' to `server2`, and the rest to `server3`.
+   
+  - `hash_shard`: This function uses a hash value of the word to determine the server. 
+      It hashes the word and uses the result to distribute the data across servers.
+   
+  - `md5_shard`: Similar to `hash_shard`, but uses the MD5 hash function instead. 
+    It computes the MD5 hash of the word, takes the last byte of the digest, and maps it to one of the servers.
+
+3. Reading Words from Dictionary: The script reads words from a dictionary 
+      file located at `/usr/share/dict/words` and stores them in a list named `words`.
+
+4. Iterating Over Sharding Functions:
+   - For each sharding function (`alpha_shard`, `hash_shard`, `md5_shard`), the script initializes a 
+      dictionary `d` with keys representing server names (`server0`, `server1`, `server2`, `server3`) and values initialized to zero.
+   - It then iterates over each word in the `words` list and applies the current sharding function to get the server name.
+   - For each word, it increments the count of the corresponding server in the dictionary `d`.
+
+5. Printing Results: Finally, the script prints the name of the sharding function (excluding the "_shard" suffix) 
+    along with the distribution of words across servers as determined by each sharding function.
+
+This script demonstrates different techniques for distributing data across servers using simple sharding strategies based 
+on the word's characteristics (first letter or hash value). 
+  The output shows how the distribution varies based on the chosen sharding method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
