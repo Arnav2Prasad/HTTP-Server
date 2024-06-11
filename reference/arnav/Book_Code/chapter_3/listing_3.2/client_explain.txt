@@ -1,0 +1,143 @@
+Detailed Explanation
+
+elif len(sys.argv) == 3 and sys.argv[1] == 'client' and sys.argv[2].isdigit():
+
+- `elif len(sys.argv) == 3`: This checks if there are exactly three command-line arguments. `sys.argv` is a list in Python, 
+      which contains the command-line arguments passed to the script.
+  - Example: If the script is called as `python tcp_deadlock.py client 32`, then `sys.argv` would be `['tcp_deadlock.py', 'client', '32']`.
+
+- `sys.argv[1] == 'client'`: This checks if the second argument (index 1) is the string `'client'`.
+- `sys.argv[2].isdigit()`: This checks if the third argument (index 2) is a string of digits, which means it represents a valid integer.
+
+
+    bytes = (int(sys.argv[2]) + 15) // 16 * 16  # Round up to nearest multiple of 16
+
+- `int(sys.argv[2])`: Converts the third argument to an integer.
+
+- `(int(sys.argv[2]) + 15) // 16 * 16`: This rounds up the integer to the nearest multiple of 16. The formula works as follows:
+  - Add 15 to the integer and perform integer division by 16 (`// 16`). This gives the number of full 16-byte chunks plus possibly a 
+      part chunk.
+  - Multiply by 16 to get the rounded-up value.
+  - For example, if `sys.argv[2]` is `32`, `(32 + 15) // 16 * 16` gives `32`.
+
+
+    message = 'capitalize this!'  # 16-byte message to repeat
+
+- `message = 'capitalize this!'`: Defines a 16-byte string message. This will be sent repeatedly to the server.
+
+
+    print('Sending', bytes, 'bytes of data, in chunks of 16 bytes')
+
+- `print('Sending', bytes, 'bytes of data, in chunks of 16 bytes')`: Prints a message to the console indicating the total 
+    number of bytes to be sent and the chunk size.
+
+
+    s.connect((HOST, PORT))
+
+- `s.connect((HOST, PORT))`: Connects the client socket to the server at the specified host (`127.0.0.1`) and port (`1060`). 
+      This establishes the connection.
+
+
+    sent = 0
+
+- `sent = 0`: Initializes a counter `sent` to track the number of bytes sent.
+
+
+    while sent < bytes:
+
+- `while sent < bytes:`: Starts a loop that continues until the total number of bytes sent is equal to the number 
+    of bytes specified by the user.
+
+
+        s.sendall(message)
+
+- `s.sendall(message)`: Sends the 16-byte `message` to the server. The `sendall` method ensures that all data is sent.
+
+
+        sent += len(message)
+
+- `sent += len(message)`: Increments the `sent` counter by the length of the message (16 bytes).
+
+
+        print('\r%d bytes sent' % (sent,), end='')
+
+- `print('\r%d bytes sent' % (sent,), end='')`: Prints the number of bytes sent so far on the same line, with `\r` returning the 
+    cursor to the beginning of the line. The `end=''` argument prevents the print function from adding a newline character at the end.
+
+
+        sys.stdout.flush()
+- `sys.stdout.flush()`: Flushes the output buffer, ensuring that the printed message is immediately visible in the terminal.
+
+
+    s.shutdown(socket.SHUT_WR)
+
+- `s.shutdown(socket.SHUT_WR)`: Shuts down the writing side of the socket. This signals to the server that the 
+    client has finished sending data. The constant `socket.SHUT_WR` means "shutdown the writing side."
+
+
+    print('Receiving all the data the server sends back')
+
+- `print('Receiving all the data the server sends back')`: Prints a message indicating that the client is now ready to receive data from the server.
+
+
+    received = 0
+
+- `received = 0`: Initializes a counter `received` to track the number of bytes received.
+
+
+    while True:
+
+- `while True:`: Starts a loop to continuously receive data from the server.
+
+
+        data = s.recv(42)
+
+- `data = s.recv(42)`: Receives up to 42 bytes of data from the server. 
+    The `recv` method blocks until at least one byte is received or the connection is closed.
+
+
+        if not received:
+            print('The first data received says', repr(data))
+
+- `if not received:`: Checks if this is the first chunk of data received (i.e., if `received` is still 0).
+- `print('The first data received says', repr(data))`: Prints the first chunk of data received, using `repr` to show the 
+    exact contents, including any special characters.
+
+
+        received += len(data)
+
+- `received += len(data)`: Increments the `received` counter by the length of the data chunk received.
+
+
+        if not data:
+            break
+
+- `if not data:`: Checks if no data was received, which indicates that the server has closed the connection.
+- `break`: Exits the loop if no data is received.
+
+
+        print('\r%d bytes received' % (received,), end='')
+
+- `print('\r%d bytes received' % (received,), end='')`: Prints the number of bytes received so far on the same line. The `end=''` argument prevents the print function from adding a newline character.
+
+    s.close()
+
+- `s.close()`: Closes the client socket, freeing up the resources associated with it.
+
+
+else:
+    print('usage: tcp_deadlock.py server | client <bytes>', file=sys.stderr)
+
+- `else:`: Handles the case where the script arguments do not match the expected format for either a server or a client.
+- `print('usage: tcp_deadlock.py server | client <bytes>', file=sys.stderr)`: Prints a usage message to the standard error stream, 
+          indicating how to run the script correctly.
+
+Summary
+
+This client-side code is designed to connect to a server, send a specified number of bytes of data in 16-byte chunks, 
+and then receive the processed data back from the server. It handles the connection setup, data transmission, and data reception,
+providing detailed status updates throughout the process. The use of command-line arguments allows for flexible testing 
+and usage scenarios.
+
+
+          
