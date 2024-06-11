@@ -1,0 +1,68 @@
+
+#!/usr/bin/env python3
+# Foundations of Python Network Programming - Chapter 8 - queuecrazy.py
+# Small application that uses several different message queues
+
+  
+- `#!/usr/bin/env python3`: This is called a shebang line, and it's used to tell the system what interpreter to use for executing 
+        the script. In this case, it specifies that the script should be run using the Python 3 interpreter.
+
+
+
+import random, threading, time, zmq
+
+zcontext = zmq.Context()
+
+
+- `import random, threading, time, zmq`: This line imports the necessary modules for the script.   
+          `random` is used for generating random words, 
+          `threading` for creating threads,
+          `time` for time-related functions,
+        `zmq` is the Python binding for ZeroMQ, a messaging library.
+
+-  `zcontext = zmq.Context()`: This line creates a ZeroMQ context object. Contexts are used to manage 
+      sockets and other resources in ZeroMQ. 
+
+
+  
+def fountain(url):
+    """Produces a steady stream of words."""
+    zsock = zcontext.socket(zmq.PUSH)
+    zsock.bind(url)
+    words = [w for w in dir(__builtins__) if w.islower()]
+    while True:
+        zsock.send_string(random.choice(words))
+        time.sleep(0.4)
+
+
+- `def fountain(url):`: This line defines a function named `fountain` that takes a `url` parameter.
+
+- `zsock = zcontext.socket(zmq.PUSH)`: This line creates a ZeroMQ PUSH socket using the context object `zcontext`. 
+        PUSH sockets are used to push messages to a queue.
+- `zsock.bind(url)`: This line binds the socket to the specified `url`.
+- `words = [w for w in dir(__builtins__) if w.islower()]`: This line generates a list of lowercase built-in Python functions.
+
+- `zsock.send_string(random.choice(words))`: This line sends a random word from the `words` list over the ZeroMQ socket. 
+      `send_string` is used to send a string message.
+- `time.sleep(0.4)`: This line pauses the execution of the loop for 0.4 seconds.
+
+
+def responder(url, function):
+    """Performs a string operation on each word received."""
+    zsock = zcontext.socket(zmq.REP)
+    zsock.bind(url)
+    while True:
+        word = zsock.recv_string()
+        zsock.send_string(function(word))  # send the modified word back
+
+
+- `def responder(url, function):`: This line defines a function named `responder` that takes two parameters: `url` and `function`.
+
+- `zsock = zcontext.socket(zmq.REP)`: This line creates a ZeroMQ REP (Reply) socket.
+- `zsock.bind(url)`: This line binds the socket to the specified `url`.
+
+- `word = zsock.recv_string()`: This line receives a string message from the socket.
+- `zsock.send_string(function(word))`: This line sends the modified word (after applying the specified function) back over the socket.
+
+
+  
