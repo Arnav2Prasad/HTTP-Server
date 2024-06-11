@@ -1,0 +1,93 @@
+In a typical TCP server-client interaction, the process involves both a well-known server port and dynamically assigned ports. 
+Here's how it works:
+
+1. Server Listening on a Well-Known Port:
+   - The server starts by listening on a well-known port (e.g., port 80 for HTTP). This port is publicly 
+    known and clients use it to initiate connections.
+
+2. Client Initiates Connection:
+   - A client initiates a connection to the server by sending a connection request to the server's IP address 
+      and the well-known port (e.g., `server_ip:80`).
+
+3. Server Accepts Connection:
+   - When the server accepts the connection, it does so using the well-known port. However, to handle multiple clients 
+    simultaneously, the server creates a new socket for each client. This new socket is bound to a new, 
+    dynamically assigned port on the server side. This port is not the well-known port; it is a separate port 
+    allocated by the operating system.
+
+4. Communication on New Port:
+   - After the connection is established, the server and client communicate over this new, dynamically assigned port on the server side. 
+  The client continues to use its own dynamically assigned port as well. The well-known port (e.g., port 80) remains available for 
+    new incoming connection requests.
+
+Example Flow:
+
+1. Server Setup:
+   - Server listens on port 80: `server_socket.bind(('server_ip', 80))`.
+   - Server calls `server_socket.listen()` to start listening for incoming connections.
+
+2. Client Request:
+   - Client sends a connection request to the server at `server_ip:80`.
+   - Client's local socket uses a dynamically assigned port (e.g., port 41710).
+
+3. Server Accepts Request:
+   - Server accepts the connection with `client_socket, client_address = server_socket.accept()`.
+   - A new socket (`client_socket`) is created for communication, bound to a new port on the server side.
+
+4. Communication:
+   - Server and client use `client_socket` to communicate, with the server using a new port (different from 80).
+
+Example Code Snippet:
+
+**Server Side:**
+```python
+import socket
+
+# Create a socket object
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Bind to the well-known port
+server_socket.bind(('127.0.0.1', 80))
+
+# Start listening for connections
+server_socket.listen()
+
+print("Server listening on port 80")
+
+while True:
+    # Accept a connection
+    client_socket, client_address = server_socket.accept()
+    print(f"Accepted connection from {client_address}")
+    
+    # Handle communication on client_socket
+    message = client_socket.recv(16)
+    print(f"Received message: {message}")
+    
+    client_socket.sendall(b"Hello, client")
+    client_socket.close()
+```
+
+**Client Side:**
+```python
+import socket
+
+# Create a socket object
+client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+# Connect to the server on port 80
+client_socket.connect(('127.0.0.1', 80))
+
+# Send a message
+client_socket.sendall(b"Hi there, server")
+
+# Receive a reply
+response = client_socket.recv(16)
+print(f"Received reply: {response}")
+
+client_socket.close()
+```
+
+In summary, the initial connection request is sent to the server's well-known port (e.g., port 80). Once the server accepts 
+the connection, communication between the server and the client occurs on a new port, allowing the server 
+to handle multiple clients simultaneously while keeping the well-known port available for new incoming connections.
+
