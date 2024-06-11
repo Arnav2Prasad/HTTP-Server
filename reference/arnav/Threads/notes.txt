@@ -1,0 +1,105 @@
+Threading is a powerful concept in Python that enables developers to write concurrent programs by running multiple threads in 
+the same process. 
+
+-->This allows for better utilization of system resources and improved performance. 
+
+A thread is a lightweight sub-process.
+It is a way to achieve concurrent execution in a program. 
+In Python, the threading module provides a way to create and manage threads. 
+Threads share the same memory space, allowing them to communicate and interact with each other more efficiently than separate processes.
+
+
+To create a thread in Python, you need to import the threading module and create a new Thread object. Here’s a simple example:
+
+
+CODE
+import threading
+
+def print_numbers():
+    for i in range(5):
+        print(i)
+
+# Create a new thread
+my_thread = threading.Thread(target=print_numbers)
+
+# Start the thread
+my_thread.start()
+
+# Wait for the thread to finish
+my_thread.join()print("Main thread exiting.")
+
+-----------------------------------------
+
+In this example, a thread is created to execute the print_numbers function concurrently with the main thread.
+
+
+Threading in Python is a powerful tool for building concurrent programs, allowing 
+developers to improve performance and responsiveness. 
+
+
+What is parallel processing?
+Basically doing two things at the same time, either running code simultaneously on different CPUs, or running code on 
+the same CPU and achieving speedups by taking advantage of “wasted” CPU cycles while your program is waiting for 
+external resources — file loading, API calls.
+
+
+PROCESS v/s THREAD
+A process is an instance of program (e.g. Jupyter notebook, Python interpreter). 
+Processes spawn threads (sub-processes) to handle subtasks like reading keystrokes, loading HTML pages, saving files. 
+Threads live inside processes and share the same memory space.
+
+
+Example: Microsoft Word
+When you open Word, you create a process. When you start typing, the process spawns threads: one to read keystrokes, 
+another to display text, one to autosave your file, and yet another to highlight spelling mistakes. 
+By spawning multiple threads, Microsoft takes advantage of idle CPU time (waiting for keystrokes or files to load) and 
+makes you more productive.
+
+
+
+
+Process
+    1. Created by the operating system to run programs
+    2. Processes can have multiple threads
+    3. Two processes can execute code simultaneously in the same python program
+    4. Processes have more overhead than threads as opening and closing processes takes more time
+    5. Sharing information between processes is slower than sharing between threads as processes do not share memory space. 
+      In python they share information by pickling data structures like arrays which requires IO time.
+
+Thread
+    1. Threads are like mini-processes that live inside a process
+    2. They share memory space and efficiently read and write to the same variables
+    3. Two threads cannot execute code simultaneously in the same python program (although there are workarounds*)
+
+
+CPU vs Core
+The CPU, or processor, manages the fundamental computational work of the computer. 
+CPUs have one or more cores, allowing the CPU to execute code simultaneously.
+
+With a single core, there is no speedup for CPU-intensive tasks (e.g. loops, arithmetic). 
+The OS switches back and forth between tasks executing each one a little bit at a time. This is why for small 
+operations (e.g. downloading a few images), multitasking can sometimes hurt your performance. 
+There is overhead associated with launching and maintaining multiple tasks.
+
+Python’s GIL problem
+CPython (the standard python implementation) has something called the GIL (Global Interpreter Lock), which prevent 
+two threads from executing simultaneously in the same program. Some people are upset by this, while others 
+fiercely defend it. There are workarounds, however, and libraries like Numpy bypass 
+this limitation by running external code in C.
+
+
+Question : When to use threads vs processes?
+    Processes speed up Python operations that are CPU intensive because they benefit from multiple cores and avoid the GIL.
+    Threads are best for IO tasks or tasks involving external systems because threads can combine their work more efficiently. 
+        Processes need to pickle their results to combine them which takes time.
+    Threads provide no benefit in python for CPU intensive tasks because of the GIL.
+
+*For certain operations like Dot Product, Numpy works around Python’s GIL and executes code in parallel.
+
+
+
+
+
+
+
+
