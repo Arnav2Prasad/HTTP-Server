@@ -65,4 +65,31 @@ def responder(url, function):
 - `zsock.send_string(function(word))`: This line sends the modified word (after applying the specified function) back over the socket.
 
 
+start_thread(fountain, 'tcp://127.0.0.1:6700')
+start_thread(responder, 'tcp://127.0.0.1:6701', str.upper)
+start_thread(responder, 'tcp://127.0.0.1:6702', str.lower)
+for n in range(3):
+    start_thread(processor, n + 1, 'tcp://127.0.0.1:6700', ['tcp://127.0.0.1:6701', 'tcp://127.0.0.1:6702'])
+time.sleep(30)
+
+
+1. `start_thread(fountain, 'tcp://127.0.0.1:6700')`: This line starts a thread using the `start_thread` function, 
+      passing it the `fountain` function and the URL `'tcp://127.0.0.1:6700'`. The `fountain` function is responsible 
+      for producing a steady stream of words and binds to the provided URL.
+
+2. `start_thread(responder, 'tcp://127.0.0.1:6701', str.upper)`: This line starts another thread using the `start_thread` 
+      function, passing it the `responder` function and the URL `'tcp://127.0.0.1:6701'`. The `responder` function is 
+      responsible for performing a string operation on each word received, in this case, converting the word to uppercase.
+
+3. `start_thread(responder, 'tcp://127.0.0.1:6702', str.lower)`: Similar to the previous line, this starts a thread 
+      with the `responder` function, but this time it binds to the URL `'tcp://127.0.0.1:6702'` and converts the received words to lowercase.
+
+4. `for n in range(3):`: This line starts a loop that iterates three times.
+
+5. `start_thread(processor, n + 1, 'tcp://127.0.0.1:6700', ['tcp://127.0.0.1:6701', 'tcp://127.0.0.1:6702'])`: Inside the loop, the `start_thread` function is called again, this time passing the `processor` function, the value `n + 1`, and a list of URLs `['tcp://127.0.0.1:6701', 'tcp://127.0.0.1:6702']`. The `processor` function reads words as they are produced, gets them processed by the responders, and prints them.
+
+6. `time.sleep(30)`: After starting the threads, the main program sleeps for 30 seconds to allow time for processing.
+
+This code snippet sets up a small distributed system using ZeroMQ. It starts multiple threads, each responsible for a specific task such as producing words (`fountain`), processing words (`processor`), and modifying words (`responder`). These threads communicate with each other using ZeroMQ sockets over TCP/IP. The `start_thread` function is a utility function that creates and starts a new thread for a given function with its arguments.
+
   
