@@ -1,0 +1,49 @@
+Question : 
+        (a) I HAVE A CONCEPTUAL DOUDBT : A SERVER IS LISTENING TO A CONNECTION AT A DEFAULT PORT THAT ALL KNOWS FOR EXAMPLE FOR TCP ITS 80 , 
+        NOW AS SOON AS A CLIENT WANTS TO ESTABLISH A CONNECTION TO THE SERVER , IT WILL SEND THE REQUEST AT THAT CERTAIN PORT , 
+        ONCE THE CONNECTIN IS ESTABLISHED WILL IT COMMUNICATE STILL WITH THE DEFAULT SERVER PORT OR THE SERVER WILL CREATE A 
+        NEW PORT FOR THE SPECIFIC SERVER FOR COMMUNICATION
+
+        (b) But the output of code is Listening at ('127.0.0.1', 1060)
+        We have accepted a connection from ('127.0.0.1', 58900)
+        Socket connects ('127.0.0.1', 1060) and ('127.0.0.1', 58900)
+        IT SAYS Socket connects ('127.0.0.1', 1060) and ('127.0.0.1', 58900) AND SERVER'S DEFAULT PORT IS 1060??
+
+ANSWER : 
+(a) the initial connection request is sent to the server's well-known port (e.g., port 80). 
+Once the server accepts the connection, communication between the server and the client occurs on a new port, 
+allowing the server to handle multiple clients simultaneously while keeping the well-known port available for new incoming connections.
+
+-----------------------------------------------
+(b)
+Yes, you are correct that in the output you provided, the server's default port is 1060, and the client's dynamically assigned 
+port is 58900. This output is consistent with the behavior of a TCP server handling incoming connections. Let's clarify the situation:
+
+    Server Listening on a Default Port:
+        The server is set up to listen on a specific port, which in this case is 1060. 
+        This is the well-known port for this server instance, though it is not a standard port like 80 for 
+        HTTP; it's just the port the server was configured to use.
+        
+
+    Client Initiates Connection:
+        A client initiates a connection to the server's IP address and port 1060. The client's operating 
+        system assigns it a local port (58900 in this case) for the outbound connection.
+
+    Connection Details:
+        When the connection is established, the server continues to use its listening port (1060) to 
+        manage the connection, while the client uses its dynamically assigned port (58900).
+        
+
+The server’s output showing the socket connection details ('127.0.0.1', 1060) and ('127.0.0.1', 58900) indicates that:
+
+    The server is listening and has accepted a connection on port 1060.
+    The client's side of the connection is using port 58900.
+
+The server does not switch to a new port for communication in this particular example. 
+This can be common in simple server implementations where the same port is used for both listening and communicating. 
+More complex server implementations, especially those designed to handle many simultaneous connections efficiently, 
+might use different approaches such as forking a new process or spawning a new thread, 
+which internally might involve different sockets.
+
+
+
