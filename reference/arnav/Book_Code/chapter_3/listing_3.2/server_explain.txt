@@ -1,0 +1,139 @@
+Server Code
+
+import socket, sys
+
+- `import socket`: Imports the socket module, which provides access to the BSD socket interface. 
+    This module is necessary for network communication.
+- `import sys`: Imports the sys module, which provides access to some variables used or maintained by the Python interpreter 
+      and to functions that interact strongly with the interpreter.
+
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+- `socket.socket(socket.AF_INET, socket.SOCK_STREAM)`: Creates a new socket object. 
+  - `socket.AF_INET`: Specifies the address family for the socket, in this case, IPv4.
+  - `socket.SOCK_STREAM`: Specifies the socket type, in this case, a TCP socket (streaming protocol).
+
+
+HOST = '127.0.0.1'
+PORT = 1060
+
+- `HOST = '127.0.0.1'`: Sets the server address to localhost (loopback address), meaning the server will only 
+          accept connections from the local machine.
+- `PORT = 1060`: Sets the port number to 1060, which the server will listen on.
+
+if sys.argv[1:] == ['server']:
+
+- `if sys.argv[1:] == ['server']:`: Checks if the script was run with the argument `server`. `sys.argv` is a list of 
+    command-line arguments passed to the script. `sys.argv[1:]` slices the list to get all arguments except the script name.
+
+    s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
+- `s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)`: Sets the socket option `SO_REUSEADDR` to 1 (true). This allows the 
+    socket to bind to an address that is in a `TIME_WAIT` state. It prevents the "address already in use" error during socket binding.
+
+
+    s.bind((HOST, PORT))
+
+- `s.bind((HOST, PORT))`: Binds the socket to the specified address (host and port). This prepares the server to 
+      accept connections on `127.0.0.1:1060`.
+
+    s.listen(1)
+
+- `s.listen(1)`: Enables the server to accept connections. The `1` specifies the maximum number of queued connections. 
+      In this case, it can queue 1 connection request.
+
+
+    while True:
+
+- `while True:`: Starts an infinite loop to keep the server running, allowing it to continuously accept new connections.
+
+
+        print('Listening at', s.getsockname())
+
+- `print('Listening at', s.getsockname())`: Prints the address the server is listening on. 
+        `s.getsockname()` returns the socket's own address.
+
+
+        sc, sockname = s.accept()
+
+- `sc, sockname = s.accept()`: Waits for an incoming connection. When a connection is received, it returns a new socket 
+        object `sc` for the connection and the address `sockname` of the client.
+
+
+        print('Processing up to 1024 bytes at a time from', sockname)
+
+- `print('Processing up to 1024 bytes at a time from', sockname)`: Prints a message indicating it is processing data from the 
+        client at the given address.
+
+
+        n = 0
+
+- `n = 0`: Initializes a counter `n` to track the number of bytes processed.
+
+
+        while True:
+
+- `while True:`: Starts another infinite loop to process data from the connected client.
+
+
+            message = sc.recv(1024)
+
+- `message = sc.recv(1024)`: Receives up to 1024 bytes of data from the client. `sc.recv(1024)` blocks until at 
+        least one byte of data is received.
+
+
+            if not message:
+                break
+
+- `if not message:`: Checks if `message` is empty, which indicates the client has closed the connection.
+- `break`: Exits the loop if no data is received.
+
+
+            sc.sendall(message.upper())
+
+- `sc.sendall(message.upper())`: Converts the received message to uppercase and sends it back to the client. `sendall` ensures that 
+      all data is sent.
+
+
+            n += len(message)
+
+- `n += len(message)`: Increments the byte counter `n` by the length of the received message.
+
+
+            print('\r%d bytes processed so far' % (n,), end='')
+
+- `print('\r%d bytes processed so far' % (n,), end='')`: Prints the number of bytes processed so far on the same line (`\r` returns 
+      to the beginning of the line). `end=''` prevents the newline character from being added at the end.
+
+
+            sys.stdout.flush()
+
+- `sys.stdout.flush()`: Flushes the output buffer, ensuring the message is printed immediately.
+
+
+        print()
+
+- `print()`: Prints a newline character to move to the next line after the processing loop ends.
+
+
+        sc.close()
+
+- `sc.close()`: Closes the connection socket `sc`.
+
+
+        print('Completed processing')
+
+- `print('Completed processing')`: Prints a message indicating the server has completed processing the client's data.
+
+
+Summary
+
+This script demonstrates a TCP server that processes data in blocks of 1024 bytes and a client that 
+sends data in chunks of 16 bytes. It highlights the potential for deadlock if not designed carefully. 
+The client sends data to the server, which converts it to uppercase and sends it back. The client then receives the processed data.
+
+
+
+
+
