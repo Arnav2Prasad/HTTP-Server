@@ -1,0 +1,44 @@
+This code snippet demonstrates two different schemes for assigning data to servers in a distributed system. 
+
+# Code Explanation:
+
+1. Importing Libraries:
+   - The script imports the `hashlib` library, which provides cryptographic hashing functions.
+
+2. alpha_shard` Function:
+   - This function assigns data to servers based on the first letter of a word.
+   - It divides words into four groups based on the first letter: 'abcdef', 'ghijklm', 'nopqrs', and all other letters.
+   - Each group is assigned to a different server.
+
+3. hash_shard Function:
+   - This function uses the built-in `hash()` function to generate a hash value for a word.
+   - It then calculates the remainder of the hash value divided by 4 to determine which server to assign the data to.
+   - This method aims to evenly distribute data across the servers based on the hash value.
+
+4. md5_shard` Function:
+   - This function uses the MD5 cryptographic hash algorithm from the `hashlib` library.
+   - It calculates the MD5 hash of a word and takes the last byte of the hash value.
+   - The byte value is then used to determine the server by taking its remainder when divided by 4.
+   - MD5 is considered stronger than the built-in `hash()` function, but it's slower due to its cryptographic nature.
+
+5. Processing Words:
+   - The script reads a list of words from a dictionary file (`/usr/share/dict/words`) and splits them into a list.
+   - It iterates over each word and applies each sharding function (`alpha_shard`, `hash_shard`, and `md5_shard`).
+   - For each function, it keeps track of the count of words assigned to each server in a dictionary (`d`).
+   - Finally, it prints the name of each sharding function along with the distribution of words across servers.
+
+6. Observations:
+   - The results of running the script show the distribution of words across servers for each sharding method.
+   - The 'alpha' method shows uneven distribution, with some servers having significantly more words than others.
+   - Both the `hash` and `md5` methods demonstrate a more balanced distribution, indicating their effectiveness in evenly distributing data.
+
+#Conclusion:
+This code snippet illustrates different approaches to sharding data across servers in a distributed system. I
+t highlights the importance of evenly distributing data to ensure efficient resource utilization and performance. 
+By using hash functions, data can be partitioned effectively, leading to a more balanced distribution across servers.
+
+
+
+
+
+
