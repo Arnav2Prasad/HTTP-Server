@@ -1,10 +1,11 @@
-Sure! To create a server that dynamically assigns a new port for each client, you would typically need to handle the connection acceptance in such a way that each client communicates through a new port. This can be done by creating a new socket bound to a new port for each client connection. 
+Sure! To create a server that dynamically assigns a new port for each client, you would typically need to handle the connection 
+acceptance in such a way that each client communicates through a new port. This can be done by creating a new socket bound to a 
+new port for each client connection. 
 
 Here's an example that demonstrates how to achieve this:
 
-### Server Code
+# Server Code
 
-```python
 import socket
 import threading
 
@@ -61,7 +62,7 @@ if __name__ == "__main__":
     main()
 ```
 
-### Client Code
+# Client Code
 
 ```python
 import socket
@@ -98,19 +99,25 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
 
-### Explanation
+--------------------------------------
+#Explanation
 
-1. **Server Side**:
+1. Server Side:
    - The server initially listens on port 1060.
-   - When a client connects, the server accepts the connection, creates a new socket, binds it to an available port, and starts listening on that port.
+   - When a client connects, the server accepts the connection, creates a new socket, binds it to an available port, 
+       and starts listening on that port.
    - The server sends the new port number to the client and closes the initial connection.
    - The server then accepts a connection on the new port and handles the client communication in a separate thread.
 
-2. **Client Side**:
+2. Client Side:
    - The client connects to the server on port 1060 to initiate the communication.
-   - The client receives the new port number from the server, closes the initial connection, and then connects to the server on the new port.
+   - The client receives the new port number from the server, closes the initial connection, and then connects 
+       to the server on the new port.
    - The client sends a message and receives a reply on the new connection.
 
-This setup ensures that each client communicates with the server through a different dynamically assigned port after the initial connection setup.
+This setup ensures that each client communicates with the server through a different dynamically 
+assigned port after the initial connection setup.
+
+
+
