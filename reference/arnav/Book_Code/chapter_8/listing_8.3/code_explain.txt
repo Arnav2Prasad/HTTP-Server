@@ -1,0 +1,43 @@
+This code snippet demonstrates a small application, `queuecrazy.py`, that utilizes several different message queues 
+using ZeroMQ (ØMQ) in Python.
+
+Let's break down the script and explain its components:
+
+1. Importing Libraries:
+   - The script begins by importing necessary libraries, including `random`, `threading`, `time`, and `zmq` (ZeroMQ).
+
+2. Initializing ZeroMQ Context:
+   - The `zcontext` variable is initialized with a ZeroMQ context, which is used to create sockets for communication.
+
+3. Defining Functions:
+   - `fountain(url)`: This function produces a steady stream of words by sending randomly chosen words from lowercase built-in 
+            Python functions over a ZeroMQ PUSH socket bound to the specified URL.
+   - `responder(url, function)`: This function performs a string operation (specified by the `function` argument, which can 
+            be `str.upper` or `str.lower`) on each word received via a ZeroMQ REP socket bound to the specified URL and 
+            sends the modified word back.
+   - `processor(n, fountain_url, responder_urls)`: This function reads words as they are produced by connecting 
+            to the fountain URL, processes them by sending each word to responder URLs for string operation, and 
+            prints the processed words along with the processor number (`n`).
+   - `start_thread(function, *args)`: This function starts a new thread for the given `function` with optional arguments `args`.
+
+4. Starting Threads:
+   - Threads are started for the fountain, two responders (one for uppercase and one for lowercase conversion), and three 
+    processors (each assigned a different integer) using the `start_thread` function.
+
+5. Running the Application:
+   - The fountain produces a stream of words, the responders process them (either converting to uppercase or lowercase), and 
+      the processors receive and print the processed words.
+   - The processors are connected to both responder URLs to evenly distribute the workload among the uppercase and lowercase responders.
+
+6. Sleeping:
+   - The script sleeps for 30 seconds before exiting to allow time for processing.
+
+In summary, this script demonstrates how multiple threads can communicate via message queues using ZeroMQ. 
+It simulates a scenario where a fountain produces words, responders process them, and processors consume and print the processed words, 
+  showcasing a simple message queue pattern for distributing workload among multiple workers.
+
+
+
+
+
+  
