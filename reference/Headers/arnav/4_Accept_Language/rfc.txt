@@ -1,0 +1,163 @@
+                14.4 Accept-Language
+
+The Accept-Language request-header field is similar to Accept, but
+   restricts the set of natural languages that are preferred as a
+   response to the request. Language tags are defined in section 3.10.
+
+
+
+--->>>   White space is not allowed within the tag and all tags are case-
+   insensitive. The name space of language tags is administered by the
+   IANA. Example tags include:
+
+
+ Each language-range MAY be given an associated quality value which
+   represents an estimate of the users preference for the languages
+   specified by that range. The quality value defaults to "q=1". For
+   example,
+
+       Accept-Language: da, en-gb;q=0.8, en;q=0.7
+
+   would mean: "I prefer Danish, but will accept British English and
+   other types of English."
+
+A language-range matches a language-tag if
+   it exactly equals the tag, or if it exactly equals a prefix of the
+   tag such that the first tag character following the prefix is "-".
+   The special range "*", if present in the Accept-Language field,
+   matches every tag not matched by any other range present in the
+   Accept-Language field.
+
+
+
+------------------------------------------------------------------------------
+This note addresses how prefix matching works with language tags in the context of HTTP headers, 
+particularly `Accept-Language`. The `Accept-Language` header is used by HTTP clients to specify the preferred 
+languages for the response.
+
+#Language Tags and Prefix Matching
+
+Language tags follow a specific format defined by BCP 47 (e.g., `en`, `en-US`, `fr`, `fr-CA`). 
+  Prefix matching in this context means that a more general language tag can match a more specific one.
+
+#Prefix Matching Rule
+Prefix matching allows a language tag to match more specific tags that begin with the same sequence. 
+    For example, `en` (English) can match `en-US` (American English) and `en-GB` (British English).
+
+#Important Clarification
+
+The note clarifies that using a prefix matching rule does not necessarily mean that understanding a language with a certain 
+tag implies understanding all languages with tags for which this tag is a prefix. This means:
+
+- Example: If a user understands `en` (general English), it does not automatically mean they understand `en-US` (American English) 
+      or `en-GB` (British English).
+- Purpose of Prefix Rule: The prefix rule is there to provide flexibility and to allow matching based on prefixes if 
+        it makes sense, not to enforce a strict understanding relationship between languages and their more specific forms.
+
+#Why This Clarification is Important
+
+1. Real-World Scenarios*: Language understanding is complex. 
+      Just because someone understands a general language doesnt mean they understand all its dialects or regional variants.
+   - Example: A person fluent in British English (`en-GB`) may not understand all nuances of American English (`en-US`), even 
+        though `en-GB` and `en-US` share the `en` prefix.
+
+2. Implementation Flexibility: The prefix rule provides a way to use more general tags to match more specific ones 
+      if the client's language preferences are broad.
+   - Example: If a client prefers `fr` (French), they may accept content in `fr-CA` (Canadian French) or `fr-FR` 
+        (French as spoken in France), but this should not be assumed without further context.
+
+#Practical Implications
+
+When a server receives an `Accept-Language` header:
+
+- Matching Logic: It can use prefix matching to find a suitable response language.
+  - Example: A client with `Accept-Language: en` could receive content in `en-US` if no `en` content is available, 
+        but the server should not assume complete understanding.
+- Client Preferences: Clients can list specific language preferences to ensure they receive content in the exact variant they prefer.
+  - Example: `Accept-Language: en-GB, en;q=0.8` shows a preference for British English with a fallback to general English.
+
+#Summary
+
+The note emphasizes that while prefix matching is a useful tool for language negotiation in HTTP, 
+it does not imply that users who understand a general language tag will understand all its specific variants. 
+The rule allows for flexible use of language tags but should be applied with the understanding that linguistic comprehension 
+is nuanced and not strictly hierarchical based on tags.
+
+---------------------------------------------------------------------------------
+
+The language quality factor assigned to a language-tag by the
+   Accept-Language field is the quality value of the longest language-
+   range in the field that matches the language-tag. 
+
+If no language-
+   range in the field matches the tag, the language quality factor
+   assigned is 0. If no Accept-Language header is present in the
+   request, the server SHOULD assume that all languages are equally acceptable. If an
+   Accept-Language header is present, then all languages which are
+   assigned a quality factor greater than 0 are acceptable.
+
+
+It might be contrary to the privacy expectations of the user to send
+   an Accept-Language header with the complete linguistic preferences of
+   the user in every request. For a discussion of this issue, see
+   section 15.1.4.
+
+   As intelligibility is highly dependent on the individual user, it is
+   recommended that client applications make the choice of linguistic
+   preference available to the user. If the choice is not made
+   available, then the Accept-Language header field MUST NOT be given in
+   the request.
+
+
+
+
+
+Note: When making the choice of linguistic preference available to
+      the user, we remind implementors of  the fact that users are not
+      familiar with the details of language matching as described above,
+      and should provide appropriate guidance. As an example, users
+      might assume that on selecting "en-gb", they will be served any
+      kind of English document if British English is not available. A
+      user agent might suggest in such a case to add "en" to get the
+      best matching behavior.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Example Scenario
+
+    User Selection: A user selects "en-gb" (British English) as their preferred language.
+    User Assumption: The user might assume that if British English content is not available, any kind of English 
+          content (like American English) will be provided.
+    Reality: Without further configuration, selecting only "en-gb" might lead to a situation where no English content 
+          is served if specifically British English content is unavailable.
+
+Suggested Solution
+
+    Adding "en" for Broader Matching:
+        A user agent (such as a web browser) could suggest or automatically add the general "en" tag in addition to "en-gb".
+        This means the Accept-Language header would include both "en-gb" and "en".
+        Result: If British English is not available, any other English variant can be served.
+
+
+Practical Implementation
+User Agent Behavior
+
+    User Interface:
+        When a user selects "en-gb" as their preferred language, the user agent might display a message or provide an option:
+            "To ensure you receive English content even if British English is unavailable, consider adding 'en' as a fallback."
+
+    Automatic Addition:
+        Alternatively, the user agent might automatically add "en" without requiring user intervention:
+            If "en-gb" is selected, the Accept-Language header could be set to: Accept-Language: en-gb, en;q=0.8
+            This ensures a broader matching range while still prioritizing British English.
+
+
+The note advises implementors to assist users in setting their linguistic preferences by providing appropriate guidance. 
+Users might not understand the intricacies of language tags and matching, so suggesting the addition of broader language 
+tags (like "en" alongside "en-gb") ensures better matching behavior and improves the user experience. 
+This proactive approach helps users receive content in a language they understand, even if their specific variant is not available.
+
+
+
+
+
