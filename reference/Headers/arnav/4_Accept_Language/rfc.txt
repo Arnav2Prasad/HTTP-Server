@@ -66,6 +66,13 @@ tag implies understanding all languages with tags for which this tag is a prefix
    - Example: If a client prefers `fr` (French), they may accept content in `fr-CA` (Canadian French) or `fr-FR` 
         (French as spoken in France), but this should not be assumed without further context.
 
+
+Priority: The server will first look for content in British English (en-gb).
+Fallback: If British English is unavailable, the server will then consider any English content (en) with a 
+        slightly lower priority (q=0.8).
+
+
+
 #Practical Implications
 
 When a server receives an `Accept-Language` header:
