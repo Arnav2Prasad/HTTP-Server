@@ -1,0 +1,101 @@
+The Age response-header field conveys the sender's estimate of the
+      amount of time since the response (or its revalidation) was
+      generated at the origin server.
+
+
+A cached response is "fresh" if
+      its age does not exceed its freshness lifetime. Age values are
+      calculated as specified in section 13.2.3.
+
+
+Age values are non-negative decimal integers, representing time in
+      seconds.
+
+
+If a cache receives a value larger than the largest positive
+      integer it can represent, or if any of its age calculations
+      overflows, it MUST transmit an Age header with a value of
+      2147483648 (2^31). 
+
+
+An HTTP/1.1 server that includes a cache MUST
+      include an Age header field in every response generated from its
+      own cache. Caches SHOULD use an arithmetic type of at least 31
+      bits of range.
+
+
+----------------------------------------------------------------------------------------------
+The `Age` header in HTTP is used to communicate the approximate age of a cached response in seconds since it 
+was generated or revalidated at the origin server. 
+
+#Definition of `Age` Header
+
+The `Age` header field is defined as follows:
+
+            
+            Age = "Age" ":" age-value
+            age-value = delta-seconds
+
+
+- `age-value`: This is a non-negative decimal integer representing the age of the response in seconds.
+
+#Purpose of `Age` Header
+
+The `Age` header serves several purposes in HTTP caching:
+
+1. Cache Freshness: It helps determine if a cached response is still fresh and can be used to satisfy subsequent requests 
+          without revalidation.
+   
+2. Cache Revalidation: It assists caches in understanding how long ago the response was generated or revalidated at the origin server.
+
+
+
+#Calculating `Age` Values
+
+- Delta-seconds: This represents the time elapsed since the response was generated or revalidated. 
+    It is typically calculated by the cache based on the current time minus the time specified in the `Date` header of the response.
+
+
+
+#Handling Large Values
+
+The HTTP/1.1 specification provides guidance on how caches should handle large values for `Age`:
+
+- Overflow Condition: If a cache receives a value larger than the largest positive integer it can represent or if 
+      any of its age calculations cause an overflow, it must transmit an `Age` header with a value of `2147483648` (2^31).
+  
+- Reasoning: This large value serves as an indicator that an overflow condition occurred during age calculation or 
+        that the age exceeds the capacity of the cache's representation for integer values.
+
+
+
+
+#Requirements for Servers and Caches
+
+- HTTP/1.1 Servers with Caches: Servers that include a cache must include an `Age` header field in every 
+        response generated from their cache. This ensures that downstream caches and clients can properly understand the 
+        freshness and validity of cached responses.
+
+- Arithmetic Type: Caches are recommended to use an arithmetic type that supports at least 31 bits of range to handle `Age` 
+        values properly, especially to avoid overflow errors.
+
+#Practical Implications
+
+- Cache Communication: The `Age` header is crucial for caches to communicate the freshness of cached responses accurately.
+  
+- Handling Large Values: Caches encountering large values or overflow conditions must handle them gracefully by
+        transmitting the specified `2147483648` value in the `Age` header.
+
+
+
+#Summary
+
+The `Age` header in HTTP is essential for caching mechanisms to manage and communicate the age of cached responses. 
+It ensures that caches can effectively determine if a response is fresh enough to serve without revalidation. 
+The specification's provisions regarding large values and overflow conditions help maintain consistency and reliability 
+in caching behavior across different implementations.
+
+
+
+
+
