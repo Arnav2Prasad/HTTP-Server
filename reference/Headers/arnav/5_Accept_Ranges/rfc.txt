@@ -1,0 +1,134 @@
+            14.5 Accept-Ranges
+
+        < SERVER >
+
+ The Accept-Ranges response-header field allows the server to
+      indicate its acceptance of range requests for a resource:
+
+          Accept-Ranges     = "Accept-Ranges" ":" acceptable-ranges
+          acceptable-ranges = 1#range-unit | "none"
+
+      Origin servers that accept byte-range requests MAY send
+
+          Accept-Ranges: bytes
+
+      but are not required to do so. Clients MAY generate byte-range
+      requests without having received this header for the resource
+      involved. Range units are defined in section 3.12.
+
+      Servers that do not accept any kind of range request for a
+      resource MAY send
+
+          Accept-Ranges: none
+
+      to advise the client not to attempt a range request.
+
+-----------------------------------------------------------------------------------------------------------
+
+The `Accept-Ranges` response header field in HTTP is used by servers to inform clients whether they support range requests 
+for a particular resource.
+
+#`Accept-Ranges` Header Field
+
+#Definition and Syntax
+
+
+        Accept-Ranges     = "Accept-Ranges" ":" acceptable-ranges
+        acceptable-ranges = 1#range-unit | "none"
+
+
+- `Accept-Ranges`: The header field name.
+- `acceptable-ranges`: This can either be one or more range units (e.g., `bytes`) or the value `none`.
+
+#Range Units
+
+- `1#range-unit`: This means one or more range units, such as `bytes`. Range units are defined types of ranges 
+        that can be requested. In HTTP, the most common range unit is `bytes`.
+- `none`: This value indicates that the server does not support any kind of range requests for the resource.
+
+
+
+#Purpose and Usage
+
+#Indicating Support for Range Requests
+
+- `Accept-Ranges: bytes`: When a server sends this header, it indicates that it supports byte-range requests. 
+      Byte-range requests allow a client to request a specific portion (range) of a resource, which is particularly useful 
+      for large files where a client may need only a part of the file, such as when resuming interrupted downloads or streaming media.
+
+#Optional Nature
+
+- Optional Header: Origin servers that support byte-range requests may include this header in their responses but are not 
+      required to do so. Even without this header, clients are still allowed to make byte-range requests.
+
+
+
+#Clients and Byte-Range Requests
+
+- Client Behavior: Clients may generate byte-range requests even if they haven’t received an `Accept-Ranges` 
+    header indicating support. The absence of this header does not mean byte-range requests are unsupported; 
+    it simply means the server did not advertise its capability.
+
+            < ADVERTISE >
+
+
+
+
+#Indicating Lack of Support
+
+- `Accept-Ranges: none`: When a server sends this header, it informs the client that it does not support any range requests 
+      for the resource. This advises the client not to attempt any range requests for this resource, as they will not be honored.
+
+#Examples
+
+#Example 1: Server Supports Byte Ranges
+
+If a server supports byte-range requests, it might send:
+
+                Accept-Ranges: bytes
+
+
+This informs the client that it can request specific byte ranges of the resource.
+
+
+
+#Example 2: Server Does Not Support Range Requests
+
+If a server does not support any range requests, it might send:
+
+
+              Accept-Ranges: none
+
+
+This tells the client that any attempt to request a range of the resource will be futile.
+
+#Range Units in Section 3.12
+
+- Range Units: These are defined in section 3.12 of the HTTP specification. T
+      The most commonly used range unit is `bytes`, but other range units may also be defined and used in specific contexts.
+
+#Practical Implications
+
+- Efficient Resource Usage: Range requests enable clients to efficiently retrieve parts of a large resource, 
+            which is useful for large downloads, streaming, or resuming interrupted downloads.
+- Server Communication: By using the `Accept-Ranges` header, servers can communicate their capabilities and limitations 
+        regarding range requests, guiding client behavior and optimizing interactions.
+
+#Summary
+
+The `Accept-Ranges` header is a mechanism for servers to inform clients about their support for range requests.
+  Servers that support byte-range requests may include `Accept-Ranges: bytes`, while those that do not support any range requests 
+  may use `Accept-Ranges: none`. 
+This helps clients understand how they can interact with the server regarding partial content retrieval.
+
+
+
+
+
+
+  
+
+
+  
+
+
