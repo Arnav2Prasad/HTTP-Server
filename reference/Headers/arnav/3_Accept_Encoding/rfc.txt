@@ -1,0 +1,184 @@
+            14.3 Accept-Encoding
+
+STATUS CODE : 406
+
+   The Accept-Encoding request-header field is similar to Accept, but
+   restricts the content-codings (section 3.5) that are acceptable in
+   the response.
+
+
+Examples of its use are:
+
+       Accept-Encoding: compress, gzip
+       Accept-Encoding:
+       Accept-Encoding: *
+       Accept-Encoding: compress;q=0.5, gzip;q=1.0
+       Accept-Encoding: gzip;q=1.0, identity; q=0.5, *;q=0
+
+
+A server tests whether a content-coding is acceptable, according to
+   an Accept-Encoding field, using these rules:
+
+      1. If the content-coding is one of the content-codings listed in
+         the Accept-Encoding field, then it is acceptable, unless it is
+         accompanied by a qvalue of 0. (As defined in section 3.9, a
+         qvalue of 0 means "not acceptable.")
+
+      2. The special "*" symbol in an Accept-Encoding field matches any
+         available content-coding not explicitly listed in the header
+         field.
+
+      3. If multiple content-codings are acceptable, then the acceptable
+         content-coding with the highest non-zero qvalue is preferred.
+
+      4. The "identity" content-coding is always acceptable, unless
+         specifically refused because the Accept-Encoding field includes
+         "identity;q=0", or because the field includes "*;q=0" and does
+         not explicitly include the "identity" content-coding. If the
+         Accept-Encoding field-value is empty, then only the "identity"
+         encoding is acceptable.
+
+
+ If an Accept-Encoding field is present in a request, and if the
+   server cannot send a response which is acceptable according to the
+   Accept-Encoding header, then the server SHOULD send an error response
+   with the 406 (Not Acceptable) status code.
+
+
+If no Accept-Encoding field is present in a request, the server MAY
+   assume that the client will accept any content coding. In this case,
+   if "identity" is one of the available content-codings, then the
+   server SHOULD use the "identity" content-coding, unless it has
+   additional information that a different content-coding is meaningful
+   to the client.
+
+
+Note: If the request does not include an Accept-Encoding field,
+      and if the "identity" content-coding is unavailable, then
+      content-codings commonly understood by HTTP/1.0 clients (i.e.,"gzip" and "compress") are preferred; some older clients
+      improperly display messages sent with other content-codings.  
+
+The server might also make this decision based on information about the particular user-agent or client.
+
+      Note: Most HTTP/1.0 applications do not recognize or obey qvalues
+      associated with content-codings. This means that qvalues will not
+      work and are not permitted with x-gzip or x-compress.
+
+
+----------------------------------------------------------------------------------------------------
+
+Particularly focusing on the "identity" content-coding. 
+
+#`Accept-Encoding` Header Field
+
+The `Accept-Encoding` header field is used by HTTP clients to indicate which content-codings they can handle. 
+Content-codings are mechanisms for encoding data, such as `gzip`, `compress`, `deflate`, and `identity`.
+
+#"identity" Content-Coding
+
+- "identity": This content-coding indicates that no encoding is applied; the content is in its original form.
+
+#Key Points in the Passage
+
+1. "identity" is Always Acceptable by Default:
+   - By default, the "identity" content-coding is considered acceptable unless explicitly refused.
+   
+2. Explicit Refusal of "identity":
+   - The "identity" content-coding can be explicitly refused in two ways:
+     - `identity;q=0`: This specifically states that the "identity" content-coding is not acceptable.
+     - `*;q=0` without explicitly including "identity"**: 
+        This means all content-codings are unacceptable unless specifically mentioned. 
+      If "identity" is not explicitly included, it is also considered unacceptable.
+
+3. Empty `Accept-Encoding` Field:
+   - If the `Accept-Encoding` header field is empty, it implies that the only acceptable content-coding is "identity".
+
+#Examples and Scenarios
+
+#### Example 1: Default Behavior
+
+If no `Accept-Encoding` header is sent:
+
+
+              Accept-Encoding: 
+
+
+- Behavior: The server interprets this as the client only accepting the "identity" content-coding (i.e., no encoding).
+
+
+
+
+#Example 2: Explicit Acceptance
+
+If the client accepts gzip and identity:
+
+
+          Accept-Encoding: gzip, identity
+
+- Behavior: The server can send a response encoded with `gzip` or in the original form (`identity`).
+
+
+
+
+
+#Example 3: Refusal of "identity"
+
+If the client refuses the "identity" content-coding:
+
+          Accept-Encoding: gzip, identity;q=0
+
+
+- Behavior: The server should not send the content in the original form. 
+        It should use `gzip` or any other acceptable encoding specified.
+
+
+
+
+#Example 4: Refusal of All Encodings Including "identity"
+
+If the client refuses all encodings, including "identity":
+
+
+            Accept-Encoding: *;q=0
+
+
+- Behavior: The server should not send the content encoded with any content-coding, including "identity". T
+      This effectively means the server cannot fulfill the request as no acceptable encoding is specified.
+
+
+
+
+#Example 5: Refusal of All Encodings Except a Specific One
+
+If the client refuses all encodings except for `gzip`:
+
+
+          Accept-Encoding: *;q=0, gzip;q=1
+
+
+- Behavior: The server should only send the content encoded with `gzip`. 
+    The "identity" content-coding and all other encodings are not acceptable.
+
+
+
+#Summary
+
+The "identity" content-coding (no encoding) is always acceptable by default unless explicitly refused. 
+This refusal can be done by setting `identity;q=0` or using a wildcard `*;q=0` without explicitly allowing "identity". 
+If the `Accept-Encoding` field is empty, it indicates that only the "identity" encoding is acceptable. 
+This mechanism allows clients to precisely control which content-encodings they can handle, ensuring the server 
+sends responses in a compatible format.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
