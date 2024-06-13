@@ -1,0 +1,13 @@
+                                                14.8 Authorization
+
+ A user agent that wishes to authenticate itself with a server--
+      usually, but not necessarily, after receiving a 401 response--does
+      so by including an Authorization request-header field with the
+      request.  The Authorization field value consists of credentials
+      containing the authentication information of the user agent for
+      the realm of the resource being requested.
+
+          Authorization  = "Authorization" ":" credentials
+
+
+
