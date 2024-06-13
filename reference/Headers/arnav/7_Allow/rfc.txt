@@ -1,0 +1,98 @@
+                                  14.7 Allow
+
+CLIENT
+STATUS CODE :  Mandatory in 405 Responses:
+
+
+The Allow entity-header field lists the set of methods supported
+      by the resource identified by the Request-URI. The purpose of this
+      field is strictly to inform the recipient of valid methods
+      associated with the resource. An Allow header field MUST be
+      present in a 405 (Method Not Allowed) response.
+
+          Allow   = "Allow" ":" #Method
+
+      Example of use:
+
+          Allow: GET, HEAD, PUT
+
+
+This field cannot prevent a client from trying other methods.
+      However, the indications given by the Allow header field value
+      SHOULD be followed.
+
+
+The actual set of allowed methods is defined
+      by the origin server at the time of each request.
+
+
+The Allow header field MAY be provided with a PUT request to
+      recommend the methods to be supported by the new or modified
+      resource. The server is not required to support these methods and
+      SHOULD include an Allow header in the response giving the actual
+      supported methods.
+
+
+A proxy MUST NOT modify the Allow header field even if it does not
+      understand all the methods specified, since the user agent might
+      have other means of communicating with the origin server.
+
+
+------------------------------------------------------------------------------------------------
+
+
+#Purpose of the Allow Header
+The `Allow` header field is used to indicate the HTTP methods that are supported by the resource identified by the 
+Request-URI (the specific URL being accessed).
+
+#Key Points
+1. Informational Role: 
+   - The `Allow` header informs the client about the valid methods (like GET, POST, PUT, DELETE) that can be 
+      used with the resource.
+   
+2. Mandatory in 405 Responses:
+   - When a server responds with a `405 Method Not Allowed` status code (meaning the method used in the request is not 
+    allowed for the resource), it must include the `Allow` header to inform the client which methods are allowed.
+
+3. Syntax:
+   - The syntax for the `Allow` header is: `Allow: method1, method2, ...`.
+   - Example: `Allow: GET, HEAD, PUT`.
+
+4. Non-Restrictive:
+   - The `Allow` header does not prevent the client from trying other methods. 
+        Its simply an indication of what is currently supported.
+   - Clients should follow the methods listed in the `Allow` header, but they can still attempt other 
+                methods (though they might not be successful).
+
+5. Dynamic Nature:
+   - The set of allowed methods is determined by the server at the time of each request, meaning it can change.
+
+6. Use with PUT Requests:
+   - When a client sends a PUT request (typically to create or update a resource), it can include 
+        an `Allow` header to suggest which methods should be supported for the new or modified resource.
+   - The server, however, is not obligated to follow these suggestions and should include an `Allow` header in 
+          its response indicating the actual supported methods.
+
+
+
+                                                                         
+#Example
+Suppose a client tries to DELETE a resource but the server does not allow this method for the resource. 
+The server might respond with:
+
+                  HTTP/1.1 405 Method Not Allowed
+                  Allow: GET, HEAD, PUT
+
+This response indicates that while DELETE is not allowed, the methods GET, HEAD, and PUT are permitted for this resource.
+
+#Summary
+The `Allow` header is a mechanism for servers to communicate the allowed HTTP methods for a resource. 
+It plays a crucial role in `405 Method Not Allowed` responses by guiding clients on how they can interact with the
+  resource, while still allowing flexibility for clients to try other methods if they choose.
+
+
+
+
+
+
+
