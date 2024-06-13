@@ -1,0 +1,84 @@
+QUESTION : So if i want a persistant connection with example.com I will send connection : keep-alive but this connection will 
+      remain persistant only with the client and the next hop? and this hop will always make new connections with the s
+      erver?is it right??
+
+
+ANSWER :
+Your understanding is close but needs a slight adjustment regarding how persistent connections work with proxies and servers.
+
+#Persistent Connections with `Connection: keep-alive`
+
+When you send a request with `Connection: keep-alive` to example.com through a proxy, here's what happens:
+
+1. Client to Proxy:
+   - The client includes `Connection: keep-alive` in the request.
+   - This indicates that the client wants to keep the connection to the proxy open for possible future requests.
+
+2. Proxy Behavior:
+   - The proxy reads the `Connection: keep-alive` header and understands that the client wants to keep the connection open.
+   - The proxy removes the `Connection: keep-alive` header before forwarding the request to the server (example.com) because 
+           connection-specific headers are not meant to be forwarded.
+   - The proxy can then decide whether to open a new connection to the server or reuse an existing one, 
+         if it has one open. This behavior depends on the proxy's own connection management policy and 
+         whether it also uses persistent connections.
+
+3. Proxy to Server:
+   - If the proxy uses persistent connections, it might send the request to the server with `Connection: keep-alive` to keep 
+         that connection open as well.
+   - The server can respond with `Connection: keep-alive` to indicate it will keep the connection open for further requests from the proxy.
+
+
+
+#Persistent Connections in Practice
+
+- Client-Proxy Connection:
+  - The client maintains a persistent connection with the proxy, allowing it to send multiple requests over the same connection.
+
+- Proxy-Server Connection:
+  - The proxy may maintain a separate persistent connection with the server, allowing it to send multiple requests 
+          to the server over the same connection.
+  - The proxy handles connection management between the client and itself, as well as between itself and the server.
+
+
+
+
+#Example Scenario
+
+1. Client Request:
+   
+                       GET /example HTTP/1.1
+                       Host: www.example.com
+                       Connection: keep-alive
+  
+   - The client indicates it wants to keep the connection with the proxy open.
+
+2. Proxy Forwarding:
+   - The proxy receives the request, processes it, and forwards it to the server.
+   - The forwarded request to the server might look like:
+
+                     GET /example HTTP/1.1
+                     Host: www.example.com
+                     Connection: keep-alive
+
+   - If the proxy also wants to keep the connection with the server open, it includes `Connection: keep-alive`.
+
+3. Server Response:
+   - The server responds with:
+     
+                       HTTP/1.1 200 OK
+                       Connection: keep-alive
+    
+   - This indicates the server will keep the connection open for further requests from the proxy.
+
+4. Proxy Response to Client:
+   - The proxy forwards the response back to the client, including the `Connection: keep-alive` header if it wants to keep the 
+           connection with the client open.
+
+#Summary
+
+Your initial statement was almost correct. 
+The `Connection: keep-alive` header ensures a persistent connection between the client and the proxy. 
+The proxy then manages its connection to the server independently, potentially also using persistent connections. 
+This way, both the client-proxy connection and the proxy-server connection can be persistent, but they are managed separately.
+
+
