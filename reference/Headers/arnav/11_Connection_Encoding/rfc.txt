@@ -1,0 +1,18 @@
+                  14.11 Content-Encoding
+
+
+The Content-Encoding entity-header field is used as a modifier to the
+   media-type. When present, its value indicates what additional content
+   codings have been applied to the entity-body, and thus what decoding
+   mechanisms must be applied in order to obtain the media-type
+   referenced by the Content-Type header field. Content-Encoding is
+   primarily used to allow a document to be compressed without losing
+   the identity of its underlying media type.
+
+       Content-Encoding  = "Content-Encoding" ":" 1#content-coding
+
+   Content codings are defined in section 3.5. An example of its use is
+
+       Content-Encoding: gzip
+
+
