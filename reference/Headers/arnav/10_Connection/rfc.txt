@@ -1,0 +1,160 @@
+                                    14.10 Connection
+
+
+The Connection general-header field allows the sender to specify
+   options that are desired for that particular connection and MUST NOT
+   be communicated by proxies over further connections.
+
+   The Connection header has the following grammar:
+
+       Connection = "Connection" ":" 1#(connection-token)
+       connection-token  = token
+
+
+
+HTTP/1.1 defines the "close" connection option for the sender to
+   signal that the connection will be closed after completion of the
+   response. For example,
+
+       Connection: close
+
+   in either the request or the response header fields indicates that
+   the connection SHOULD NOT be considered `persistent' (section 8.1)
+   after the current request/response is complete.
+
+
+A system receiving an HTTP/1.0 (or lower-version) message that
+   includes a Connection header MUST, for each connection-token in this
+   field, remove and ignore any header field(s) from the message with
+   the same name as the connection-token. This protects against mistaken
+   forwarding of such header fields by pre-HTTP/1.1 proxies.
+
+---------------------------------------------------------------------------------------------------------------------------
+
+The provided text explains how HTTP/1.1 proxies should handle the `Connection` header field when forwarding messages. 
+
+
+#Purpose and Role of the `Connection` Header
+The `Connection` header field is used to control options that are specific to the current connection and must not be forwarded by proxies.
+
+#Key Points
+
+1. Parsing by Proxies:
+   - HTTP/1.1 proxies are required to parse the `Connection` header field before forwarding any messages. 
+      This ensures that the proxies understand which options are specific to the connection.
+
+2. Handling Connection-Tokens:
+   - The `Connection` header contains connection-tokens, which are indicators for header fields that should not be forwarded.
+   - For each connection-token listed in the `Connection` header, the proxy must remove any header field(s) from the 
+        message that have the same name as the connection-token.
+
+
+   - Example:
+
+                 Connection: Keep-Alive
+                 Keep-Alive: timeout=5, max=100
+
+     In this case, the proxy would remove the `Keep-Alive` header field before forwarding the message.
+
+3. Signaling Connection Options:
+   - Connection options are indicated by the presence of connection-tokens in the `Connection` header, 
+          not by any additional header fields. 
+    This means the tokens themselves are the indicators, regardless of whether the corresponding additional header fields are present.
+   - If there are no parameters associated with a connection option, the corresponding header field may not be sent at all.
+
+4. Exclusion of End-to-End Headers:
+   - The `Connection` header must not include end-to-end headers. 
+      End-to-end headers are those that are intended to be passed unchanged to the final recipient (e.g., `Cache-Control`).
+   - Including such headers in the `Connection` header would be incorrect because they are meant to persist 
+        across multiple hops and should not be treated as connection-specific.
+
+# Example Scenario
+Imagine a client sends a request with:
+
+          GET /example HTTP/1.1
+          Host: www.example.com
+          Connection: Keep-Alive, Foo
+          Keep-Alive: timeout=5, max=100
+          Foo: bar
+
+When a proxy receives this request:
+1. It parses the `Connection` header and identifies the connection-tokens `Keep-Alive` and `Foo`.
+2. The proxy then removes the `Keep-Alive` and `Foo` headers from the message.
+3. The forwarded request might look like:
+
+               GET /example HTTP/1.1
+               Host: www.example.com
+
+
+#Summary
+The `Connection` header is used to specify options that are specific to a particular connection and should not be 
+forwarded by proxies. Proxies must remove headers that match the connection-tokens listed in the `Connection` header and 
+must not include end-to-end headers in the `Connection` header. 
+This ensures that connection-specific information does not inadvertently propagate beyond its intended scope.
+
+
+
+-----------------------------------------------------------------------------------------
+QUESTION : why proxies remove connection header?
+
+Proxies remove the `Connection` header and any headers listed in its value to ensure proper handling of connection-specific 
+options and to maintain the integrity of end-to-end communication. 
+
+#Connection-Specific Headers
+The `Connection` header in HTTP/1.1 is used to specify options that are specific to the current connection 
+between two immediate nodes (e.g., between the client and the proxy, or between the proxy and the server). 
+These options are not meant to be forwarded to the next node in the chain because they are only relevant to the current connection.
+
+#Reasons for Removing the `Connection` Header and Listed Headers
+
+1. Connection Options Are Not End-to-End:
+   - Connection-specific headers are meant to apply only to a single hop in the network (e.g., client to proxy, proxy to server).
+   - Forwarding these headers could cause confusion or unintended behavior at the next hop, 
+        which may not understand or support these headers.
+
+2. Preventing Header Propagation:
+   - To avoid connection-specific information being propagated to subsequent nodes, 
+        proxies must remove any headers listed in the `Connection` header.
+   - For example, headers like `Keep-Alive`, `Proxy-Connection`, or custom connection options listed in the `
+        Connection` header are meant only for managing the connection at the current hop.
+
+3. Security and Integrity:
+   - Removing the `Connection` header and its associated headers helps prevent potential security issues where 
+          connection-specific information could leak to unintended parts of the network.
+   - It also maintains the integrity of the end-to-end communication by ensuring that only headers intended to be forwarded are 
+        sent to the next node.
+
+4. RFC Compliance:
+   - The HTTP/1.1 specification (RFC 7230) mandates that proxies must parse and remove connection-specific headers to 
+      comply with the protocols rules. This ensures a consistent and predictable behavior across different implementations of HTTP.
+
+### Example Scenario
+
+Consider a client sending the following request to a proxy:
+```
+GET /example HTTP/1.1
+Host: www.example.com
+Connection: Keep-Alive, Foo
+Keep-Alive: timeout=5, max=100
+Foo: bar
+```
+- The `Connection: Keep-Alive, Foo` header indicates that `Keep-Alive` and `Foo` are connection-specific and should not be forwarded.
+- The proxy, upon receiving this request, will remove the `Keep-Alive` and `Foo` headers before forwarding the request to the server.
+- The forwarded request would then look like this:
+  ```
+  GET /example HTTP/1.1
+  Host: www.example.com
+  ```
+- This ensures that only headers relevant to the end-to-end request (e.g., `Host`) are sent forward, and connection-specific headers are stripped out.
+
+### Summary
+Proxies remove the `Connection` header and any headers listed in its value to ensure that connection-specific 
+options do not propagate beyond their intended scope, to maintain the integrity and security of end-to-end communication, 
+and to comply with HTTP/1.1 protocol requirements. 
+
+This helps ensure that each hop in the network correctly handles its 
+own connection management without interfering with other nodes.
+
+
+
+
