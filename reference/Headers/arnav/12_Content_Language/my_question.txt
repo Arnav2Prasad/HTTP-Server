@@ -1,0 +1,44 @@
+QUESTION : so if no language present in the accept language is present , then the language thats in info will be displayed to client??
+
+ANSWER:
+
+Yes, that's correct! 
+When a web server receives a request from a client, it checks the `Accept-Language` header to determine 
+the preferred language(s) of the client. If the server doesn't find any language that it supports in the `Accept-Language` 
+header, it can fall back to a default language, often specified in the server's configuration or in the application code. 
+This default language, sometimes referred to as the "fallback language," will be used for content delivery to 
+the client in the absence of a preferred language from the client's side.
+
+
+Here's an example to illustrate the concept:
+
+Let's say you have a website with content available in English, Spanish, and French. 
+When a client (such as a web browser) makes a request to your server to access your website, 
+it sends an `Accept-Language` header indicating its preferred languages, ordered by priority. For instance:
+
+                
+                Accept-Language: en-US,en;q=0.9,es;q=0.8,fr;q=0.7
+
+
+In this example, the client prefers English (en) first, then Spanish (es), and finally French (fr).
+
+
+
+Now, let's consider a scenario where the client's preferred languages are not supported by your website. 
+For instance, the client sends the following `Accept-Language` header:
+
+
+            Accept-Language: de-DE,de;q=0.9,it;q=0.8
+
+
+In this case, the client prefers German (de) first, followed by Italian (it). 
+Since your website doesn't support these languages, the server needs to decide what language to display.
+
+The server can fall back to a default language specified in its configuration or application code. 
+Let's say the default language is English. In this scenario, since none of the client's preferred languages are supported, the server 
+would respond with content in English.
+
+So, even though the client prefers German or Italian, it will receive content in English because that's the fallback language 
+configured on the server.
+
+
