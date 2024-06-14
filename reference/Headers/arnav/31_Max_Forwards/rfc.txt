@@ -1,0 +1,128 @@
+                        14.31 Max-Forwards
+
+The Max-Forwards request-header field provides a mechanism with the
+   TRACE (section 9.8) and OPTIONS (section 9.2) methods to limit the
+   number of proxies or gateways that can forward the request to the
+   next inbound server. This can be useful when the client is attempting
+   to trace a request chain which appears to be failing or looping in
+   mid-chain.
+
+Max-Forwards   = "Max-Forwards" ":" 1*DIGIT
+
+   The Max-Forwards value is a decimal integer indicating the remaining
+   number of times this request message may be forwarded.
+
+Each proxy or gateway recipient of a TRACE or OPTIONS request
+   containing a Max-Forwards header field MUST check and update its
+   value prior to forwarding the request. If the received value is zero
+   (0), the recipient MUST NOT forward the request; instead, it MUST
+   respond as the final recipient. If the received Max-Forwards value is
+   greater than zero, then the forwarded message MUST contain an updated
+   Max-Forwards field with a value decremented by one (1).
+
+The Max-Forwards header field MAY be ignored for all other methods
+   defined by this specification and for any extension methods for which
+   it is not explicitly referred to as part of that method definition.
+
+----------------------------------------------------------------------------------------
+
+The `Max-Forwards` header field in HTTP is used to limit the number of times a request can be forwarded by proxies or gateways. 
+This header field is particularly relevant for the TRACE and OPTIONS methods, which are often used for diagnostic purposes. 
+
+#Purpose of `Max-Forwards`
+
+1. Limiting Forwarding:
+   - The `Max-Forwards` header is used to control the number of times a request can be forwarded through 
+      proxies or gateways before it reaches the final destination server. This helps prevent infinite loops in proxy 
+      configurations and controls the propagation of requests.
+
+2. Diagnostic Tools:
+   - The TRACE and OPTIONS methods can benefit from `Max-Forwards` as they are used for diagnostics. 
+    By controlling the number of forwards, these methods can help trace the path a request takes or determine the capabilities of 
+      intermediate servers without overwhelming the network.
+
+
+#How `Max-Forwards` Works
+
+- Initial Value:
+  - When a client sends a request, it includes the `Max-Forwards` header with a specific integer value 
+      indicating the maximum number of forwards allowed.
+  
+- Decrementing:
+  - Each proxy or gateway that forwards the request decrements the `Max-Forwards` value by one. 
+      If the value reaches zero, the request is not forwarded further and is processed by the current server.
+
+- Handling Zero:
+  - When a server receives a request with `Max-Forwards` set to zero, it processes the request without forwarding it. 
+    For example, in the case of a TRACE request, the server will respond with the request message it received.
+
+
+
+#Examples
+
+#Example 1: Using TRACE with `Max-Forwards`
+
+A client wants to trace the route to the server, ensuring the request is not forwarded more than 5 times:
+
+Client’s TRACE Request:
+
+          TRACE / HTTP/1.1
+          Host: example.com
+          Max-Forwards: 5
+
+
+Behavior:
+- Each proxy or gateway that forwards this request will decrement the `Max-Forwards` value by one.
+- If the value of `Max-Forwards` reaches zero, the server that receives the request will respond with a 200 OK status and 
+      include the received request message in the body.
+
+Response When `Max-Forwards` Reaches Zero:
+
+        HTTP/1.1 200 OK
+        Content-Type: message/http
+        
+        TRACE / HTTP/1.1
+        Host: example.com
+        Max-Forwards: 0
+
+
+#Example 2: Using OPTIONS with `Max-Forwards`
+
+A client wants to determine the supported methods on the path to a server, ensuring the request is not forwarded more than 10 times:
+
+Client’s OPTIONS Request:
+        
+        OPTIONS * HTTP/1.1
+        Host: example.com
+        Max-Forwards: 10
+
+
+Behavior:
+- Each proxy or gateway that forwards this request will decrement the `Max-Forwards` value by one.
+- When the value reaches zero, the server processes the request locally and responds with the supported methods.
+
+Response When `Max-Forwards` Reaches Zero:
+
+            HTTP/1.1 200 OK
+            Allow: OPTIONS, GET, HEAD, POST
+
+
+#Summary
+
+- Header Definition:
+  - `Max-Forwards` is a request header used to limit the number of times a request can be forwarded by proxies or gateways.
+  
+- Initial Value and Decrementing:
+  - The client sets the initial value. Each forwarding server decrements this value by one until it reaches zero.
+  
+- Handling Zero:
+  - When `Max-Forwards` is zero, the request is processed by the current server without being forwarded further.
+
+- Use Cases:
+  - Useful for TRACE and OPTIONS methods to trace the path and determine capabilities of servers without excessive forwarding.
+
+The `Max-Forwards` header helps manage and diagnose network paths, ensuring that requests do not loop indefinitely and providing 
+control over the propagation of diagnostic requests.
+
+
+
