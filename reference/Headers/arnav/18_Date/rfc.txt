@@ -1,0 +1,84 @@
+              14.18 Date
+
+
+The Date general-header field represents the date and time at which
+   the message was originated, having the same semantics as orig-date in
+   RFC 822. The field value is an HTTP-date, as described in section
+   3.3.1; it MUST be sent in RFC 1123 [8]-date format.
+
+       Date  = "Date" ":" HTTP-date
+
+   An example is
+
+       Date: Tue, 15 Nov 1994 08:12:31 GMT
+
+   Origin servers MUST include a Date header field in all responses,
+   except in these cases:
+
+
+      1. If the response status code is 100 (Continue) or 101 (Switching
+         Protocols), the response MAY include a Date header field, at
+         the server's option.
+
+      2. If the response status code conveys a server error, e.g. 500
+         (Internal Server Error) or 503 (Service Unavailable), and it is
+         inconvenient or impossible to generate a valid Date.
+
+      3. If the server does not have a clock that can provide a
+         reasonable approximation of the current time, its responses
+         MUST NOT include a Date header field. In this case, the rules
+         in section 14.18.1 MUST be followed.
+
+
+A received message that does not have a Date header field MUST be
+   assigned one by the recipient if the message will be cached by that
+   recipient or gatewayed via a protocol which requires a Date.
+
+An HTTP
+   implementation without a clock MUST NOT cache responses without
+   revalidating them on every use. An HTTP cache, especially a shared
+   cache, SHOULD use a mechanism, such as NTP [28], to synchronize its
+   clock with a reliable external standard.
+
+Clients SHOULD only send a Date header field in messages that include
+   an entity-body, as in the case of the PUT and POST requests, and even
+   then it is optional. A client without a clock MUST NOT send a Date
+   header field in a request.
+
+The HTTP-date sent in a Date header SHOULD NOT represent a date and
+   time subsequent to the generation of the message. It SHOULD represent
+   the best available approximation of the date and time of message
+   generation, unless the implementation has no means of generating a
+   reasonably accurate date and time. In theory, the date ought to
+   represent the moment just before the entity is generated. In
+   practice, the date can be generated at any time during the message
+   origination without affecting its semantic value.
+
+
+----------------------------------------------------------------------------------------------------------------------
+
+
+1. Assignment of Date Header Field: If a received message doesn't have a Date header field, the recipient must assign one, 
+      particularly if the message will be cached or gatewayed via a protocol that requires a Date. 
+    This ensures that all HTTP messages have a timestamp for proper handling and caching.
+
+2. Caching Without Clock: An HTTP implementation that doesn't have a clock (a system to track time) must not cache responses 
+    without revalidating them on each use. This prevents stale responses from being served due to discrepancies in time.
+
+3. Clock Synchronization for Caches: Caches, especially shared ones, are encouraged to synchronize their clocks with 
+      reliable external standards, such as Network Time Protocol (NTP). 
+    This ensures consistency in timestamps across different systems and prevents issues with cached content.
+
+4. Sending Date Header by Clients: Clients are advised to include a Date header field in messages that have an 
+    entity-body (e.g., PUT and POST requests), but it's optional. 
+      However, clients without a clock must not send a Date header field in a request.
+
+5. Validity of HTTP-Dat*: The HTTP-date in the Date header should not represent a date and time after the generation of the message. 
+    It should ideally reflect the best approximation of the time when the message was generated. 
+    However, if the implementation lacks the means to generate an accurate date and time, any time during the message origination can be used without affecting its meaning.
+
+Overall, these guidelines ensure consistency and accuracy in timestamp handling across different components of the HTTP ecosystem, 
+including servers, caches, and clients, which is crucial for proper functioning and caching efficiency.
+
+
+
