@@ -1,0 +1,130 @@
+                        14.24 If-Match
+STATUS CODE : 412
+
+-------------------------------------------------------------------------
+
+
+The If-Match request-header field is used with a method to make it
+   conditional. A client that has one or more entities previously
+   obtained from the resource can verify that one of those entities is
+   current by including a list of their associated entity tags in the
+   If-Match header field. Entity tags are defined in section 3.11. The
+   purpose of this feature is to allow efficient updates of cached
+   information with a minimum amount of transaction overhead. It is also
+   used, on updating requests, to prevent inadvertent modification of
+   the wrong version of a resource. As a special case, the value "*"
+   matches any current entity of the resource.
+
+If-Match = "If-Match" ":" ( "*" | 1#entity-tag )
+
+   If any of the entity tags match the entity tag of the entity that
+   would have been returned in the response to a similar GET request
+   (without the If-Match header) on that resource, or if "*" is given
+   and any current entity exists for that resource, then the server MAY
+   perform the requested method as if the If-Match header field did not
+   exist.                  
+
+
+ A server MUST use the strong comparison function (see section 13.3.3)
+   to compare the entity tags in If-Match.
+
+
+     ------------------------------------------------------------------------------
+
+The `If-Match` request-header field in HTTP is used to make requests conditional based on the state of a resource. 
+This is particularly useful for ensuring that clients do not overwrite changes made by others or for validating cached data. 
+
+
+#Purpose and Use of `If-Match` Header
+
+1. Conditional Requests:
+   - The `If-Match` header allows a client to make a request conditional. 
+  The server will only process the request if the specified condition (related to the entity tag) is met.
+                           
+
+2. Entity Tags (ETags):
+   - Entity tags (ETags) are unique identifiers assigned to specific versions of a resource. 
+    They are defined in section 3.11 of the HTTP/1.1 specification.
+   - An ETag is a way to determine whether the resource has changed. Each version of a resource has a distinct ETag.
+
+3. Verifying Resource State:
+   - A client that has previously obtained one or more versions of a resource can verify if any of those versions are 
+  current by including their associated ETags in the `If-Match` header.
+   - The server compares the ETags provided by the client with the current ETag of the resource.
+   - If there is a match, it means the client's version is current, and the server processes the request.
+   - If none of the ETags match, the server responds with a `412 Precondition Failed` status code, 
+      indicating that the precondition (matching the ETag) was not met.
+
+4. Efficient Cache Updates*
+   - This mechanism allows efficient updates of cached information with minimal transaction overhead. 
+      The client can check if its cached version is up to date without needing to download the resource again.
+   - If the client's cached version is still valid (ETag matches), the server can confirm this without needing to resend the resource.
+
+5. Preventing Inadvertent Modifications:
+   - When performing updates (such as with a `PUT` request), using the `If-Match` header helps prevent 
+    accidental modifications of the wrong version of a resource.
+   - The client includes the ETag of the version it intends to update. 
+      If the resource has been modified since the client last retrieved it (ETag does not match), the server will reject the 
+      update request, avoiding overwriting newer changes.
+
+6. Special Case: The Value `*`:
+   - The value `*` in the `If-Match` header matches any current entity of the resource. 
+This means the server will process the request as long as the resource exists, regardless of its current version.
+
+#Examples
+
+#Example 1: Conditional GET Request
+A client has an ETag `W/"xyzzy"` for a resource and wants to ensure it is still current before retrieving it again.
+
+Request:
+
+          GET /resource HTTP/1.1
+          Host: example.com
+          If-Match: "xyzzy"
+
+
+Possible Responses:
+- If the ETag matches the current version of `/resource`, the server returns the resource.
+- If the ETag does not match, the server returns `HTTP/1.1 412 Precondition Failed`.
+
+                           
+#Example 2: Conditional PUT Request to Update Resource
+A client wants to update a resource only if its version matches the ETag `W/"xyzzy"`.
+
+Request:
+
+          PUT /resource HTTP/1.1
+          Host: example.com
+          If-Match: "xyzzy"
+          Content-Type: application/json
+          
+          {"data": "new content"}
+
+
+Possible Responses:
+- If the ETag matches, the server updates the resource and returns `HTTP/1.1 200 OK`.
+- If the ETag does not match, the server rejects the update and returns `HTTP/1.1 412 Precondition Failed`.
+
+
+                           
+#Example 3: Using `*` to Match Any Version
+A client wants to ensure the resource exists before performing an operation.
+
+Request:
+
+          DELETE /resource HTTP/1.1
+          Host: example.com
+          If-Match: *
+
+
+Possible Responses:
+- If the resource exists, the server deletes it and returns `HTTP/1.1 200 OK`.
+- If the resource does not exist, the server returns `HTTP/1.1 412 Precondition Failed`.
+
+### Summary
+- The `If-Match` header is used to perform conditional requests based on the state of a resource identified by its ETag.
+- It helps in efficient cache management and prevents accidental updates to outdated versions of resources.
+- The special `*` value matches any current entity, ensuring the resource exists before performing an operation.
+
+----------------------------------------------------------------------------------------------------------------------------
+                           
