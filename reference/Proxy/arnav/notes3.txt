@@ -1,0 +1,150 @@
+https://medium.com/@gdieu/build-a-tcp-proxy-in-python-part-1-3-7552cd5afdfe
+
+--------------------------------------------------------------------
+
+In this post, we are going to talk about sockets and one way to achieve our goal quickly in Python. 
+Python provides some great libraries to handle and manipulate network protocols. 
+
+For this article, we are going to use Socket, a Python library that provides a low-level network interface.
+
+The basic idea is:
+    1. the proxy accepts multiple clients elegantly
+    2. Redirect a new connection to our proxy which handles the sending and receiving of bytes
+    3. Display the data on the fly with a simple hexadecimal function
+
+1 — The code
+
+Socket methods are blocking, that means our program can’t do anything when it reads or writes from the socket. 
+In this situation, only one client at the time can interact with our proxy.
+ In order to address this problem, there is an asynchronous way of working with sockets. 
+We are going to use the select module, a cross-platform, low-level function that allow us to implement this asynchronous 
+communication between the client and the server. The idea behind is to delegate the state of our socket to the 
+OS which will notify us when the socket is ready to read or write. 
+
+Let’s start creating a server listening on the given port. 
+Once it’s done, we call select to ask the OS to check whether the given socket has 
+something to read, write or if there are some exceptions. It’s why three lists of sockets are requested. 
+The program waits for a socket and once one is ready returns 3 lists (input, output, exception).
+
+          def tcp_server(self):
+              sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+              try:
+                  sock.setblocking(0)
+                  sock.bind((self.local_addr, int(self.local_port)))
+                  sock.listen(3)
+                  self.lsock.append(sock)
+                  print('[*] Listening on {0} {1}'  .format(self.local_addr,self.local_port))
+                  while True:
+                      readable, writable, exceptional = select.select(self.lsock, [], [])
+                      for s in readable:
+                          if s == sock:
+                              rserver =self.remote_conn()
+                              if rserver:
+                                  client, addr = sock.accept()
+                                  print('Accepted connection {0} {1}'.format(addr[0], addr[1]))
+                                  self.store_sock(client, addr, rserver)
+                                  break
+                              else:
+                                  print('the connection with the remote server can\'t be \
+                                  established')
+                                  print('Connection with {} is closed'.format(addr[0]))
+                                  client.close()
+                          data = self.received_from(s, 3)
+                          self.msg_queue[s].send(data)
+                          if len(data) == 0:
+                              self.close_sock(s)
+                              break
+                          else:
+                              print('Received {} bytes from client '.format(len(data)))
+                              self.hexdump(data)
+              except KeyboardInterrupt:
+                  print ('Ending server')        
+              except:
+                  print('Failed to listen on {}:{}'.format(self.local_addr, self.local_port))
+                  sys.exit(0)      
+              finally:
+                  sys.exit(0)
+
+
+If the returned socket is a new incoming, a fresh connection with the remote server is established and both 
+sockets (client and server) are stored in a list and the association is handled in a dictionary.
+
+            
+            def remote_conn(self):
+                 try:
+                     remote_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                     remote_sock.connect((self.remote_addr, int(self.remote_port)))
+                     return remote_sock
+                 except Exception as e:
+                     print(e)
+                     return False
+            
+             def store_sock(self, client, addr, rserver):
+                self.lsock.append(client)
+                self.lsock.append(rserver)
+                self.msg_queue[client] =  rserver
+                self.msg_queue[rserver] =  client
+
+Otherwise, the connection will be considered as an inbound or outbound data and will be received by the proxy and sent 
+to the endpoint (client or server).
+
+           def received_from(self, sock, timeout):
+                  data = ""
+                  sock.settimeout(timeout)
+                  try:
+                      while True:
+                          data = sock.recv(4096)
+                          if not data:
+                              break
+                          data =+ data
+                  except:
+                      pass
+                  return data
+
+During the forwarding, the data can be parsed, manipulated or just printed in a hexadecimal format just like this:
+              
+              '''
+              Simple implementation of hexdump
+              https://gist.github.com/JonathonReinhart/509f9a8094177d050daa84efcd4486cb
+              '''
+              def hexdump(self, data, length=16):
+                  filter = ''.join([(len(repr(chr(x))) == 3) and chr(x) or '.' for x in range(256)])
+                  lines = []
+                  digits = 4 if isinstance(data, str) else 2
+                  for c in range(0, len(data), length):
+                      chars = data[c:c+length]
+                      hex = ' '.join(["%0*x" % (digits, (x)) for x in chars])
+                      printable = ''.join(["%s" % (((x) <= 127 and filter[(x)]) or '.') for x in chars])
+                      lines.append("%04x  %-*s  %s\n" % (c, length*3, hex, printable))
+                  print(''.join(lines))
+
+
+Once all the data is transmitted (length equal 0), the sockets are closed.
+
+          def close_sock(self, sock):
+              print ('End of connection with {}'.format(sock.getpeername()))
+              self.lsock.remove(self.msg_queue[sock])
+              self.lsock.remove(self.msg_queue[self.msg_queue[sock]])
+              serv = self.msg_queue[sock]
+              self.msg_queue[serv].close()
+              self.msg_queue[sock].close()
+              del self.msg_queue[sock]
+              del self.msg_queue[serv]
+
+-----------------------------------------------------------------------------------------
+          2 — A simple example with FileZilla thick client
+
+Now that everything is done, let’s see what it looks like by intercepting the traffic between a ftp client and a server:
+          <img>  
+
+That’s all for this time folk!
+
+Next time, we will see how to parse the stack to get a more readable output and how we can handle SSL/TLS connections.
+
+
+
+
+
+
+
+
