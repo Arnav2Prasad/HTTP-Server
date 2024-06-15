@@ -1,0 +1,48 @@
+https://medium.com/@kawsarlog/how-to-use-proxies-in-python-777b60d55d30
+
+----------------------------------------------------------------------
+
+Proxies serve as intermediaries between your computer and the internet, providing anonymity, security, and the ability to 
+circumvent geographical or institutional blocks. 
+For developers, particularly those working with Python, proxies can be crucial tools. 
+
+This article explores how to effectively utilize proxies in Python and where to purchase them.
+
+Understanding Proxies
+
+What are Proxies?
+A proxy server acts as a gateway between you and the internet. It’s primarily used to enhance privacy and filter web traffic.
+
+
+Different Types of Proxies
+Proxies come in various forms such as HTTP, HTTPS, SOCKS5, residential, and data center proxies, each serving different purposes.
+
+
+Setting Up Your Python Environment
+To begin using proxies in Python, you’ll need to set up your environment with the right tools. 
+This involves installing Python and pip, followed by proxy-handling libraries like requests, scrapy, or selenium.
+
+
+How to Use Proxies with the requests Library
+
+Configuring proxies Here’s how you can use proxies with Python’s requests library:
+
+                # Import the requests library which allows you to send HTTP requests using Python
+                import requests
+                
+                # Define a dictionary to hold proxy settings for HTTP and HTTPS protocols
+                proxies = {
+                    'http': 'http://10.10.1.10:3128',  # Proxy for handling HTTP requests
+                    'https': 'https://10.10.1.10:1080' # Proxy for handling HTTPS requests
+                }
+                
+                # Send a GET request to 'http://example.com' using the defined proxies
+                response = requests.get('http://example.com', proxies=proxies)
+                
+                # Print the text content of the response received from the server
+                print(response.text)
+
+Handling proxy authentication For proxies that require authentication, modify your proxies dictionary to include your credentials.
+
+
+
