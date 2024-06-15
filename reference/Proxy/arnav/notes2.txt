@@ -1,0 +1,55 @@
+https://medium.com/@sarperismetmakas/how-do-proxy-servers-work-37eb5beda33a
+
+---------------------------------------------------------
+
+What is a Proxy Server ?
+A proxy server connects your device to the internet
+
+Your request is sent to the proxy server first when you make a request for information from a website.
+
+The proxy server then sends your request to the target website, which then retrieves the data on your behalf and sends it back to your device.
+
+This process improves privacy and security by effectively hiding your IP address and location from the targeted website.
+
+
+How Do Proxy Servers Work ?
+
+Title: How Proxy Servers Work: A Comprehensive Guide
+
+Introduction
+
+In the digital age, where privacy and security are paramount, proxy servers have become indispensable tools for 
+individuals and organizations alike. Whether you’re looking to protect your online identity, access geo-restricted content, 
+or enhance your cybersecurity, understanding how proxy servers work is essential. 
+
+This comprehensive guide will walk you through the ins and outs of proxies, shedding light on their mechanisms, types, and 
+various applications.
+
+
+What is a Proxy Server?
+
+A proxy server acts as an intermediary between your device and the internet. 
+When you request information from a website, your request is sent to the proxy server first. 
+The proxy server then forwards your request to the target website, retrieves the data on your behalf, and sends 
+it back to your device. This process effectively masks your IP address and location from the target website, 
+providing anonymity and security benefits.
+
+
+How Do Proxy Servers Work?
+
+    1. Request Forwarding: Your internet traffic gets routed through a proxy server when you connect to one. 
+          A request that you make, such as to open a website or download a file, is sent to the proxy server first.
+    2. Proxy Server Processes the Request: Your request is handled by the proxy server. 
+        The proxy server sends the requested data back to you.
+    3. Forwarding to the Target Server: The proxy server forwards your request to the target server, such as a website’s 
+        hosting server or a content server.
+    4. Target Server Responds: The target server responds to the request as it normally would, but instead of 
+        sending it directly to your device, it sends it to the proxy server.
+    5. Response to Your Device: You receive the requested data after the proxy server forwards the target server’s 
+        response back to your device.
+
+It’s important to note that the website only sees the IP address of the proxy server and not the IP address of your device.
+
+
+
+
