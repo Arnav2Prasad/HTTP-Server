@@ -1,0 +1,150 @@
+                              14.17 Content-Type
+
+--------------------------------------------------------------------------
+
+ The Content-Type entity-header field indicates the media type of the
+   entity-body sent to the recipient or, in the case of the HEAD method,
+   the media type that would have been sent had the request been a GET.
+
+Content-Type   = "Content-Type" ":" media-type
+
+   Media types are defined in section 3.7. An example of the field is
+
+       Content-Type: text/html; charset=ISO-8859-4
+
+   Further discussion of methods for identifying the media type of an
+   entity is provided in section 7.2.1.
+
+USED BY SERVER ?
+
+---------------------------------------------------------------------------------------
+
+The `Content-Type` header in an HTTP message specifies the media type of the resource being sent to the recipient. 
+This header is essential because it informs the recipient (typically a web browser or client) how to interpret 
+the data in the entity-body. 
+
+The `Content-Type` header includes the type of the media and sometimes additional parameters such as the character set.
+
+
+#Syntax
+
+The syntax for the `Content-Type` header is:
+
+
+      Content-Type: media-type
+
+
+Where `media-type` is defined by the MIME type and can include additional parameters.
+
+
+#Media Types
+
+Media types (or MIME types) are defined in section 3.7 of RFC 2616. 
+They are composed of a type and a subtype, separated by a slash (`/`). Examples include:
+
+          - `text/html`
+          - `image/jpeg`
+          - `application/json`
+
+#Example
+
+#HTML Document
+
+If a server sends an HTML document, the `Content-Type` header might look like this:
+
+
+          Content-Type: text/html; charset=UTF-8
+
+
+This indicates that the content is HTML text, encoded using the UTF-8 character set.
+
+Example HTTP Response:
+
+
+            HTTP/1.1 200 OK
+            Date: Sat, 15 Jun 2024 12:00:00 GMT
+            Content-Type: text/html; charset=UTF-8
+            Content-Length: 1234
+            
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Example Page</title>
+            </head>
+            <body>
+                <p>Hello, world!</p>
+            </body>
+            </html>
+
+
+#JSON Response
+
+If a server responds with a JSON object, the `Content-Type` header might be:
+
+
+          Content-Type: application/json
+
+
+Example HTTP Response:
+
+
+            HTTP/1.1 200 OK
+            Date: Sat, 15 Jun 2024 12:00:00 GMT
+            Content-Type: application/json
+            Content-Length: 123
+            
+            {
+                "name": "John Doe",
+                "age": 30,
+                "city": "New York"
+            }
+
+
+#JPEG Image
+
+For an image, the `Content-Type` header would be:
+
+
+        Content-Type: image/jpeg
+
+
+Example HTTP Response:
+
+
+          HTTP/1.1 200 OK
+          Date: Sat, 15 Jun 2024 12:00:00 GMT
+          Content-Type: image/jpeg
+          Content-Length: 98765
+          
+          [Binary data of the JPEG image]
+
+
+#HEAD Method
+
+When a `HEAD` request is made, the server responds with headers as if it were a `GET` request, 
+but without the body. This includes the `Content-Type` header.
+
+Example HEAD Request:
+
+
+          HEAD /example.html HTTP/1.1
+          Host: example.com
+
+
+Example HEAD Response:
+
+        
+        HTTP/1.1 200 OK
+        Date: Sat, 15 Jun 2024 12:00:00 GMT
+        Content-Type: text/html; charset=UTF-8
+        Content-Length: 1234
+
+
+In this case, the server indicates the media type and size of the resource that would be sent if the request were a `GET` request.
+
+#Summary
+
+The `Content-Type` header is crucial for the correct interpretation of the data in the HTTP response. 
+It specifies the media type and any additional parameters, such as the character set for text data. 
+This allows clients to properly process and display the content received from the server.
+  
