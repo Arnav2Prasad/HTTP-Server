@@ -1,0 +1,223 @@
+                                14.20 Expect
+
+STATUS CODE : 417
+
+ A server that does not understand or is unable to comply with any of
+   the expectation values in the Expect field of a request MUST respond
+   with appropriate error status. The server MUST respond with a 417
+   (Expectation Failed) status if any of the expectations cannot be met
+   or, if there are other problems with the request, some other 4xx
+   status.
+
+Comparison of expectation values is case-insensitive for unquoted
+   tokens (including the 100-continue token), and is case-sensitive for
+   quoted-string expectation-extensions.
+-------------------------------------------------------------------------------------
+
+The Expect request-header field is used to indicate that particular
+   server behaviors are required by the client.
+
+      Expect       =  "Expect" ":" 1#expectation
+
+      expectation  =  "100-continue" | expectation-extension
+      expectation-extension =  token [ "=" ( token | quoted-string )
+                               *expect-params ]
+      expect-params =  ";" token [ "=" ( token | quoted-string ) ]
+
+ A server that does not understand or is unable to comply with any of
+   the expectation values in the Expect field of a request MUST respond
+   with appropriate error status. The server MUST respond with a 417
+   (Expectation Failed) status if any of the expectations cannot be met
+   or, if there are other problems with the request, some other 4xx
+   status.
+
+
+This header field is defined with extensible syntax to allow for
+   future extensions. If a server receives a request containing an
+   Expect field that includes an expectation-extension that it does not
+   support, it MUST respond with a 417 (Expectation Failed) status.
+
+Comparison of expectation values is case-insensitive for unquoted
+   tokens (including the 100-continue token), and is case-sensitive for
+   quoted-string expectation-extensions.
+
+ The Expect mechanism is hop-by-hop: that is, an HTTP/1.1 proxy MUST
+   return a 417 (Expectation Failed) status if it receives a request
+   with an expectation that it cannot meet. However, the Expect
+   request-header itself is end-to-end; it MUST be forwarded if the
+   request is forwarded.
+
+   Many older HTTP/1.0 and HTTP/1.1 applications do not understand the
+   Expect header.
+
+   See section 8.2.3 for the use of the 100 (continue) status.
+
+
+--------------------------------------------------------------------------------
+The `Expect` header in HTTP, as defined in RFC 2616 (HTTP/1.1), allows a client to indicate specific
+behaviors or expectations that the server must fulfill to process the request. 
+The primary use case for the `Expect` header is to request certain server capabilities before sending the full request body.
+
+#Syntax
+
+The syntax for the `Expect` header is:
+
+
+        Expect: expectation
+
+
+Where `expectation` typically includes `100-continue`.
+
+
+#Common Use Case: `100-continue`
+
+The most common use of the `Expect` header is with the `100-continue` expectation. 
+This is used when a client needs to send a large request body (such as a file upload) and wants to ensure that
+the server is ready to handle the request before actually sending the body. 
+The client sends the headers first, including the `Expect: 100-continue` header, and waits for a `100 Continue` 
+response from the server before sending the body.
+
+
+#How It Works
+
+1. Client Sends Initial Request with `Expect: 100-continue`:
+
+   
+               POST /upload HTTP/1.1
+               Host: example.com
+               Content-Length: 1048576
+               Expect: 100-continue
+               Content-Type: application/octet-stream
+               
+               [Request body not sent yet]
+
+
+2. Server Responds:
+
+   - If the server is ready to handle the request: It responds with a `100 Continue` status, indicating that the client 
+        should proceed with sending the body.
+
+     
+                 HTTP/1.1 100 Continue
+     
+
+     The client then proceeds to send the request body:
+
+  
+                         [binary data of the file]
+     
+
+   - If the server cannot handle the request: It responds with an appropriate error status (e.g., `417 Expectation Failed`) and does 
+          not read the request body.
+
+     
+                 HTTP/1.1 417 Expectation Failed
+     
+
+#Benefits
+
+- Bandwidth Efficiency: Prevents sending large request bodies over the network if the server is not ready or willing to process 
+        the request, saving bandwidth.
+- Resource Management: Allows the server to reject unsuitable requests early without consuming resources to read the entire body.
+
+
+#Example Scenario
+
+Imagine a client wants to upload a large file to a server. 
+The client first checks if the server can handle the upload using the `Expect: 100-continue` mechanism.
+
+#Step-by-Step Example
+
+1. Client Initial Request:
+
+   
+             POST /upload HTTP/1.1
+             Host: example.com
+             Content-Length: 1048576
+             Expect: 100-continue
+             Content-Type: application/octet-stream
+             
+             [Request body not sent yet]
+   
+
+2. Server Response:
+
+   - Server Ready:
+
+ 
+                 HTTP/1.1 100 Continue
+  
+
+     Client Proceeds to Send Body:
+
+     
+                 [binary data of the file]
+     
+
+     Server Final Response:
+
+     
+                     HTTP/1.1 201 Created
+                     Content-Location: /upload/12345
+     
+
+   - Server Not Ready:
+
+     
+                 HTTP/1.1 417 Expectation Failed
+     
+
+3. Client Handles Response:
+
+   - If `100 Continue` Received: The client sends the request body.
+   - If `417 Expectation Failed` Received: The client does not send the body and handles the error appropriately.
+
+#Conclusion
+
+The `Expect` header, particularly with the `100-continue` expectation, is a valuable feature in HTTP/1.1 that 
+helps manage resources and optimize network usage. It allows clients to check if the server is ready to handle a 
+potentially large request before sending the full request body, thus preventing unnecessary data 
+transfer and ensuring efficient communication.
+
+--------------------------------------------------------------------------------------------
+
+Example: Expectation Extension
+
+Let's consider a hypothetical future extension where the client wants the server to compress the response using a 
+specific algorithm before sending it back. The expectation might look something like this:
+
+Client Request
+
+          GET /data HTTP/1.1
+          Host: example.com
+          Expect: compress-response; algorithm="gzip"
+
+Server Response
+
+    If the server supports the extension: It processes the request and compresses the response using the specified algorithm.
+              
+              HTTP/1.1 200 OK
+              Content-Encoding: gzip
+              Content-Type: application/json
+              Content-Length: 512
+              
+              [gzip compressed data]
+
+
+If the server does not support the extension: It responds with 417 Expectation Failed.
+
+                  HTTP/1.1 417 Expectation Failed
+
+Summary
+
+The Expect header allows clients to specify certain behaviors they require from the server, 
+most commonly using the 100-continue expectation to avoid sending large request bodies if the server cannot handle them. 
+
+The header's extensible syntax also allows for future expectations to be defined. 
+Servers must respond appropriately, either complying with the expectation or returning a 417 Expectation Failed status if 
+  they cannot meet the expectation.
+  
+
+
+
+
