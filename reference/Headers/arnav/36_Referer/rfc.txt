@@ -1,0 +1,206 @@
+                                14.36 Referer
+
+ The Referer[sic] request-header field allows the client to specify,
+   for the server's benefit, the address (URI) of the resource from
+   which the Request-URI was obtained (the "referrer", although the
+   header field is misspelled.) The Referer request-header allows a
+   server to generate lists of back-links to resources for interest,
+   logging, optimized caching, etc. It also allows obsolete or mistyped
+   links to be traced for maintenance. The Referer field MUST NOT be
+   sent if the Request-URI was obtained from a source that does not have
+   its own URI, such as input from the user keyboard.
+
+       Referer        = "Referer" ":" ( absoluteURI | relativeURI )
+
+   Example:
+
+       Referer: http://www.w3.org/hypertext/DataSources/Overview.html
+
+If the field value is a relative URI, it SHOULD be interpreted
+   relative to the Request-URI. The URI MUST NOT include a fragment. See
+   section 15.1.3 for security considerations.
+
+---------------------------------------------------------------------------------
+The `Referer` header in HTTP, as specified in RFC 2616 (now superseded by RFC 7231), 
+is used to indicate the URL of the resource from which the request was made. 
+This header allows servers to see where the request originated, which can be useful for various purposes such as 
+logging, analytics, and security.
+
+#Syntax
+The `Referer` header follows this syntax:
+
+            Referer: <URI>
+
+Where `<URI>` is the URL of the referring resource.
+
+#Example
+
+            Referer: http://www.example.com/previouspage.html
+
+
+#Usage
+1. Tracking: Servers can use the `Referer` header to track the origin of requests, 
+      which helps in understanding how users navigate through the site and in identifying referring sites.
+2. Analytics: Web analytics tools often rely on the `Referer` header to determine traffic sources and user paths.
+3. Security: The `Referer` header can help in identifying potential security issues, such as CSRF (Cross-Site Request Forgery) 
+      attacks, by ensuring requests come from trusted sources.
+
+#Example Scenario
+Imagine a user is browsing a website and clicks on a link to another page. 
+Here’s how the `Referer` header is used:
+
+1. User clicks a link on `http://www.example.com/previouspage.html` to navigate to `http://www.example.com/nextpage.html`.
+
+2. Browser Request:
+   
+             GET /nextpage.html HTTP/1.1
+             Host: www.example.com
+             Referer: http://www.example.com/previouspage.html
+   
+
+3. Server Response:
+  
+               HTTP/1.1 200 OK
+               Content-Type: text/html
+            
+               <html>
+                 <head>
+                   <title>Next Page</title>
+                 </head>
+                 <body>
+                   <h1>Welcome to the Next Page</h1>
+                   <p>You came from <a href="http://www.example.com/previouspage.html">the previous page</a>.</p>
+                 </body>
+               </html>
+
+
+In this example:
+- The browser includes the `Referer` header in the request for `nextpage.html`, indicating that the user came from `previouspage.html`.
+- The server can use this information for various purposes, such as logging where the traffic is coming from.
+
+#Privacy Considerations
+The `Referer` header can reveal sensitive information, such as query parameters in URLs, which might include user data. For example:
+
+            Referer: http://www.example.com/search?query=private+data
+
+
+To mitigate privacy concerns:
+1. Trimming or Omitting: Browsers may trim or omit the `Referer` header when navigating from HTTPS to HTTP to prevent 
+      leaking secure information.
+2. Referrer Policy: Websites can control the behavior of the `Referer` header using the Referrer-Policy header, 
+    specifying how much information should be included.
+
+#Referrer-Policy Header
+The `Referrer-Policy` header allows a site to specify rules for how the `Referer` header should be handled. Some common values include:
+- `no-referrer`: The `Referer` header will be omitted entirely.
+- `no-referrer-when-downgrade`: The `Referer` header will be sent for same-protocol (HTTPS to HTTPS or HTTP to HTTP) requests, 
+      but not when navigating from HTTPS to HTTP.
+- `origin`: Only the origin (scheme, host, and port) of the referring URL will be sent.
+- `strict-origin`: Only the origin will be sent, and only for same-protocol requests.
+
+### Example of Referrer-Policy
+```http
+Referrer-Policy: no-referrer-when-downgrade
+```
+
+### Summary
+The `Referer` header in HTTP, as defined by RFC 2616, provides the URL of the resource from which a request originated. 
+This information is useful for tracking, analytics, and security, but it can also raise privacy concerns. 
+The `Referrer-Policy` header helps control the behavior of the `Referer` header to protect user privacy.
+
+
+------------------------------------------------------------------------------------------
+
+The `Referer` header in HTTP, as specified in RFC 2616, can be useful for tracing obsolete or mistyped links to aid in website maintenance. 
+It provides the URL of the previous resource from which the current request was made. 
+This information can help website administrators identify and fix broken or incorrect links.
+
+#Specific Use of `Referer` for Maintenance
+
+1. Tracing Obsolete or Mistyped Links:
+   - When a user clicks on a broken or mistyped link, the `Referer` header in the subsequent request can help administrators 
+        identify where the incorrect link was located.
+   - This is particularly useful for maintaining large websites where links might become outdated or contain typos.
+
+
+
+#Example Scenario
+
+Imagine a website `example.com` with the following pages:
+- `http://www.example.com/page1.html`
+- `http://www.example.com/page2.html` (this page is mistyped in a link as `page2.htlm`)
+
+A user is on `page1.html` and clicks on a mistyped link to `page2.htlm`.
+
+#Request and Response Workflow
+
+1. User clicks a mistyped link on `page1.html`:
+
+           <a href="http://www.example.com/page2.htlm">Go to Page 2</a>
+  
+
+2. Browser Request:
+   
+         GET /page2.htlm HTTP/1.1
+         Host: www.example.com
+         Referer: http://www.example.com/page1.html
+         
+
+3. Server Response (assuming `page2.htlm` does not exist):
+
+           HTTP/1.1 404 Not Found
+           Content-Type: text/html
+        
+           <html>
+             <head>
+               <title>404 Not Found</title>
+             </head>
+             <body>
+               <h1>Not Found</h1>
+               <p>The requested URL /page2.htlm was not found on this server.</p>
+             </body>
+           </html>
+
+
+#Use of `Referer` for Maintenance
+
+In the server logs, the `Referer` header helps the administrator identify where the broken link is located:
+
+
+#Example Log Entry
+
+          127.0.0.1 - - [16/Jun/2024:10:00:00 +0000] "GET /page2.htlm HTTP/1.1" 404 1234 "http://www.example.com/page1.html" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+
+From this log entry:
+- The administrator can see that the user came from `http://www.example.com/page1.html`.
+- The administrator can then inspect `page1.html` and fix the mistyped link.
+
+#Must Not Send `Referer` for User Input URLs
+
+The `Referer` header must not be sent if the request URL was obtained from a source that does not have its own URL, 
+such as input directly from the user's keyboard.
+
+#Example
+
+1. User Types URL Directly:
+   - The user types `http://www.example.com/search` into the browser's address bar and hits enter.
+
+2. Browser Request:
+   
+             GET /search HTTP/1.1
+             Host: www.example.com
+   
+
+   - No `Referer` header is sent because the URL was typed directly by the user and not navigated from another web page.
+
+#Summary
+
+The `Referer` header is useful for tracing and maintaining websites by providing information on where requests originated. 
+This helps identify and fix broken or mistyped links. 
+However, it should not be sent when the URL is directly entered by the user, as there is no referring resource in such cases.
+
+
+
+
+
