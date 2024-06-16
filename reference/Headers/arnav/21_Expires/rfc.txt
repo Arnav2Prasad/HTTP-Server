@@ -1,0 +1,219 @@
+                            14.21 Expires
+
+- The `Expires` header has an invalid value of "0".
+- HTTP/1.1 clients and caches must treat this as already expired, meaning it must be revalidated before use.
+
+- The `Cache-Control: max-age=3600` header indicates that the response is fresh for 3600 seconds (1 hour) 
+      from the time of the response.
+- This `Cache-Control` directive overrides the `Expires` header, so the response will be considered fresh until 11:00:00 GMT 
+      on June 15, 2021, regardless of the `Expires` value.
+
+--------------------------------------------------------------------------------------------------
+
+
+
+The Expires entity-header field gives the date/time after which the
+   response is considered stale. A stale cache entry may not normally be
+   returned by a cache (either a proxy cache or a user agent cache)
+   unless it is first validated with the origin server (or with an
+   intermediate cache that has a fresh copy of the entity). See section
+   13.2 for further discussion of the expiration model.
+
+ The presence of an Expires field does not imply that the original
+   resource will change or cease to exist at, before, or after that
+   time.
+
+ The format is an absolute date and time as defined by HTTP-date in
+   section 3.3.1; it MUST be in RFC 1123 date format:
+
+      Expires = "Expires" ":" HTTP-date
+
+   An example of its use is
+
+      Expires: Thu, 01 Dec 1994 16:00:00 GMT
+
+      Note: if a response includes a Cache-Control field with the max-
+      age directive (see section 14.9.3), that directive overrides the
+      Expires field.
+
+     HTTP/1.1 clients and caches MUST treat other invalid date formats,
+   especially including the value "0", as in the past (i.e., "already
+   expired").
+
+   To mark a response as "already expired," an origin server sends an
+   Expires date that is equal to the Date header value. (See the rules
+   for expiration calculations in section 13.2.4.)
+
+ To mark a response as "never expires," an origin server sends an
+   Expires date approximately one year from the time the response is
+   sent. HTTP/1.1 servers SHOULD NOT send Expires dates more than one
+   year in the future.
+
+The presence of an Expires header field with a date value of some
+   time in the future on a response that otherwise would by default be
+   non-cacheable indicates that the response is cacheable, unless
+   indicated otherwise by a Cache-Control header field (section 14.9).
+
+                                                         
+------------------------------------------------------------------------------
+The `Expires` header in HTTP, as specified in RFC 2616 (which is now obsolete and has been replaced by RFC 7234), 
+is used to define the time at which a response is considered stale. 
+This header is used in the context of HTTP caching, allowing a server to indicate how long the response can be 
+  cached by clients or intermediaries like proxies.
+
+                                                         
+#Syntax
+The `Expires` header follows this syntax:
+
+            Expires: <http-date>
+
+Where `<http-date>` is a specific date and time in the format defined by RFC 1123.
+
+#Example
+
+          Expires: Wed, 21 Oct 2015 07:28:00 GMT
+
+
+#Behavior
+- Freshness Lifetim*: The `Expires` header provides an explicit expiration date and time. 
+    When a response includes an `Expires` header, it informs the caching mechanisms (such as browsers and proxies) how long the 
+  response is considered fresh.
+- Past Dates: If the `Expires` value is a date and time in the past, the response is considered immediately stale. 
+      This indicates that the cached response should not be used and should be revalidated with the server.
+- Coordination with `Cache-Control`: If a response includes both `Cache-Control` and `Expires` headers, the `Cache-Control` 
+        directives take precedence. For example, the `max-age` directive in the `Cache-Control` header can override the `Expires` header.
+
+                                                         
+#Usage Considerations
+1. HTTP-date Format: The date must be in the HTTP-date format, which is an updated version of RFC 850 and RFC 822 formats:
+   
+   Sun, 06 Nov 1994 08:49:37 GMT   ; RFC 822, updated by RFC 1123
+   Sunday, 06-Nov-94 08:49:37 GMT  ; RFC 850, obsoleted by RFC 1036
+   Sun Nov  6 08:49:37 1994        ; ANSI C's asctime() format
+   
+2. Time Zone*: The time specified in the `Expires` header must be in GMT (Greenwich Mean Time).
+3  No Cache Control: If no caching headers are present and there is no `Expires` header, the default caching behavior 
+      is decided by the client's or intermediary's cache.
+
+#Deprecated Considerations
+While RFC 2616 has been superseded by RFC 7234 (part of the HTTP/1.1 updates), the principles remain similar. 
+RFC 7234 introduces more nuanced and detailed mechanisms for cache control but retains the fundamental concept of the `Expires` header.
+
+In summary, the `Expires` header in HTTP/1.1 (RFC 2616) is used to control the caching behavior by specifying an exact 
+expiration date and time for the response. 
+This helps manage web traffic efficiency and ensures users receive up-to-date content.
+
+
+--------------------------------------------------------------------------------------------------------
+The `Expires` header in HTTP is used to specify the date and time after which a response is considered stale. 
+A stale cache entry typically requires revalidation with the origin server before it can be served to ensure that 
+the client receives fresh content. The presence of the `Expires` header does not necessarily mean that the resource will 
+change or cease to exist at that time; it only affects caching behavior.
+
+#Key Points
+1. Staleness and Validation: A response with an `Expires` header is considered stale after the specified date/time and 
+    must be revalidated with the origin server.
+2. Format: The date and time must be in the RFC 1123 format.
+3. Override by `Cache-Control`: If the response also contains a `Cache-Control` header with the `max-age` directive, 
+    that directive takes precedence over the `Expires` header.
+4. Invalid Formats: Invalid date formats or the value "0" are treated as already expired.
+
+
+#Example
+
+#HTTP Response with `Expires` Header
+
+              HTTP/1.1 200 OK
+              Date: Tue, 15 Jun 2021 10:00:00 GMT
+              Expires: Wed, 16 Jun 2021 10:00:00 GMT
+              Content-Type: text/html
+              Content-Length: 1234
+              
+              <html>
+              <body>
+                <h1>Hello, World!</h1>
+              </body>
+              </html>
+
+
+In this example:
+- The `Expires` header indicates that the response will become stale on June 16, 2021, at 10:00:00 GMT.
+- Until that time, a cache can serve this response without revalidation.
+
+
+#Expired Immediately Example
+            
+            HTTP/1.1 200 OK
+            Date: Tue, 15 Jun 2021 10:00:00 GMT
+            Expires: Tue, 15 Jun 2021 10:00:00 GMT
+            Content-Type: text/html
+            Content-Length: 1234
+            
+            <html>
+            <body>
+              <h1>Hello, World!</h1>
+            </body>
+            </html>
+
+
+In this case:
+- The `Expires` header is set to the same time as the `Date` header, meaning the response is considered already expired.
+- A cache must revalidate the response with the origin server before serving it.
+
+#Invalid Date Example
+
+          HTTP/1.1 200 OK
+          Date: Tue, 15 Jun 2021 10:00:00 GMT
+          Expires: 0
+          Content-Type: text/html
+          Content-Length: 1234
+          
+          <html>
+          <body>
+            <h1>Hello, World!</h1>
+          </body>
+          </html>
+
+
+Here:
+- The `Expires` header has an invalid value of "0".
+- HTTP/1.1 clients and caches must treat this as already expired, meaning it must be revalidated before use.
+
+
+
+#`Cache-Control` Overrides `Expires`
+
+          HTTP/1.1 200 OK
+          Date: Tue, 15 Jun 2021 10:00:00 GMT
+          Expires: Wed, 16 Jun 2021 10:00:00 GMT
+          Cache-Control: max-age=3600
+          Content-Type: text/html
+          Content-Length: 1234
+          
+          <html>
+          <body>
+            <h1>Hello, World!</h1>
+          </body>
+          </html>
+
+
+In this scenario:
+- The `Cache-Control: max-age=3600` header indicates that the response is fresh for 3600 seconds (1 hour) 
+      from the time of the response.
+- This `Cache-Control` directive overrides the `Expires` header, so the response will be considered fresh until 11:00:00 GMT 
+      on June 15, 2021, regardless of the `Expires` value.
+
+### Summary
+The `Expires` header is crucial for controlling how long a response is considered fresh and when it should be revalidated 
+with the origin server. Proper use of this header, along with other cache control mechanisms, helps improve web performance 
+by efficiently managing cached content.
+
+                                                         
+  
+
+
+
+
+                                                         
+
+
