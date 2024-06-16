@@ -1,0 +1,193 @@
+                        9.6 PUT
+
+The PUT method requests that the enclosed entity be stored under the
+   supplied Request-URI. If the Request-URI refers to an already
+   existing resource, the enclosed entity SHOULD be considered as a
+   modified version of the one residing on the origin server. If the
+   Request-URI does not point to an existing resource, and that URI is
+   capable of being defined as a new resource by the requesting user
+   agent, the origin server can create the resource with that URI.
+
+If a
+   new resource is created, the origin server MUST inform the user agent
+   via the 201 (Created) response. If an existing resource is modified,
+   either the 200 (OK) or 204 (No Content) response codes SHOULD be sent
+   to indicate successful completion of the request. If the resource
+   could not be created or modified with the Request-URI, an appropriate
+   error response SHOULD be given that reflects the nature of the
+   problem. The recipient of the entity MUST NOT ignore any Content-*
+   (e.g. Content-Range) headers that it does not understand or implement
+   and MUST return a 501 (Not Implemented) response in such cases.
+
+  If the request passes through a cache and the Request-URI identifies
+   one or more currently cached entities, those entries SHOULD be
+   treated as stale. Responses to this method are not cacheable.
+
+
+The fundamental difference between the POST and PUT requests is
+   reflected in the different meaning of the Request-URI. The URI in a
+   POST request identifies the resource that will handle the enclosed
+   entity. That resource might be a data-accepting process, a gateway to
+   some other protocol, or a separate entity that accepts annotations.
+   In contrast, the URI in a PUT request identifies the entity enclosed
+   with the request -- the user agent knows what URI is intended and the
+   server MUST NOT attempt to apply the request to some other resource.
+   If the server desires that the request be applied to a different URI,
+it MUST send a 301 (Moved Permanently) response; the user agent MAY
+   then make its own decision regarding whether or not to redirect the
+   request.
+
+A single resource MAY be identified by many different URIs. For
+   example, an article might have a URI for identifying "the current
+   version" which is separate from the URI identifying each particular
+   version. In this case, a PUT request on a general URI might result in
+   several other URIs being defined by the origin server.
+
+   HTTP/1.1 does not define how a PUT method affects the state of an
+   origin server.
+
+   PUT requests MUST obey the message transmission requirements set out
+   in section 8.2.
+
+   Unless otherwise specified for a particular entity-header, the
+   entity-headers in the PUT request SHOULD be applied to the resource
+   created or modified by the PUT.
+
+
+--------------------------------------------------------------------------------------------------
+#PUT Method in HTTP
+
+The `PUT` method in HTTP is used to upload a representation of the specified resource. 
+If the resource does not exist, the server can create it with the provided content. 
+If it does exist, the server should update the resource with the provided content.
+
+The `PUT` method is defined in **RFC 2616** (Section 9.6) and updated in **RFC 7231** (Section 4.3.4).
+
+
+#Key Points from RFC 2616 and RFC 7231
+
+#RFC 2616 (June 1999)
+
+- Resource Creation/Update: The `PUT` method requests that the enclosed entity be stored under the supplied Request-URI. 
+      If the Request-URI refers to an existing resource, the enclosed entity should be considered a modified version 
+      of the one residing on the origin server. If the Request-URI does not point to an existing resource, 
+      the origin server can create the resource with that URI.
+- Idempotence: `PUT` is an idempotent method. Sending the same `PUT` request multiple times will have the same 
+          effect as sending it once. This is different from the `POST` method, which is not idempotent.
+- Response Codes:
+  - `201 Created`: If the resource is created.
+  - `200 OK` or `204 No Content`: If the resource is updated successfully.
+
+#RFC 7231 (June 2014)
+
+- *esource Creation/Update: Similar to RFC 2616, RFC 7231 specifies that `PUT` requests should create or replace the 
+        resource at the target URI with the state defined by the representation enclosed in the request.
+- Idempotence* The method remains idempotent as described in RFC 2616.
+- Preconditions and Concurrency Control: The `PUT` method should support mechanisms for 
+        preconditions (e.g., using `If-Match` headers) to handle concurrent updates to resources.
+
+
+#Specific Example
+
+#Example Scenario: Updating a User Profile
+Consider a RESTful API where you need to update a user profile. 
+The user profile includes information like name, email, and address.
+
+
+#Request:
+
+
+          PUT /users/123 HTTP/1.1
+          Host: www.example.com
+          Content-Type: application/json
+          Content-Length: 85
+          
+          {
+            "name": "Jane Doe",
+            "email": "jane.doe@example.com",
+            "address": "123 Main St, Anytown, USA"
+          }
+
+
+#Possible Responses:
+
+1. Resource Created:
+
+   If the user profile does not exist and the server creates it:
+
+   
+             HTTP/1.1 201 Created
+             Location: /users/123
+             Content-Type: application/json
+             Content-Length: 89
+          
+             {
+               "userId": 123,
+               "name": "Jane Doe",
+               "email": "jane.doe@example.com",
+               "address": "123 Main St, Anytown, USA",
+               "createdAt": "2024-06-17T12:00:00Z"
+             }
+  
+
+2. Resource Updated:
+
+   If the user profile exists and is updated:
+
+
+           HTTP/1.1 200 OK
+           Content-Type: application/json
+           Content-Length: 89
+        
+           {
+             "userId": 123,
+             "name": "Jane Doe",
+             "email": "jane.doe@example.com",
+             "address": "123 Main St, Anytown, USA",
+             "updatedAt": "2024-06-17T12:00:00Z"
+           }
+   
+
+3. No Content:
+
+   If the user profile is updated and no response body is necessary:
+
+
+           HTTP/1.1 204 No Content
+
+
+### Detailed Breakdown of the Example
+
+1. Request Line:
+   - `PUT /users/123 HTTP/1.1`: Specifies the `PUT` method, the target resource `/users/123`, and the HTTP version `1.1`.
+
+2. Headers:
+   - `Host: www.example.com`: Specifies the domain of the server.
+   - `Content-Type: application/json`: Indicates that the request body is in JSON format.
+   - `Content-Length: 85`: Specifies the length of the request body in bytes.
+
+3. Request Body:
+   - Contains the JSON representation of the user profile to be created or updated.
+
+4. Response:
+   - If the resource is created, a `201 Created` status is returned along with the location of the new resource.
+   - If the resource is updated, a `200 OK` or `204 No Content` status is returned, depending on whether a response body is necessary.
+
+
+#Idempotence of PUT
+
+The `PUT` method is idempotent, which means that repeating the same `PUT` request will have the same effect as 
+making the request once. For example, if you `PUT` the user profile to `/users/123` multiple times with the same data, 
+the user profile will remain consistent and not create duplicates or additional changes beyond the initial update.
+
+### Conclusion
+The `PUT` method is a crucial part of HTTP for creating or updating resources in a predictable and idempotent manner. 
+Defined initially in RFC 2616 and later refined in RFC 7231, it ensures that clients can safely send the same request 
+multiple times without causing unintended side effects, making it ideal for updating resources or 
+handling idempotent operations in web applications.
+  
+
+
+
+
+
