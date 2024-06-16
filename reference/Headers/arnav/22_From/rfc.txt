@@ -1,0 +1,100 @@
+                            14.22 From
+
+
+optional
+-------------------------------------------------
+
+ The From request-header field, if given, SHOULD contain an Internet
+   e-mail address for the human user who controls the requesting user
+   agent. The address SHOULD be machine-usable, as defined by "mailbox"
+   in RFC 822 [9] as updated by RFC 1123 [8]:
+
+               From   = "From" ":" mailbox
+              
+                 An example is:
+              
+                     From: webmaster@w3.org
+
+
+  This header field MAY be used for logging purposes and as a means for
+   identifying the source of invalid or unwanted requests. It SHOULD NOT
+   be used as an insecure form of access protection. The interpretation
+   of this field is that the request is being performed on behalf of the
+   person given, who accepts responsibility for the method performed. In
+   particular, robot agents SHOULD include this header so that the
+   person responsible for running the robot can be contacted if problems
+   occur on the receiving end.
+
+The Internet e-mail address in this field MAY be separate from the
+   Internet host which issued the request. For example, when a request
+   is passed through a proxy the original issuer's address SHOULD be
+   used.
+
+
+The client SHOULD NOT send the From header field without the user's
+   approval, as it might conflict with the user's privacy interests or
+   their site's security policy. It is strongly recommended that the
+   user be able to disable, enable, and modify the value of this field
+   at any time prior to a request.
+
+------------------------------------------------------------------------------------------------
+
+The `From` header in HTTP, as specified in RFC 2616 (now obsolete and replaced by RFC 7231), is used to 
+indicate the email address of the user making the request. 
+This header allows the client to provide contact information to the server, which can be useful for administrative purposes, 
+logging, or tracing request origins.
+
+
+#Syntax
+The `From` header follows this syntax:
+
+              From: <email-address>
+
+Where `<email-address>` is the email address of the user controlling the requesting user agent.
+
+#Example
+
+            From: user@example.com
+
+
+#Usage
+1. Identification: The `From` header allows servers to identify the user making the request. 
+      This can be useful for contacting the user in case of issues with the request or for administrative purposes.
+2. Optional Header: The use of the `From` header is optional, and many user agents do not include it in their requests by default.
+3. Privacy Considerations: Including the `From` header can have privacy implications, 
+      as it reveals the user's email address. Therefore, it should be used with caution and typically only in scenarios where 
+      such identification is necessary and expected.
+
+
+#Behavior and Interpretation
+- The presence of the `From` header indicates that the user agent is providing a contact email address.
+- Servers receiving this header can log the email address or use it for contacting the user if needed.
+- It is generally used in automated or programmatic contexts rather than typical web browsing scenarios.
+
+
+#Example Request
+Here is an example of an HTTP request including the `From` header:
+
+              GET /index.html HTTP/1.1
+              Host: www.example.com
+              From: user@example.com
+              User-Agent: CustomUserAgent/1.0
+              Accept: text/html
+
+
+In this example:
+- The `From` header specifies that the request is being made by a user whose email address is `user@example.com`.
+- This information might be logged by the server for tracking or administrative purposes.
+
+#Summary
+The `From` header in HTTP, as defined by RFC 2616, allows the client to include an email address for the user making the request. 
+While it can be useful for identifying and contacting the user, it is optional and should be used carefully due to privacy concerns. 
+The typical use case for the `From` header is in contexts where user identification is necessary, rather than in standard web browsing.
+
+
+
+
+
+
+
+
