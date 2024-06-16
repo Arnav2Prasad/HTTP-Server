@@ -1,0 +1,95 @@
+QUESTION : but the client user is unable to see the location as its in the header? so how he gets to know the new location??
+
+ANSWER:
+When an HTTP client, such as a web browser, receives a response with a `Location` header indicating a redirection, 
+it processes the header automatically. The user typically does not see the `Location` header directly, 
+but the browser handles the redirection seamlessly, presenting the new page to the user. Here’s how the process works:
+
+1. Initial Request: The user requests a URL (e.g., http://www.example.com/oldpage.html).
+
+2. Server Response: The server responds with a redirection status code (e.g., `301 Moved Permanently`) and includes the 
+    `Location` header with the new URL.
+
+   Example response:
+
+                 HTTP/1.1 301 Moved Permanently
+                 Location: http://www.example.com/newpage.html
+                 Content-Type: text/html
+              
+                 <html>
+                   <head>
+                     <title>301 Moved Permanently</title>
+                   </head>
+                   <body>
+                     <h1>Moved Permanently</h1>
+                     <p>The document has moved to <a href="http://www.example.com/newpage.html">this new location</a>.</p>
+                   </body>
+                 </html>
+
+
+3. Automatic Redirection: The browser reads the `Location` header and automatically makes a new request to the URL 
+          specified in the `Location` header (http://www.example.com/newpage.html).
+
+4. New Request and Response: The browser fetches the content from the new URL and displays it to the user.
+
+
+#User Experience
+- Seamless Redirection: The user experiences a seamless redirection. They initially request a URL and are automatically 
+        taken to the new URL without needing to take any action.
+- URL Update: The address bar in the browser updates to show the new URL (e.g., http://www.example.com/newpage.html), informing 
+        the user of the new location.
+- Content Display: The browser displays the content from the new URL, making the redirection process transparent to the user.
+
+
+#Example Workflow
+1. User Action:
+   - The user enters `http://www.example.com/oldpage.html` in the browser's address bar.
+
+2. Initial Request:
+   
+                 GET /oldpage.html HTTP/1.1
+                 Host: www.example.com
+                 
+
+3. Server Response:
+
+         HTTP/1.1 301 Moved Permanently
+         Location: http://www.example.com/newpage.html
+
+
+4. Automatic Redirection*(handled by the browser):
+   - The browser sees the `301` status code and the `Location` header.
+   - The browser makes a new request to `http://www.example.com/newpage.html`.
+
+5. New Request:
+   
+             GET /newpage.html HTTP/1.1
+             Host: www.example.com
+  
+
+6. Final Response:
+
+                 HTTP/1.1 200 OK
+                 Content-Type: text/html
+              
+                 <html>
+                   <head>
+                     <title>New Page</title>
+                   </head>
+                   <body>
+                     <h1>Welcome to the New Page</h1>
+                     <p>This is the new location of the document.</p>
+                   </body>
+                 </html>
+
+
+#Summary
+The `Location` header is used by the server to instruct the client (browser) to fetch a different URL. 
+While users do not see the `Location` header directly, the browser uses it to redirect the user automatically. 
+This process updates the URL in the address bar and displays the content from the new location, making the redirection experience 
+smooth and transparent.
+
+
+
+
+
