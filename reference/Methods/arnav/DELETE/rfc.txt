@@ -1,0 +1,188 @@
+                          9.7 DELETE
+
+The DELETE method requests that the origin server delete the resource
+   identified by the Request-URI. This method MAY be overridden by human
+   intervention (or other means) on the origin server. The client cannot
+   be guaranteed that the operation has been carried out, even if the
+   status code returned from the origin server indicates that the action
+   has been completed successfully. However, the server SHOULD NOT
+   indicate success unless, at the time the response is given, it
+   intends to delete the resource or move it to an inaccessible
+   location.
+
+A successful response SHOULD be 200 (OK) if the response includes an
+   entity describing the status, 202 (Accepted) if the action has not
+   yet been enacted, or 204 (No Content) if the action has been enacted
+   but the response does not include an entity.
+
+   If the request passes through a cache and the Request-URI identifies
+   one or more currently cached entities, those entries SHOULD be
+   treated as stale. Responses to this method are not cacheable.
+
+
+
+----------------------------------------------------------------------------------------
+The `DELETE` method is one of the HTTP request methods used by clients to request the removal of a specified resource 
+from the server. According to the HTTP/1.1 specification, which is documented in RFC 9110, 
+the `DELETE` method has specific semantics and intended use cases.
+
+#RFC Reference
+- RFC Number: RFC 9110
+- Title: HTTP Semantics
+
+#DELETE Method Description
+The `DELETE` method requests that the origin server remove the association between the target resource and 
+its current functionality. It is one of the methods defined to interact with resources over the HTTP protocol.
+
+#Key Points from the RFC:
+1. Functionality: The `DELETE` method is used to delete a resource identified by a URI.
+2. Idempotence: The `DELETE` method is idempotent, which means that making multiple identical `DELETE` 
+      requests will have the same effect as making a single request. However, successful responses can vary 
+      depending on whether the resource existed before the request was made.
+3. Response Status Codes:
+   - `200 OK`: The request has succeeded, and the response includes an entity corresponding to the requested resource.
+   - `202 Accepted`: The request has been accepted for processing, but the processing has not been completed.
+   - `204 No Content`: The server successfully processed the request and is not returning any content.
+   - `404 Not Found`: The resource could not be found or has already been deleted.
+   - `405 Method Not Allowed`: The method specified in the request is not allowed for the resource identified by the request URI.
+4. Cache Behavior: Responses to `DELETE` requests are not cacheable. However, the effect of a `DELETE` request might 
+      be seen by a cache if it reflects subsequent requests.
+
+
+#Example:
+Here's a simple example of a `DELETE` request:
+            
+            
+            DELETE /resource/12345 HTTP/1.1
+            Host: example.com
+
+
+This request asks the server to delete the resource located at `/resource/12345`.
+
+#Summary
+The `DELETE` method in HTTP, as defined in RFC 9110, is used to request the deletion of a specified resource from the server. 
+It is designed to be idempotent, ensuring that multiple identical requests do not have different outcomes. 
+The server responds with appropriate status codes based on whether the deletion was successful, the resource was not found, 
+or the method was not allowed.
+
+
+
+-------------------------------------------------------------------------------------------------------------
+Here are specific examples and scenarios for each response status code related to the `DELETE` method:
+
+1. `200 OK`
+# Scenario:
+A client sends a `DELETE` request to remove a user account, and the server processes the request successfully. 
+The server also returns the details of the deleted user in the response.
+
+#Example:
+Request:
+
+            DELETE /users/12345 HTTP/1.1
+            Host: example.com
+
+
+Response:
+
+          HTTP/1.1 200 OK
+          Content-Type: application/json
+          
+          {
+            "id": "12345",
+            "username": "johndoe",
+            "status": "deleted"
+          }
+
+
+
+#2. `202 Accepted`
+#Scenario:
+A client sends a `DELETE` request to remove a large dataset, and the server accepts the request but needs additional 
+time to complete the deletion due to the size of the dataset. 
+The server returns a `202 Accepted` status to indicate that the request is being processed.
+
+#Example:
+Request:
+          
+          DELETE /datasets/large-dataset HTTP/1.1
+          Host: example.com
+
+Response:
+
+          HTTP/1.1 202 Accepted
+          Content-Type: application/json
+          
+          {
+            "message": "The request to delete the dataset has been accepted and is being processed."
+          }
+
+
+
+
+#3. `204 No Content`
+#Scenario:
+A client sends a `DELETE` request to remove a blog post, and the server successfully deletes the resource but does not 
+return any content in the response.
+
+#Example:
+Request:
+              
+              DELETE /blog/posts/98765 HTTP/1.1
+              Host: example.com
+
+
+Response:
+
+            HTTP/1.1 204 No Content
+
+
+
+#4. `404 Not Found`
+#Scenario:
+A client sends a `DELETE` request to remove a file that does not exist on the server. 
+The server responds with a `404 Not Found` status, indicating that the resource could not be found or has already been deleted.
+
+#Example:
+Request:
+                
+                DELETE /files/nonexistent-file.txt HTTP/1.1
+                Host: example.com
+
+Response:
+                
+                HTTP/1.1 404 Not Found
+                Content-Type: application/json
+                
+                {
+                  "error": "The requested resource could not be found."
+                }
+
+
+#5. `405 Method Not Allowed`
+#Scenario:
+A client sends a `DELETE` request to a resource that does not support the `DELETE` method, such as a static page. 
+The server responds with a `405 Method Not Allowed` status, indicating that the method is not 
+allowed for the specified resource.
+
+#Example:
+Request:
+
+            DELETE /static/homepage.html HTTP/1.1
+            Host: example.com
+
+Response:
+            
+            HTTP/1.1 405 Method Not Allowed
+            Allow: GET, POST
+            Content-Type: application/json
+            
+            {
+              "error": "The DELETE method is not allowed for this resource."
+            }
+
+
+These examples illustrate different scenarios and the corresponding HTTP responses when using the `DELETE` method.
+
+
+
+
