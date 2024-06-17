@@ -1,0 +1,142 @@
+                      9.1.2 Idempotent Methods
+
+Methods can also have the property of "idempotence" in that (aside
+   from error or expiration issues) the side-effects of N > 0 identical
+   requests is the same as for a single request. The methods GET, HEAD,
+   PUT and DELETE share this property. Also, the methods OPTIONS and
+   TRACE SHOULD NOT have side effects, and so are inherently idempotent.
+
+
+However, it is possible that a sequence of several requests is non-
+   idempotent, even if all of the methods executed in that sequence are
+   idempotent. (A sequence is idempotent if a single execution of the
+   entire sequence always yields a result that is not changed by a
+   reexecution of all, or part, of that sequence.) For example, a
+   sequence is non-idempotent if its result depends on a value that is
+   later modified in the same sequence.
+
+   A sequence that never has side effects is idempotent, by definition
+   (provided that no concurrent operations are being executed on the
+   same set of resources).
+
+
+---------------------------------------------------------------------------------------------
+Idempotent methods in HTTP are those methods that can be called multiple times without different outcomes. 
+In other words, making multiple identical requests should have the same effect as making a single request. 
+This concept is crucial for ensuring reliable and predictable behavior in web applications.
+
+
+#RFC Reference
+- RFC Number: RFC 9110
+- Title: HTTP Semantics
+
+#dempotent Methods Description
+Idempotent methods are designed to be safe from causing unintended effects on the server's state when called multiple times. 
+This property is particularly useful for error recovery and network reliability, 
+where a client may need to retry a request without causing duplicate effects.
+
+#Key Points from the RFC:
+1. Definition: An HTTP method is idempotent if the intended effect on the server of multiple identical requests 
+      is the same as the effect for a single such request.
+2. Safe Methods: All safe methods (`GET`, `HEAD`, `OPTIONS`) are inherently idempotent because they do not alter the state of the server.
+3. Other Idempotent Methods: Methods like `PUT` and `DELETE` are idempotent because their effects do not change with multiple 
+          identical requests.
+
+
+#Examples and Usage
+
+#1. `GET`
+The `GET` method retrieves a representation of the specified resource. 
+Multiple `GET` requests do not change the state of the server.
+
+#Example:
+Request:
+            
+            GET /resource/123 HTTP/1.1
+            Host: example.com
+
+Response:
+
+          HTTP/1.1 200 OK
+          Content-Type: application/json
+          
+          {
+            "id": "123",
+            "name": "example"
+          }
+
+Multiple identical `GET` requests yield the same response without altering the server's state.
+
+#2. `HEAD`
+The `HEAD` method is used to retrieve the headers of a resource without the body. 
+It is idempotent as it does not change the server state.
+
+
+#Example:
+Request:
+        
+        HEAD /resource/123 HTTP/1.1
+        Host: example.com
+
+Response:
+
+          HTTP/1.1 200 OK
+          Content-Type: application/json
+          Content-Length: 50
+
+Repeated `HEAD` requests will always produce the same headers for the resource.
+
+
+#3. `PUT`
+The `PUT` method updates a resource with new data. Multiple identical `PUT` requests will result in the resource being 
+updated to the same state.
+
+#Example:
+Request:
+
+            PUT /resource/123 HTTP/1.1
+            Host: example.com
+            Content-Type: application/json
+            
+            {
+              "id": "123",
+              "name": "updated-example"
+            }
+
+Response:
+
+        HTTP/1.1 200 OK
+
+Sending the same `PUT` request repeatedly will keep the resource in the same state (`id` = 123, `name` = updated-example).
+
+#4. `DELETE`
+The `DELETE` method removes the specified resource. Multiple identical `DELETE` requests have the same effect as 
+a single one: the resource is removed.
+
+#Example:
+Request:
+
+          DELETE /resource/123 HTTP/1.1
+          Host: example.com
+
+Response (first request):
+
+          HTTP/1.1 204 No Content
+
+
+Response (subsequent requests):
+
+      HTTP/1.1 404 Not Found
+
+After the first `DELETE` request, the resource is deleted. Subsequent `DELETE` requests for the same resource will 
+result in a `404 Not Found` status, indicating that the resource no longer exists.
+
+
+#Summary
+Idempotent methods in HTTP, as defined in RFC 9110, include `GET`, `HEAD`, `PUT`, and `DELETE`. These methods ensure 
+that multiple identical requests have the same effect as a single request, which is essential for 
+  reliable and predictable interactions between clients and servers. Safe methods (`GET`, `HEAD`, `OPTIONS`) 
+are inherently idempotent, while methods like `PUT` and `DELETE` are designed to be idempotent by ensuring consistent 
+outcomes regardless of repeated requests.
+  
+
